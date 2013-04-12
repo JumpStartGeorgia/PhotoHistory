@@ -2,6 +2,12 @@
 <%- model_class_trans = PairingTranslation -%>
 <% title t '.title', :default => model_class.model_name.human.pluralize %>
 
+<div class="form-actions">
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_pairing_path,
+            :class => 'btn btn-primary' %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -39,8 +45,3 @@
   </tbody>
 </table>
 
-<div class="form-actions">
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_pairing_path,
-            :class => 'btn btn-primary' %>
-</div>

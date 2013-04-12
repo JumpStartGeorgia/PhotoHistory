@@ -65,6 +65,7 @@ ka:
       new: ახალი
     common:
       app_name: Photo History
+      unknown_year: Year Unknown
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.

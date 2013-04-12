@@ -15,11 +15,13 @@ class ImageFile < ActiveRecord::Base
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
     :year, :lat, :lon
 
-  validates :file_file_name, :year, :presence => true
+  validates :file_file_name, :presence => true
 
 	def self.sorted
 		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
 	end
   
-
+  def year_formatted
+    self.year.present? ? self.year : I18n.t('app.common.unknown_year')
+  end
 end
