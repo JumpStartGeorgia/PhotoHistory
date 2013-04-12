@@ -15,6 +15,9 @@ class PairingsController < ApplicationController
   def show
     @pairing = Pairing.find(params[:id])
 
+    gon.lat = @pairing.image_file1.lat
+    gon.lon = @pairing.image_file1.lon
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @pairing }

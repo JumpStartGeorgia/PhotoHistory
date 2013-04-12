@@ -24,6 +24,7 @@
   position: relative;
   & > img.layer1 {
     width: 100%;
+    display: block;
   }
   & > .layer2 {
     width: 50.5%;
@@ -44,9 +45,9 @@
 }
 
 .visible\! {
-}
-.visible\!, .visible\! * {
-  display: block !important;
+  &, & * {
+    display: block !important;
+  }
 }
 
 
@@ -54,4 +55,7 @@
 #map {
   margin: 20px 0px;
   height: 400px;
+  img {
+    max-width: none;
+  }
 }

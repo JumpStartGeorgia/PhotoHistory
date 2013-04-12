@@ -92,7 +92,7 @@
 
 	            <%= yield %>
 	          </div><!--/span-->
-		      </div><!--/row-->
+		      </div><!--/row-fluid-->
 		    </div><!--/content-->
 		   </div> <!-- /container -->
 		</div><!--/wrapper-->
@@ -120,8 +120,8 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <%= javascript_include_tag "application" %>
-    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
 		<script type="text/javascript">
 			I18n.defaultLocale = "<%= I18n.default_locale %>";
 			I18n.locale = "<%= I18n.locale %>";

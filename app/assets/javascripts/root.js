@@ -5,7 +5,7 @@ $(function()
     axis: 'x',
     create: function (e, ui)
     {
-      $(this).parent().siblings('.layer2').children('img').width($(this).parent().siblings('img.layer1').width());
+      $(this).css('left', $(this).position().left).parent().siblings('.layer2').children('img').width($(this).parent().siblings('img.layer1').width());
     },
     drag: function (e, ui)
     {
@@ -22,5 +22,4 @@ $(function()
   });
 
 
-  var map = L.map('map');
 });
