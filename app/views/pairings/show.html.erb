@@ -6,16 +6,17 @@
   <%= @pairing.title %></p>
   <p><strong><%= model_class_trans.human_attribute_name(:description) %>:</strong>
   <%= simple_format @pairing.description %></p>
-  <p><strong><%= model_class.human_attribute_name(:image_file1) %>:</strong>
-  <%= @pairing.image_file1.year if @pairing.image_file1_id %>
-  <br />
-  <%= image_tag @pairing.image_file1.file.url(:medium) if @pairing.image_file1_id && @pairing.image_file1.file_file_name %>
-  </p>
-  <p><strong><%= model_class.human_attribute_name(:image_file2) %>:</strong>
-  <%= @pairing.image_file2.year if @pairing.image_file2_id %>
-  <br />
-  <%= image_tag @pairing.image_file2.file.url(:medium) if @pairing.image_file2_id && @pairing.image_file2.file_file_name %>
-  </p>
+
+  <div class="item">
+    <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
+    <div class="layer2">
+      <%= image_tag @pairing.image_file2.file.url(:medium) %>
+    </div>
+    <div class="overlay">
+      <div class="draggable"></div>
+    </div>
+  </div>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
