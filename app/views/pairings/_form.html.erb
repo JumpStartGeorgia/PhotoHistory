@@ -15,8 +15,8 @@
 		<% end %>
 	<% end %>
 
-	<%= f.input :image_file1, :as => :select %>
-	<%= f.input :image_file2, :as => :select %>
+	<%= f.input :image_file1, :as => :select, :collection => ImageFile.sorted.map{|x| ["#{x.name} (#{x.year})", x.id]} %>
+	<%= f.input :image_file2, :as => :select, :collection => ImageFile.sorted.map{|x| ["#{x.name} (#{x.year})", x.id]} %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

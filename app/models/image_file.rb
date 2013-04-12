@@ -17,4 +17,9 @@ class ImageFile < ActiveRecord::Base
 
   validates :file_file_name, :year, :presence => true
 
+	def self.sorted
+		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
+	end
+  
+
 end
