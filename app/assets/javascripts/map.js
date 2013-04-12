@@ -17,11 +17,13 @@ if ('lat' in gon && 'lon' in gon)
 {
   var lat = gon.lat;
   var lon = gon.lon;
+  var zoom = 17;
 }
 else
 {
-  var lat = 41.697760228187086;
-  var lon = 44.79820936918259;
+  var lat = "41.697760228187086";
+  var lon = "44.79820936918259";
+  var zoom = 12;
 }
 var center = new google.maps.LatLng(lat, lon);
 var map = 1;
@@ -31,7 +33,7 @@ function initialize ()
   var mapCanvas = document.getElementById('map');
   var mapOptions = {
     center: center,
-    zoom: 17,
+    zoom: zoom,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(mapCanvas, mapOptions);

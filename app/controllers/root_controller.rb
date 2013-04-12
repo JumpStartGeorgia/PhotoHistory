@@ -7,6 +7,13 @@ class RootController < ApplicationController
     else
       @pairing = @pairing.first
     end
+
+    gon.lat = @pairing.image_file1.lat if @pairing.image_file1.lat.present?
+    gon.lon = @pairing.image_file1.lon if @pairing.image_file1.lon.present?
+
+    pairings = Pairing.select("pairings.id")
+    @pairing_count = pairings.count
+    @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
   end
 
   def next
@@ -19,7 +26,6 @@ class RootController < ApplicationController
 
 
 protected
-
   def next_previous(type)
 		# get a list of pairings ids in correct order
     pairings = Pairing.select("pairings.id")

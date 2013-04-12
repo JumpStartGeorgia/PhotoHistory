@@ -23,7 +23,7 @@
       <h2><%= @pairing.title %></h2>
       <p>
         <%= link_to '<- previous', previous_path(@pairing.id) %>
-        <br />
+        <%= "#{@pairing_index} of #{@pairing_count}" %>
         <%= link_to 'next ->', next_path(@pairing.id) %>
       </p>
 
