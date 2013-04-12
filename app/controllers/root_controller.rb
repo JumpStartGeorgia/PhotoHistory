@@ -1,19 +1,21 @@
 class RootController < ApplicationController
 
   def index
-    @pairing = Pairing.with_images
+    @pairing = build_pairing_query
     if params[:pairing].present?
       @pairing = @pairing.find(params[:pairing])
     else
       @pairing = @pairing.first
     end
 
-    gon.lat = @pairing.image_file1.lat if @pairing.image_file1.lat.present?
-    gon.lon = @pairing.image_file1.lon if @pairing.image_file1.lon.present?
+    if @pairing.present?
+      gon.lat = @pairing.image_file1.lat if @pairing.image_file1.lat.present?
+      gon.lon = @pairing.image_file1.lon if @pairing.image_file1.lon.present?
 
-    pairings = Pairing.select("pairings.id")
-    @pairing_count = pairings.count
-    @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
+      pairings = build_pairing_query(true)
+      @pairing_count = pairings.count
+      @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
+    end
   end
 
   def next
@@ -26,9 +28,37 @@ class RootController < ApplicationController
 
 
 protected
+
+  def build_pairing_query(ids_only=false)
+    if ids_only
+      pairings = Pairing.select("pairings.id").joins(:image_file1)
+    else
+      pairings = Pairing.with_images
+    end
+
+    # add time
+    if params[:time].present?
+      if params[:time] == I18n.t('filters.time.unknown')
+        pairings = pairings.where("image_files.year is null or image_files.year = ''")
+      else
+        # format should be yyyy-yyyy
+        years = params[:time].split('-')
+        if years.length == 2 && years[0].length == 4 && years[1].length == 4 && is_i?(years[0]) && is_i?(years[1])
+          pairings = pairings.where("image_files.year between ? and ?", years[0], years[1])
+        end
+      end
+    end
+
+    return pairings
+  end
+
+  def is_i?(string)
+   !!(string =~ /^[-+]?[0-9]+$/)
+  end
+
   def next_previous(type)
 		# get a list of pairings ids in correct order
-    pairings = Pairing.select("pairings.id")
+    pairings = build_pairing_query(true)
     
     # get the pairing that was showing
     pairing = Pairing.find_by_id(params[:id])
@@ -60,7 +90,8 @@ protected
 
 			if record_id 
 			  # found next record, go to it
-        redirect_to root_path(:pairing => record_id)
+        @param_options[:pairing] = record_id
+        redirect_to root_path(@param_options)
         return
       end
     end

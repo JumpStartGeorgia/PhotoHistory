@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 	before_filter :set_locale
 #	before_filter :is_browser_supported?
 	before_filter :initialize_gon
+  before_filter :create_querystring_hash
 
 	unless Rails.application.config.consider_all_requests_local
 		rescue_from Exception,
@@ -69,6 +70,14 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     redirect_to root_path, :notice => t('app.msgs.not_authorized') if !current_user || !current_user.role?(role)
   end
 
+  def create_querystring_hash
+    @param_options = Hash.new
+    url = URI.parse(request.fullpath)
+    @param_options = CGI.parse(url.query).inject({}) { |h, (k, v)| h[k] = v.first; h } if url.query
+
+    # if pairing in params, remove it
+    @param_options.delete('pairing')
+  end
 
   #######################
 	def render_not_found(exception)

@@ -44,6 +44,14 @@ en:
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
+  filters:
+    time:
+      header: Time Period
+      a: 1850-1900
+      b: 1900-1950
+      c: 1950-2000
+      d: 2000-2050
+      unknown: Year Unknown
   app:
     language:
       en: English

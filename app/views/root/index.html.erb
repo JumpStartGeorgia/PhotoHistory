@@ -22,9 +22,9 @@
     <div class="span6">
       <h2><%= @pairing.title %></h2>
       <p>
-        <%= link_to '<- previous', previous_path(@pairing.id) %>
+        <%= link_to '<- previous', previous_path(@pairing.id, @param_options) %>
         <%= "#{@pairing_index} of #{@pairing_count}" %>
-        <%= link_to 'next ->', next_path(@pairing.id) %>
+        <%= link_to 'next ->', next_path(@pairing.id, @param_options) %>
       </p>
 
       <%= simple_format @pairing.description %>
