@@ -1,0 +1,30 @@
+<%- model_class = Pairing -%>
+<%- model_class_trans = PairingTranslation -%>
+<% title t '.title', :default => model_class.model_name.human %>
+
+  <p><strong><%= model_class_trans.human_attribute_name(:title) %>:</strong>
+  <%= @pairing.title %></p>
+  <p><strong><%= model_class_trans.human_attribute_name(:description) %>:</strong>
+  <%= simple_format @pairing.description %></p>
+  <p><strong><%= model_class.human_attribute_name(:image_file1) %>:</strong>
+  <%= @pairing.image_file1.year if @pairing.image_file1_id %>
+  <br />
+  <%= image_tag @pairing.image_file1.file.url(:medium) if @pairing.image_file1_id && @pairing.image_file1.file_file_name %>
+  </p>
+  <p><strong><%= model_class.human_attribute_name(:image_file2) %>:</strong>
+  <%= @pairing.image_file2.year if @pairing.image_file2_id %>
+  <br />
+  <%= image_tag @pairing.image_file2.file.url(:medium) if @pairing.image_file2_id && @pairing.image_file2.file_file_name %>
+  </p>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              pairings_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_pairing_path(@pairing), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              pairing_path(@pairing),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
+              :class => 'btn btn-danger' %>
+</div>

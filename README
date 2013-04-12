@@ -1,0 +1,3 @@
+== Photo History
+
+A rails app that allows users to load old and new photos of the same thing.  The app than loads the images on top of each other and the user can use a slider to transition between one image and the other.
