@@ -2,22 +2,6 @@
 <%- model_class_trans = PairingTranslation -%>
 <% title t '.title', :default => model_class.model_name.human %>
 
-  <p><strong><%= model_class_trans.human_attribute_name(:title) %>:</strong>
-  <%= @pairing.title %></p>
-  <p><strong><%= model_class_trans.human_attribute_name(:description) %>:</strong>
-  <%= simple_format @pairing.description %></p>
-
-  <div class="item">
-    <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
-    <div class="layer2">
-      <%= image_tag @pairing.image_file2.file.url(:medium) %>
-    </div>
-    <div class="overlay">
-      <div class="draggable"></div>
-    </div>
-  </div>
-
-
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               pairings_path, :class => 'btn'  %>
@@ -31,4 +15,27 @@
 </div>
 
 
-<div id="map"></div>
+  <div class="item">
+    <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
+    <div class="layer2">
+      <%= image_tag @pairing.image_file2.file.url(:medium) %>
+    </div>
+    <div class="overlay">
+      <div class="draggable"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <p><strong><%= model_class_trans.human_attribute_name(:title) %>:</strong>
+      <%= @pairing.title %></p>
+      <p><strong><%= model_class_trans.human_attribute_name(:description) %>:</strong>
+      <%= simple_format @pairing.description %></p>
+    </div>
+    <div class="span6">
+      <div id="map"></div>    
+    </div>
+  </div>
+
+
+

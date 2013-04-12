@@ -15,6 +15,10 @@ BootstrapStarter::Application.routes.draw do
     resources :pairings
     resources :image_files
 
+    # root
+	  match '/next/:id', :to => 'root#next', :as => :next, :via => :get
+	  match '/previous/:id', :to => 'root#previous', :as => :previous, :via => :get
+
 		root :to => 'root#index'
 	  match "*path", :to => redirect("/#{I18n.default_locale}") # handles /en/fake/path/whatever
 	end

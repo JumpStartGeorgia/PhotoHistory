@@ -1,15 +1,41 @@
-    <% if @pairing %>
-      <div class="item">
-        <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
-        <div class="layer2">
-          <%= image_tag @pairing.image_file2.file.url(:medium) %>
-        </div>
-        <div class="overlay">
-          <div class="draggable"></div>
-        </div>
-      </div>
-    <% else %>
+<% if @pairing %>
+  <div class="item">
+    <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
+    <div class="layer2">
+      <%= image_tag @pairing.image_file2.file.url(:medium) %>
+    </div>
+    <div class="overlay">
+      <div class="draggable"></div>
+    </div>
+  </div>
 
-      add some records to see the images!
-    <% end %>
+  <div class="row-fluid" id="photo_years">
+    <div class="span6">
+      <%= @pairing.image_file1.year %>
+    </div>
+    <div class="span6">
+      <%= @pairing.image_file2.year %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <h2><%= @pairing.title %></h2>
+      <p>
+        <%= link_to '<- previous', previous_path(@pairing.id) %>
+        <br />
+        <%= link_to 'next ->', next_path(@pairing.id) %>
+      </p>
+
+      <%= simple_format @pairing.description %>
+
+    </div>
+    <div class="span6">
+      <div id="map"></div>    
+    </div>
+  </div>
+<% else %>
+
+  add some records to see the images!
+<% end %>
 

@@ -11,4 +11,8 @@ class Pairing < ActiveRecord::Base
   attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, :image_file1_attributes, :image_file2_attributes
 
   validates :image_file1_id, :image_file2_id, :presence => true
+
+  def self.with_images
+    includes(:image_file1, :image_file2).with_translations(I18n.locale)
+  end
 end
