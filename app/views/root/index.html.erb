@@ -1,1 +1,15 @@
-Hi!
+    <% if @pairing %>
+      <div class="item">
+        <%= image_tag @pairing.image_file1.file.url(:medium), :class => "layer1" %>
+        <div class="layer2">
+          <%= image_tag @pairing.image_file2.file.url(:medium) %>
+        </div>
+        <div class="overlay">
+          <div class="draggable"></div>
+        </div>
+      </div>
+    <% else %>
+
+      add some records to see the images!
+    <% end %>
+
