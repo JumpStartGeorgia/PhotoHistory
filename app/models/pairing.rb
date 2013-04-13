@@ -15,4 +15,10 @@ class Pairing < ActiveRecord::Base
   def self.with_images
     includes(:image_file1, :image_file2).with_translations(I18n.locale)
   end
+
+  def self.sorted
+    joins(:image_file1, :pairing_translations).where(:pairing_translations => {:locale => I18n.locale})
+    .order("if(isnull(image_files.year), 1,0) asc, image_files.year asc, pairing_translations.title asc")
+  end
+
 end

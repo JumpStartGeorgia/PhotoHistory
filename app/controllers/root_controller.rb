@@ -31,9 +31,9 @@ protected
 
   def build_pairing_query(ids_only=false)
     if ids_only
-      pairings = Pairing.select("pairings.id").joins(:image_file1)
+      pairings = Pairing.select("pairings.id").sorted
     else
-      pairings = Pairing.with_images
+      pairings = Pairing.with_images.sorted
     end
 
     # add time
