@@ -61,6 +61,7 @@
             </ul>
 
 	          <ul class="nav pull-right">
+              <li><%= link_to t('.menu_about'), about_path, :id => 'menu_about', :class => 'fancybox' %></li>
               <li><%= link_to ImageFile.model_name.human, image_files_path  %></li>
               <li><%= link_to Pairing.model_name.human, pairings_path  %></li>
 		          <% if user_signed_in? %>
@@ -123,7 +124,7 @@
     <div class="push"><!--//--></div>
 
     <footer class="clear">
-			<div id="left">&copy; 2012</div>
+			<div id="left">&copy; 2013</div>
 		  <div id="middle">
 				&nbsp;
 			</div>

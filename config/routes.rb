@@ -16,6 +16,7 @@ BootstrapStarter::Application.routes.draw do
     resources :image_files
 
     # root
+	  match '/about', :to => 'root#about', :as => :about, :via => :get
 	  match '/next/:id', :to => 'root#next', :as => :next, :via => :get
 	  match '/previous/:id', :to => 'root#previous', :as => :previous, :via => :get
 

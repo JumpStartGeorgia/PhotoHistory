@@ -18,6 +18,10 @@ class RootController < ApplicationController
     end
   end
 
+  def about
+    render :layout => 'fancybox' if params[:fb].present?
+  end 
+
   def next
     next_previous('next')
   end

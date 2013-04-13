@@ -81,6 +81,7 @@ en:
       success_updated: "%{obj} was successfully updated."
   layouts:
     application:
+      menu_about: About
       admin: Admin
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
@@ -113,3 +114,8 @@ en:
         title: New User
       show:
         title: User Details
+  root:
+    index:
+    about:
+      title: About
+      

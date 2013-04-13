@@ -10,8 +10,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
+//= require fancybox
 //= require vendor
-//= require_tree .
+//= require_directory .
 
 $(document).ready(function(){
 	// set focus to first text box on page
@@ -23,5 +24,16 @@ $(document).ready(function(){
 	$('body')
 		.off('click.dropdown touchstart.dropdown.data-api', '.dropdown')
 		.on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() });
+
+  // add fb param to about link to indicate that the page should be openend in fb layout
+  // - will be missing for search engines and will load in normal layout
+  $('#menu_about').attr('href', $('#menu_about').attr('href') + '?fb=true');
+
+	// register fancybox
+	$("a.fancybox").fancybox({
+    transitionIn: 'elastic',
+    transitionOut: 'elastic',
+	  width: 400
+  });
 
 });
