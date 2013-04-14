@@ -140,6 +140,7 @@ en:
         title: User Details
   root:
     index:
+      no_records: No photos were found matching your selection.
     about:
       title: About
       

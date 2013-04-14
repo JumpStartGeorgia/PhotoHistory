@@ -141,6 +141,7 @@ ka:
         title: მომხმარებლის დეტალები
   root:
     index:
+      no_records: No photos were found matching your selection.
     about:
       title: ჩვენ შესახებ
 
