@@ -1,7 +1,10 @@
-<%- model_class = Pairing -%>
+<%- model_class = ImageFile -%>
 <% title t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
                                  :default => "Edit #{model_class.model_name.human}") %>
 
 <%= render :partial => 'form' %>
 
-
+<div class="form-actions">
+	<%= link_to t('helpers.links.list'), admin_image_file_path,
+  :class => 'btn' %>
+</div>

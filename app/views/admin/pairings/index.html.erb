@@ -4,7 +4,7 @@
 
 <div class="form-actions">
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_pairing_path,
+            new_admin_pairing_path,
             :class => 'btn btn-primary' %>
 </div>
 
@@ -20,7 +20,7 @@
   <tbody>
     <% @pairings.each do |pairing| %>
       <tr>
-        <td><%= link_to pairing.title, pairing_path(pairing) %></td>
+        <td><%= link_to pairing.title, admin_pairing_path(pairing) %></td>
         <td>
           <%= pairing.image_file1.year if pairing.image_file1_id %>
           <br />
@@ -33,9 +33,9 @@
         </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_pairing_path(pairing), :class => 'btn btn-mini' %>
+                      edit_admin_pairing_path(pairing), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      pairing_path(pairing),
+                      admin_pairing_path(pairing),
                       :method => :delete,
 											:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
                       :class => 'btn btn-mini btn-danger' %>

@@ -94,9 +94,6 @@
             </ul>
 
 	          <ul class="nav pull-right">
-              <li><%= link_to t('.menu_about'), about_path, :id => 'menu_about', :class => 'fancybox aqua' %></li>
-              <li><%= link_to ImageFile.model_name.human, image_files_path  %></li>
-              <li><%= link_to Pairing.model_name.human, pairings_path  %></li>
 		          <% if user_signed_in? %>
 				        <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -104,15 +101,22 @@
 				                <b class="caret"></b>
 				          </a>
 				          <ul class="dropdown-menu">
-						        <li>
-				 		         <%= link_to t('.admin'), admin_path %>
-										</li>
+                    <% if current_user.role?(User::ROLES[:user]) %>
+                      <li><%= link_to ImageFile.model_name.human, admin_image_files_path  %></li>
+                      <li><%= link_to Pairing.model_name.human, admin_pairings_path  %></li>
+                    <% end %>
+                    <% if current_user.role?(User::ROLES[:admin]) %>
+						          <li>
+				   		         <%= link_to User.model_name.human, admin_users_path %>
+										  </li>
+                    <% end %>
 						        <li>
 				 		         <%= link_to t('.sign_out'), destroy_user_session_path, :method => :delete %>
 										</li>
 				          </ul>
 				        </li>
 		          <% end %>
+              <li><%= link_to t('.menu_about'), about_path, :id => 'menu_about', :class => 'fancybox aqua' %></li>
 							<% I18n.available_locales.each do |locale| %>
 								<% if locale != I18n.locale %>
 									<li><%= link_to t("app.language.#{locale}"), params.merge(:locale => locale), :class => 'aqua' %></li>

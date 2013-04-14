@@ -1,4 +1,9 @@
-class PairingsController < ApplicationController
+class Admin::PairingsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter do |controller_instance|
+    controller_instance.send(:valid_role?, User::ROLES[:user])
+  end
+
   # GET /pairings
   # GET /pairings.json
   def index
@@ -55,7 +60,7 @@ class PairingsController < ApplicationController
 
     respond_to do |format|
       if @pairing.save
-        format.html { redirect_to @pairing, notice: t('app.msgs.success_created', :obj => t('activerecord.models.pairing')) }
+        format.html { redirect_to admin_pairing_path(@pairing), notice: t('app.msgs.success_created', :obj => t('activerecord.models.pairing')) }
         format.json { render json: @pairing, status: :created, location: @pairing }
       else
         format.html { render action: "new" }
@@ -71,7 +76,7 @@ class PairingsController < ApplicationController
 
     respond_to do |format|
       if @pairing.update_attributes(params[:pairing])
-        format.html { redirect_to @pairing, notice: t('app.msgs.success_updated', :obj => t('activerecord.models.pairing')) }
+        format.html { redirect_to admin_pairing_path(@pairing), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.pairing')) }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

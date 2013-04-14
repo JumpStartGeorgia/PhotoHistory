@@ -1,4 +1,9 @@
-class ImageFilesController < ApplicationController
+class Admin::ImageFilesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter do |controller_instance|
+    controller_instance.send(:valid_role?, User::ROLES[:user])
+  end
+
   # GET /image_files
   # GET /image_files.json
   def index
@@ -50,7 +55,7 @@ class ImageFilesController < ApplicationController
 
     respond_to do |format|
       if @image_file.save
-        format.html { redirect_to @image_file, notice: 'Image file was successfully created.' }
+        format.html { redirect_to admin_image_file_path(@image_file), notice: t('app.msgs.success_created', :obj => t('activerecord.models.image_file')) }
         format.json { render json: @image_file, status: :created, location: @image_file }
       else
         format.html { render action: "new" }
@@ -66,7 +71,7 @@ class ImageFilesController < ApplicationController
 
     respond_to do |format|
       if @image_file.update_attributes(params[:image_file])
-        format.html { redirect_to @image_file, notice: 'Image file was successfully updated.' }
+        format.html { redirect_to admin_image_file_path(@image_file), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.image_file')) }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

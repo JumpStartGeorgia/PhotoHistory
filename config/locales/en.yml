@@ -40,6 +40,7 @@ en:
       destroy: Delete
       new: New
       list: View All
+      back: View All
       cancel: Cancel
       reset: Reset
       existing_file: View Existing File
@@ -140,7 +141,9 @@ en:
         title: User Details
   root:
     index:
-      no_records: No photos were found matching your selection.
     about:
       title: About
+  shared:
+    draggable_images:
+      no_records: No photos were found matching your selection.
       

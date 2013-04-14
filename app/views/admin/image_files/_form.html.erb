@@ -1,4 +1,4 @@
-<%= semantic_form_for @image_file, :html => { :class => 'form-horizontal' } do |f| %>
+<%= semantic_form_for([:admin,@image_file], :html => { :class => 'form-horizontal' }) do |f| %>
 	<%= f.error_messages %>
 
   <% @image_file.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
@@ -33,7 +33,7 @@
     <%= f.submit nil, :class => 'btn btn-primary' %>
 	  <%= f.submit nil, :class => 'btn btn-warning', :type => :reset, :value => t('helpers.links.reset'), :name => :reset %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                pairings_path, :class => 'btn btn-mini btn-warning' %>
+                admin_image_files_path, :class => 'btn btn-mini btn-warning' %>
   </div>
 
 <% end %>

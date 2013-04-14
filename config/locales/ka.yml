@@ -40,6 +40,7 @@ ka:
       destroy: წაშლა
       new: ახალი
       list: იხილეთ სრულად
+      back: იხილეთ სრულად
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
       existing_file: არსებული ფაილის ნახვა
@@ -141,7 +142,9 @@ ka:
         title: მომხმარებლის დეტალები
   root:
     index:
-      no_records: No photos were found matching your selection.
     about:
       title: ჩვენ შესახებ
+  shared:
+    draggable_images:
+      no_records: No photos were found matching your selection.
 
