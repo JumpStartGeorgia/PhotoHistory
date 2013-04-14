@@ -1,5 +1,4 @@
-# if using nested_form to upload files and want all files for a record under one folder
-# replace 'xxx_id' with the name of the object parameter name that you want to use as the folder name
-Paperclip.interpolates('xxx_id') do |attachment, style|
-  attachment.instance.xxx_id
+require 'utf8_converter'
+Paperclip.interpolates('converted_basename') do |attachment, style|
+  Utf8Converter.convert_ka_to_en(File.basename(attachment.original_filename, File.extname(attachment.original_filename)))
 end

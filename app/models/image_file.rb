@@ -2,7 +2,7 @@ class ImageFile < ActiveRecord::Base
 	translates :name, :description
   
 	has_attached_file :file,
-    :url => "/system/images/:id/:basename_:style.:extension",
+    :url => "/system/images/:id/:converted_basename_:style.:extension",
 		:styles => {
 					:thumb => {:geometry => "230"},
 					:medium => {:geometry => "600"},
