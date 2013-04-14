@@ -37,25 +37,55 @@
             <ul class="nav">
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                <%= t('filters.location.header') %>
+			                <b class="caret"></b>
+			          </a>
+			          <ul class="dropdown-menu">
+			            <li>
+	     		         <%= link_to t('filters.location.all'), url_for(params.merge(:district => nil, :special => nil, :pairing => nil)) %>
+							    </li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
+                    <ul class="dropdown-menu">
+                      <% t(:'filters.location.districts.list').each_line do |item| %>
+                        <% item.chomp! %>
+					              <li>
+			       		         <%= link_to item, url_for(params.merge(:district => item, :pairing => nil, :special => nil)) %>
+									      </li>
+                      <% end %>                  
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#"><%= t('filters.location.special.header') %></a>
+                    <ul class="dropdown-menu">
+                      <% t(:'filters.location.special.list').each_line do |item| %>
+                        <% item.chomp! %>
+					              <li>
+			       		         <%= link_to item, url_for(params.merge(:special => item, :pairing => nil, :district => nil)) %>
+									      </li>
+                      <% end %>                  
+                    </ul>
+                  </li>
+
+			          </ul>
+			        </li>
+
+
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 			                <%= t('filters.time.header') %>
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-					        <li>
-			 		         <%= link_to t('filters.time.a'), url_for(params.merge(:time => t('filters.time.a'), :pairing => nil)) %>
-									</li>
-					        <li>
-			 		         <%= link_to t('filters.time.b'), url_for(params.merge(:time => t('filters.time.b'), :pairing => nil)) %>
-									</li>
-					        <li>
-			 		         <%= link_to t('filters.time.c'), url_for(params.merge(:time => t('filters.time.c'), :pairing => nil)) %>
-									</li>
-					        <li>
-			 		         <%= link_to t('filters.time.d'), url_for(params.merge(:time => t('filters.time.d'), :pairing => nil)) %>
-									</li>
-					        <li>
-			 		         <%= link_to t('filters.time.unknown'), url_for(params.merge(:time => t('filters.time.unknown'), :pairing => nil)) %>
-									</li>
+			            <li>
+	     		         <%= link_to t('filters.time.all'), url_for(params.merge(:time => t('filters.time.all'), :pairing => nil)) %>
+							    </li>
+                  <% t(:'filters.time.list').each_line do |item| %>
+                    <% item.chomp! %>
+					          <li>
+			   		         <%= link_to item, url_for(params.merge(:time => item, :pairing => nil)) %>
+									  </li>
+                  <% end %>                  
 			          </ul>
 			        </li>
             </ul>

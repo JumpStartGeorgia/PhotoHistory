@@ -15,10 +15,11 @@
 		<% end %>
 	<% end %>
 
-
 		<%= f.input :year, :as => :string, :input_html => {:size => 5, :maxlength => 4} %>
 		<%= f.input :lat, :input_html => {:size => 20, :maxlength => 15} %>
 		<%= f.input :lon, :input_html => {:size => 20, :maxlength => 15} %>
+		<%= f.input :district, :as => :select, :collection => district_collection %>
+		<%= f.input :special, :as => :select, :collection => special_collection %>
 		<%= f.input :file, :as => :file %>
 		<div class="control-group">
 			<div class="controls">

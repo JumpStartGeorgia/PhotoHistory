@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412070742) do
+ActiveRecord::Schema.define(:version => 20130414101122) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -35,7 +35,12 @@ ActiveRecord::Schema.define(:version => 20130412070742) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "district"
+    t.string   "special"
   end
+
+  add_index "image_files", ["district"], :name => "index_image_files_on_district"
+  add_index "image_files", ["special"], :name => "index_image_files_on_special"
 
   create_table "pairing_translations", :force => true do |t|
     t.integer  "pairing_id"

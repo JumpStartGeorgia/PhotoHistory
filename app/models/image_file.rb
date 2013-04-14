@@ -13,7 +13,7 @@ class ImageFile < ActiveRecord::Base
 
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
-    :year, :lat, :lon
+    :year, :lat, :lon, :district, :special
 
   validates :file_file_name, :presence => true
 

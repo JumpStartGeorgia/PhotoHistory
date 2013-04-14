@@ -24,6 +24,10 @@
   <%= @image_file.lat %></p>
   <p><strong><%= model_class.human_attribute_name(:lon) %>:</strong>
   <%= @image_file.lon %></p>
+  <p><strong><%= model_class.human_attribute_name(:district) %>:</strong>
+  <%= @image_file.district %></p>
+  <p><strong><%= model_class.human_attribute_name(:special) %>:</strong>
+  <%= @image_file.special %></p>
   <p><strong><%= model_class.human_attribute_name(:file) %>:</strong>
   <br />
   <%= image_tag @image_file.file.url(:medium) if @image_file.file_file_name %>

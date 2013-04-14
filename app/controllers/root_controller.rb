@@ -40,11 +40,25 @@ protected
       pairings = Pairing.with_images.sorted
     end
 
+    # add district
+    if params[:district].present? && params[:district] != I18n.t('filters.location.all') &&
+        I18n.t(:'filters.location.districts.list').index(params[:district])
+
+        pairings = pairings.where("image_files.district = ?", params[:district])
+    end
+
+    # add special area
+    if params[:special].present? && params[:special] != I18n.t('filters.location.all') &&
+        I18n.t(:'filters.location.special.list').index(params[:special])
+
+        pairings = pairings.where("image_files.special = ?", params[:special])
+    end
+
     # add time
     if params[:time].present?
       if params[:time] == I18n.t('filters.time.unknown')
         pairings = pairings.where("image_files.year is null or image_files.year = ''")
-      else
+      elsif params[:time] != I18n.t('filters.time.all')
         # format should be yyyy-yyyy
         years = params[:time].split('-')
         if years.length == 2 && years[0].length == 4 && years[1].length == 4 && is_i?(years[0]) && is_i?(years[1])
