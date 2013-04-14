@@ -50,12 +50,12 @@ en:
     time:
       header: Time Period
       all: All
+      unknown: Year Unknown
       list: |
         1850-1900
         1900-1950
         1950-2000
         2000-2050
-        Year Unknown
     location:
       header: Location
       all: All

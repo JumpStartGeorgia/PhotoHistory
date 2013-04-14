@@ -41,7 +41,7 @@
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-			            <li>
+		              <li <%= !params[:district].present? && !params[:special].present? ? "class=active" : '' %>>
 	     		         <%= link_to t('filters.location.all'), url_for(params.merge(:district => nil, :special => nil, :pairing => nil)) %>
 							    </li>
                   <li class="dropdown-submenu">
@@ -49,7 +49,7 @@
                     <ul class="dropdown-menu">
                       <% t(:'filters.location.districts.list').each_line do |item| %>
                         <% item.chomp! %>
-					              <li>
+					              <li <%= params[:district] == item ? "class=active" : '' %>>
 			       		         <%= link_to item, url_for(params.merge(:district => item, :pairing => nil, :special => nil)) %>
 									      </li>
                       <% end %>                  
@@ -60,7 +60,7 @@
                     <ul class="dropdown-menu">
                       <% t(:'filters.location.special.list').each_line do |item| %>
                         <% item.chomp! %>
-					              <li>
+					              <li <%= params[:special] == item ? "class=active" : '' %>>
 			       		         <%= link_to item, url_for(params.merge(:special => item, :pairing => nil, :district => nil)) %>
 									      </li>
                       <% end %>                  
@@ -77,15 +77,18 @@
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-			            <li>
+		              <li <%= !params[:time].present? || params[:time] == t('filters.time.all') ? "class=active" : '' %>>
 	     		         <%= link_to t('filters.time.all'), url_for(params.merge(:time => t('filters.time.all'), :pairing => nil)) %>
 							    </li>
                   <% t(:'filters.time.list').each_line do |item| %>
                     <% item.chomp! %>
-					          <li>
+			              <li <%= params[:time] == item ? "class=active" : '' %>>
 			   		         <%= link_to item, url_for(params.merge(:time => item, :pairing => nil)) %>
 									  </li>
                   <% end %>                  
+		              <li <%= params[:time].present? && params[:time] == t('filters.time.unknown') ? "class=active" : '' %>>
+	     		         <%= link_to t('filters.time.unknown'), url_for(params.merge(:time => t('filters.time.unknown'), :pairing => nil)) %>
+							    </li>
 			          </ul>
 			        </li>
             </ul>
