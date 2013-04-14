@@ -11,8 +11,9 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require fancybox
+//= require fancybox2
 //= require vendor
-//= require_directory .
+//= require_tree .
 
 $(document).ready(function(){
 	// set focus to first text box on page
@@ -28,12 +29,5 @@ $(document).ready(function(){
   // add fb param to about link to indicate that the page should be openend in fb layout
   // - will be missing for search engines and will load in normal layout
   $('#menu_about').attr('href', $('#menu_about').attr('href') + '?fb=true');
-
-	// register fancybox
-	$("a.fancybox").fancybox({
-    transitionIn: 'elastic',
-    transitionOut: 'elastic',
-	  width: 400
-  });
 
 });

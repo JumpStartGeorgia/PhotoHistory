@@ -4,6 +4,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require fancybox
+//= require fancybox2
 //= require vendor
 
 
