@@ -54,6 +54,32 @@ html, body {
 
 .push { height: 155px; } /* Just some arbitrary space to add between footer and rest of the content, when they are close */
 
+/* so ie will display the correct color background */
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+  background-color: #1e1c1d;
+	filter: none; 
+}
+
+/* remove shadows from text in nav bar */
+.navbar-inner{
+  background-image: none;
+}
+.navbar .brand, .navbar .nav > li > a {
+  text-shadow: none;
+  color: #7d7d7d;
+  font-weight: bold;
+  text-transform: uppercase;
+  &.aqua {
+    color: #6ce8b2;
+  }
+}
+.navbar .brand{
+  background-color: #b61827;
+  color: #fff;
+  padding: 11px 20px 11px;
+}
+
+
 @media (max-width: 979px) {
   body {
   	margin-top: 0;

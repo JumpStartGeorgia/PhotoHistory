@@ -12,7 +12,7 @@ $(function()
 */
 });
 
-
+/*
 if ('lat' in gon && 'lon' in gon)
 {
   var lat = gon.lat;
@@ -27,18 +27,25 @@ else
 }
 var center = new google.maps.LatLng(lat, lon);
 var map = 1;
-
+*/
+    var map = 1;
 function initialize ()
 {
-  var mapCanvas = document.getElementById('map');
-  var mapOptions = {
-    center: center,
-    zoom: zoom,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map(mapCanvas, mapOptions);
+  if ('lat' in gon && 'lon' in gon){
+    var lat = gon.lat;
+    var lon = gon.lon;
+    var zoom = 17;
+    var center = new google.maps.LatLng(lat, lon);
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+      center: center,
+      zoom: zoom,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(mapCanvas, mapOptions);
 
-  addMarker({position: center});
+    addMarker({position: center});
+  }
 }
 
 
