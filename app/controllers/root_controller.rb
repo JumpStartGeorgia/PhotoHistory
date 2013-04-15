@@ -11,7 +11,7 @@ class RootController < ApplicationController
     if @pairing.present?
       gon.lat = @pairing.image_file1.lat if @pairing.image_file1.lat.present?
       gon.lon = @pairing.image_file1.lon if @pairing.image_file1.lon.present?
-#      gon.map_marker_text = @pairing.title.titlecase
+      gon.map_marker_text = @pairing.title.titlecase
 
       pairings = build_pairing_query(true)
       @pairing_count = pairings.count
