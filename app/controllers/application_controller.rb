@@ -64,8 +64,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     gon.zoom = 17
     gon.max_zoom = 18
     gon.edit_map_id = 'map_get_latlon'
-    gon.edit_lat = 41.697760228187086
-		gon.edit_lon = 44.79820936918259
+    gon.edit_lat = 41.693312056765386
+		gon.edit_lon = 44.80155944824219
     gon.edit_zoom = 12
 	end
 
