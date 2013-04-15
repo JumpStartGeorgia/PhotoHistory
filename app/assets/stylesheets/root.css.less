@@ -1,62 +1,87 @@
-#photo_container{
-  width: 900px;
-  margin: 0 auto;
-  .item {
-    position: relative;
-    & > img.layer1 {
-      width: 100%;
-      display: block;
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+#photo_container {
+  position: relative;
+
+  .controls {
+    position: absolute;
+    top: 200px;
+    &.left {
+      left: 0px;
     }
-    & > .layer2 {
-      width: 50.5%;
-      overflow: hidden;
-      position: absolute;
-      top: 0px;
+    &.right {
       right: 0px;
-      bottom: 0px;
-      img {
-        max-width: none;
+    }
+    a {
+      text-decoration: none;
+      font-size: 60px;
+    }
+  }
+
+  & > .photo {
+    width: 900px;
+    margin: 0px auto 10px auto;
+    text-align: center;
+    .item {
+      display: inline-block;
+      position: relative;
+      & > img.layer1 {
+        width: 100%;
         display: block;
+      }
+      & > .layer2 {
+        width: 50.5%;
+        overflow: hidden;
         position: absolute;
         top: 0px;
         right: 0px;
+        bottom: 0px;
+        img {
+          max-width: none;
+          display: block;
+          position: absolute;
+          top: 0px;
+          right: 0px;
+        }
+      }
+      .overlay {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+
+        .draggable {
+          cursor: col-resize;
+          width: 4px;
+          left: 49.5%;
+          background: #000;
+          min-height: 100%;
+          height: 100%;
+        }
       }
     }
-    .overlay {
+
+    #photo_years{
+      .box-sizing(border-box);
+      height: 35px;
       position: absolute;
-      top: 0px;
       bottom: 0px;
-      right: 0px;
-      left: 0px;
-
-      .draggable {
-        cursor: col-resize;
-        width: 4px;
-        left: 49.5%;
-        background: #000;
-        min-height: 100%;
-        height: 100%;
+      background-color: rgba(255, 255, 255, .7);
+      color: #333;
+      font-size: 14px;
+      font-weight: bold;
+      & > div {
+        padding-left: 10px;
+      }
+      & > div:last-of-type{
+        text-align: right;
+        padding-right: 10px;
+        padding-left: 0;
       }
     }
   }
-
-  #photo_years{
-    background-color: #823a3a;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    & > div {
-      padding-left: 10px;
-    }
-    & > div:last-of-type{
-      text-align: right;
-      padding-right: 10px;
-      padding-left: 0;
-    }
-    margin-bottom: 10px;
-  }
-
-
 }
 
 #photo_content_container{
