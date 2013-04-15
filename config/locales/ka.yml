@@ -3,8 +3,8 @@ ka:
   activerecord:
     models:
       user: მომხმარებელი
-      image_file: Image
-      pairing: Pairing
+      image_file: გამოსახულება
+      pairing: დაწყვილება
     attributes:
       user:
         email: ელ.ფოსტა
@@ -13,20 +13,20 @@ ka:
         role: როლი
         remember_me: დამიმახსოვრე
       image_file:
-        year: Year
-        lon: Longitude
-        lat: Latitude
-        file: File
-        district: District
-        special: Special Area
+        year: წელი
+        lon: გრძედი
+        lat: განედი
+        file: ფაილი
+        district: რაიონი
+        special: სპეციალური არე
       image_file_translation:
-        name: Name
-        description: Description
+        name: სახელი
+        description: აღწერა
       pairing:
-        image_file1: 1st Image File
-        image_file1_id: 1st Image File
-        image_file2: 2nd Image File
-        image_file2_id: 2nd Image File
+        image_file1: პირველი გამოსახულების ფაილი
+        image_file1_id: პირველი გამოსახულების ფაილი
+        image_file2: მეორე გამოსახულების ფაილი
+        image_file2_id: მეორე გამოსახულების ფაილი
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -49,19 +49,22 @@ ka:
       edit: "შეცვლა %{model}"
   filters:
     time:
-      header: Time Period
+      header: დროის პერიოდი
       all: All
       unknown: Year Unknown
+#      all: ყველა
+#      unknown: წელი უცნობია
       list: |
         1850-1900
         1900-1950
         1950-2000
         2000-2050
     location:
-      header: Location
+      header: მდებარეობა
       all: All
+#      all: ყველა
       districts:
-        header: Districts
+        header: რაიონი
         list: |
           Chugureti
           Didube
@@ -73,10 +76,23 @@ ka:
           Saburtalo
           Samgori
           Vake
+#        list: |
+#          გლდანი
+#          დიდუბე
+#          ვაკე
+#          ისანი
+#          კრწანისი
+#          მთაწმინდა
+#          ნაძალადევი
+#          საბურთალო
+#          სამგორი
+#          ჩუღურეთი
       special:
-        header: Special Areas
+        header: სპეციალური არე
         list: |
           Rustaveli Avenue
+#        list: |
+#          რუსთაველის გამზირი
   app:
     language:
       en: English
@@ -97,8 +113,8 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: Photo History
-      unknown_year: Year Unknown
+      app_name: ფოტოს ისტორია
+      unknown_year: წელი უცნობია
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
@@ -146,5 +162,5 @@ ka:
       title: ჩვენ შესახებ
   shared:
     draggable_images:
-      no_records: No photos were found matching your selection.
+      no_records: შესაბამისი ფოტო არ მოიძებნა.
 
