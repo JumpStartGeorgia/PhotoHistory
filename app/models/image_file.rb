@@ -4,9 +4,9 @@ class ImageFile < ActiveRecord::Base
 	has_attached_file :file,
     :url => "/system/images/:id/:converted_basename_:style.:extension",
 		:styles => {
-					:thumb => {:geometry => "230"},
-					:medium => {:geometry => "600"},
-					:large => {:geometry => "900"}
+					:thumb => {:geometry => "327x233>"},
+					:medium => {:geometry => "653x467>"},
+					:large => {:geometry => "980x700>"}
 				}
 
 	has_many :image_file_translations, :dependent => :destroy
