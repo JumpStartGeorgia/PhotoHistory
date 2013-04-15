@@ -37,6 +37,8 @@ class Admin::ImageFilesController < ApplicationController
 			@image_file.image_file_translations.build(:locale => locale.to_s)
 		end
 
+    gon.edit_image_file = true
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @image_file }
@@ -46,6 +48,10 @@ class Admin::ImageFilesController < ApplicationController
   # GET /image_files/1/edit
   def edit
     @image_file = ImageFile.find(params[:id])
+    gon.edit_image_file = true
+    gon.edit_lat = @image_file.lat if @image_file.lat.present?
+    gon.edit_lon = @image_file.lon if @image_file.lon.present?
+    gon.edit_zoom = gon.zoom if @image_file.lat.present? && @image_file.lon.present?
   end
 
   # POST /image_files
@@ -58,6 +64,10 @@ class Admin::ImageFilesController < ApplicationController
         format.html { redirect_to admin_image_file_path(@image_file), notice: t('app.msgs.success_created', :obj => t('activerecord.models.image_file')) }
         format.json { render json: @image_file, status: :created, location: @image_file }
       else
+        gon.edit_image_file = true
+        gon.edit_lat = @image_file.lat if @image_file.lat.present?
+        gon.edit_lon = @image_file.lon if @image_file.lon.present?
+        gon.edit_zoom = gon.zoom if @image_file.lat.present? && @image_file.lon.present?
         format.html { render action: "new" }
         format.json { render json: @image_file.errors, status: :unprocessable_entity }
       end
@@ -74,6 +84,10 @@ class Admin::ImageFilesController < ApplicationController
         format.html { redirect_to admin_image_file_path(@image_file), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.image_file')) }
         format.json { head :ok }
       else
+        gon.edit_image_file = true
+        gon.edit_lat = @image_file.lat if @image_file.lat.present?
+        gon.edit_lon = @image_file.lon if @image_file.lon.present?
+        gon.edit_zoom = gon.zoom if @image_file.lat.present? && @image_file.lon.present?
         format.html { render action: "edit" }
         format.json { render json: @image_file.errors, status: :unprocessable_entity }
       end
