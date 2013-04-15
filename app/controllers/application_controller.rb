@@ -59,6 +59,10 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 	def initialize_gon
 		gon.set = true
 		gon.highlight_first_form_field = true
+    gon.tile_url = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    gon.map_id = 'map'
+    gon.zoom = 17
+    gon.max_zoom = 18
 	end
 
 	# after user logs in, go to admin page

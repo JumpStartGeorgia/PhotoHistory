@@ -18,6 +18,11 @@
 		<!--[if IE 6]><%= stylesheet_link_tag 'ie6' %><![endif]-->
 	  <!--[if IE 7]><%= stylesheet_link_tag 'ie7' %><![endif]-->
 
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+   <!--[if lte IE 8]>
+       <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+   <![endif]-->
+
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag '/favicon.ico', :rel => 'shortcut icon' %>
@@ -181,7 +186,7 @@
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <%= javascript_include_tag "application" %>
 		<script type="text/javascript">
 			I18n.defaultLocale = "<%= I18n.default_locale %>";
