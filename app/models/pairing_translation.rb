@@ -7,8 +7,9 @@ class PairingTranslation < ActiveRecord::Base
   attr_accessible :pairing_id, :title, :description, :permalink, :locale
 
   validates :title, :permalink, :presence => true
-	validates :permalink, :uniqueness => {:scope => :locale, :case_sensitive => false,
-			:message => I18n.t('activerecord.errors.messages.already_exists')}
+# not using the permalink so turning this off
+#	validates :permalink, :uniqueness => {:scope => :locale, :case_sensitive => false,
+#			:message => I18n.t('activerecord.errors.messages.already_exists')}
 
 
   def create_permalink
