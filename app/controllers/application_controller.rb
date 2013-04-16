@@ -59,10 +59,11 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 	def initialize_gon
 		gon.set = true
 		gon.highlight_first_form_field = true
-    gon.tile_url = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    gon.tile_url = "http://a.tiles.mapbox.com/v3/jsgeorgia.map-e254jl56/{z}/{x}/{y}.png"
     gon.map_id = 'map'
     gon.zoom = 17
     gon.max_zoom = 18
+    gon.edit_tile_url = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     gon.edit_map_id = 'map_get_latlon'
     gon.edit_lat = 41.693312056765386
 		gon.edit_lon = 44.80155944824219
