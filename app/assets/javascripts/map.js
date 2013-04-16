@@ -4,7 +4,18 @@ $(function()
 		var map = new L.Map(gon.map_id).setView(new L.LatLng(gon.lat, gon.lon), gon.zoom);
 
     L.tileLayer(gon.tile_url, {maxZoom: gon.max_zoom}).addTo(map);      
-    var marker = L.marker(new L.LatLng(gon.lat, gon.lon)).addTo(map)
+
+    var customIcon = L.icon({
+        iconUrl: '/assets/map_icon.png',
+
+        iconSize:     [27, 27], // size of the icon
+//        shadowSize:   [50, 64], // size of the shadow
+//        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+//        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var marker = L.marker(new L.LatLng(gon.lat, gon.lon), {icon: customIcon}).addTo(map)
     if ('map_marker_text' in gon){
         marker.bindPopup(gon.map_marker_text)
         .openPopup();
