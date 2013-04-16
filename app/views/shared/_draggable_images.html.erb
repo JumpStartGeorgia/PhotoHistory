@@ -3,7 +3,7 @@
   <div id="photo_container">
     <div class="photo">
       <div class="item">
-        <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)};" %>
+        <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)}px;" %>
         <div class="layer2">
           <%= image_tag @pairing.image_file2.file.url(:large) %>
         </div>
