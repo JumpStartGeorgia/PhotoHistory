@@ -24,6 +24,18 @@ module ApplicationHelper
 		text.html_safe
 	end
 
+  # options = [{key => value, key => value, etc}]
+  def update_params(options)
+    p = @param_options.clone
+    options.each do |option|
+      if !option[0].blank? && !option[1].blank?
+        p[option[0].to_s] = option[1]
+      end
+    end
+    return p 
+  end
+
+
 =begin
 	# Based on https://gist.github.com/1182136
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer

@@ -41,10 +41,27 @@
 
   <div id="photo_content_container">
     <div class="row-fluid">
-      <div class="span6">
+      <div class="span6" id="image_text">
 
         <%= simple_format @pairing.description %>
 
+        <div id="image_links">
+          <% if @pairing.image_file1.present? && @pairing.image_file1.district.present? %>
+            <span><%= t('activerecord.attributes.image_file.district') %>:</span>
+            <%= link_to(@pairing.image_file1.district, root_path(update_params({:district => @pairing.image_file1.district, :pairing => nil, :special => nil}))) %>
+		      <% end %>
+
+          <% if @pairing.image_file1.present? && @pairing.image_file1.special.present? %>
+            <span><%= t('activerecord.attributes.image_file.special') %>:</span>
+            <%= link_to(@pairing.image_file1.special, root_path(update_params({:special => @pairing.image_file1.special, :pairing => nil, :district => nil}))) %>
+		      <% end %>
+          
+        </div>
+
+        <div id="image_comments">
+          <h3><%= t('.comment_header') %></h3>
+          comments....
+        </div>
       </div>
       <div class="span6" id="map_container">
         <div id="map"></div>    
