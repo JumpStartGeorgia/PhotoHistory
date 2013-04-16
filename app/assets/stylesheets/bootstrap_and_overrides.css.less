@@ -70,14 +70,13 @@ html, body {
   color: #7d7d7d;
   font-weight: bold;
   text-transform: uppercase;
-  &.aqua {
-    color: #6ce8b2;
-  }
+  font-family: dejavu;
 }
 .navbar .brand{
   background-color: #b61827;
   color: #fff;
   padding: 11px 20px 11px;
+  font-family: dejavu;
 }
 
 
@@ -98,4 +97,21 @@ html, body {
 }
 .navbar-fixed-top .navbar-inner .container-fluid .brand {
   font-size: 19px;
+}
+
+.dropdown-menu li > a {
+  font-weight: bold;
+  font-family: dejavu;
+}
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover,
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+  background-color: #b61827;
+  background-image: none;
+}
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover,
+.navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: #454545;
+  color: #fff;
+  text-decoration: none;
 }

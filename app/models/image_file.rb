@@ -13,7 +13,7 @@ class ImageFile < ActiveRecord::Base
 
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
-    :year, :lat, :lon, :district, :special
+    :year, :lat, :lon, :district, :special, :file_meta
 
   validates :file_file_name, :presence => true
 
@@ -23,5 +23,22 @@ class ImageFile < ActiveRecord::Base
   
   def year_formatted
     self.year.present? ? self.year : I18n.t('app.common.unknown_year')
+  end
+
+  # pull out the image width from the image_size value
+  def image_width(style)
+    x = self.file.image_size(style).split('x').first if self.file_meta.present?
+    # if for some reason image size does not exist, return a default value
+    if x.nil?
+      if style == :medium
+        x = 653
+      elsif style == :small
+        x = 327
+      else
+        x = 980
+      end
+    end
+
+    return x
   end
 end

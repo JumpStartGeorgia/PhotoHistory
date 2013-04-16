@@ -3,7 +3,7 @@
   <div id="photo_container">
     <div class="photo">
       <div class="item">
-        <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: auto;" %>
+        <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)};" %>
         <div class="layer2">
           <%= image_tag @pairing.image_file2.file.url(:large) %>
         </div>
@@ -11,15 +11,13 @@
           <div class="draggable"></div>
         </div>
         <div class="row-fluid" id="photo_years">
-          <div class="span4">
+          <div class="span4" id="image_left_year">
             <%= @pairing.image_file1.year_formatted %>
           </div>
-          <div class="span4" style="text-align: center;">
-            <p>
-              <%= "#{@pairing_index} of #{@pairing_count}" %>
-            </p>
+          <div class="span4" id="image_count">
+            <%= "#{@pairing_index} of #{@pairing_count}" %>
           </div>
-          <div class="span4">
+          <div class="span4" id="image_right_year">
             <%= @pairing.image_file2.year_formatted %>
           </div>
         </div>
@@ -30,15 +28,25 @@
     <div class="controls right"><%= link_to '&rsaquo;'.html_safe, next_path(@pairing.id, @param_options) %></div>
   </div>
 
-  <div id="photo_content_container">
+  <div id="photo_title_social">
     <div class="row-fluid">
       <div class="span6">
         <h2><%= @pairing.title %></h2>
+      </div>
+      <div class="span6">
+        share
+      </div>
+    </div>
+  </div>
+
+  <div id="photo_content_container">
+    <div class="row-fluid">
+      <div class="span6">
 
         <%= simple_format @pairing.description %>
 
       </div>
-      <div class="span6">
+      <div class="span6" id="map_container">
         <div id="map"></div>    
       </div>
     </div>

@@ -16,6 +16,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag("application", :media => "all") if load_media %>
+    <%= stylesheet_link_tag "fonts_#{I18n.locale}", :media => "all" if load_media %>
     <style>
       body {
         overflow-y: visible;

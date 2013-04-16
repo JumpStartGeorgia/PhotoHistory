@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414111250) do
+ActiveRecord::Schema.define(:version => 20130416070622) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130414111250) do
     t.datetime "file_updated_at"
     t.string   "district"
     t.string   "special"
+    t.text     "file_meta"
   end
 
   add_index "image_files", ["district"], :name => "index_image_files_on_district"
