@@ -17,7 +17,32 @@
     }
     a {
       text-decoration: none;
+      display: block;
+      width: 54px;
+      height: 109px;
       font-size: 60px;
+      &:hover {
+        img {
+          &:first-child {
+            opacity: 0;
+            filter: alpha(opacity=0);
+          }
+          &:last-child {
+            opacity: 1;
+            filter: alpha(opacity=100);
+          }
+        }
+      }
+      img {
+        .transition(opacity .3s);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        &:last-child {
+          opacity: 0;
+          filter: alpha(opacity=0);
+        }
+      }
     }
   }
 
@@ -33,7 +58,7 @@
         display: block;
       }
       & > .layer2 {
-        width: 50.5%;
+        width: 50%;
         overflow: hidden;
         position: absolute;
         top: 0px;
@@ -55,12 +80,13 @@
         left: 0px;
 
         .draggable {
+          display: none;
           cursor: col-resize;
-          width: 4px;
-          left: 49.5%;
-          background: #000;
-          min-height: 100%;
+          width: 54px;
           height: 100%;
+          min-height: 100%;
+          left: 49.5%;
+          background: url('/assets/draggable.png') center center no-repeat;
         }
       }
 
