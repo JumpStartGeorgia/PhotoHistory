@@ -163,4 +163,5 @@ ka:
   shared:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
+      comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, მოყევი დაასათაურე და ...
 

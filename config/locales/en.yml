@@ -146,4 +146,5 @@ en:
   shared:
     draggable_images:
       no_records: No photos were found matching your selection.
+      comment_header: If you have any information on this picture, let us know ...
       

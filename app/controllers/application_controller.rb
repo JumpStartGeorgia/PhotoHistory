@@ -59,7 +59,12 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 	def initialize_gon
 		gon.set = true
 		gon.highlight_first_form_field = true
-    gon.tile_url = "http://a.tiles.mapbox.com/v3/jsgeorgia.map-e254jl56/{z}/{x}/{y}.png"
+    # we are using free mapbox account with limited views so don't use them up in dev mode
+    if Rails.env.development?
+      gon.tile_url = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    else
+      gon.tile_url = "http://a.tiles.mapbox.com/v3/jsgeorgia.map-e254jl56/{z}/{x}/{y}.png"
+    end
     gon.map_id = 'map'
     gon.zoom = 17
     gon.max_zoom = 18

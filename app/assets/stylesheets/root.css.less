@@ -130,6 +130,26 @@
       min-height: 400px;
       background-color: #fff;
       padding: 10px;
+      &#image_text{
+        & > #image_links{
+          margin: 15px 0;
+          span{
+            margin-left: 10px;
+            &:first-of-type{
+              margin-left: 0;
+            }
+          }
+          a{
+            text-decoration: none;
+            color: #b61827;
+            &:hover{
+              color: #fff;
+              background-color: #b61827;
+            }
+          }
+          
+        }
+      }
       &#map_container{
         padding: 0;
       }
