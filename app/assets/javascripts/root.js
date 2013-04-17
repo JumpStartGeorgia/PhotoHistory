@@ -1,7 +1,12 @@
 $(function()
 {
-  $('.draggable').draggable({ 
-    containment: 'parent',
+
+  var overlay = $('.overlay');
+//var offset = overlay.offset();
+  var w = overlay.offset().left - $('.draggable').width() / 2;
+
+  $('.draggable').draggable({
+    containment: [w, 0, w + overlay.width(), 0],
     axis: 'x',
     cursor: 'col-resize',
     create: function (e, ui)
