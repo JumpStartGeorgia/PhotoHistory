@@ -19,7 +19,7 @@
 		<% if @pairing.present? && @pairing.image_file1.present? && @pairing.image_file1.file_file_name.present? %>
 			<meta property="og:image" content="<%= full_url(@pairing.image_file1.file.url(:thumb, false)) %>" />
     <% else %>
-			<meta property="og:image" content="<%= full_url(image_path('logo.png')) %>" />
+			<!--meta property="og:image" content="<%= full_url(image_path('logo.png')) %>" /-->
 		<% end %>
 		<meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
