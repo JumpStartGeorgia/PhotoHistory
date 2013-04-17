@@ -16,8 +16,8 @@
     <% end %>
 		<meta property="og:type" content="non_profit" />
 		<meta property="og:url" content="<%= current_url_no_querystring %>" />
-		<% if @pairing.present? && @pairing.image_file1.present? && @pairing.image_file1.file_file_name.present? %>
-			<meta property="og:image" content="<%= full_url(@pairing.image_file1.file.url(:thumb, false)) %>" />
+		<% if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? %>
+			<meta property="og:image" content="<%= full_url(@pairing.thumbnail.url(false)) %>" />
     <% else %>
 			<meta property="og:image" content="<%= full_url(image_path('share_photo.jpg')) %>" />
 		<% end %>

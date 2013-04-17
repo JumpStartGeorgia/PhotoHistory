@@ -50,10 +50,27 @@ class ImageFile < ActiveRecord::Base
     if x.nil?
       if style == :medium
         x = 653
-      elsif style == :small
+      elsif style == :thumb
         x = 327
       else
         x = 980
+      end
+    end
+
+    return x
+  end
+
+  # pull out the image width from the image_size value
+  def image_height(style)
+    x = self.file.image_size(style).split('x')[1] if self.file_meta.present?
+    # if for some reason image size does not exist, return a default value
+    if x.nil?
+      if style == :medium
+        x = 467
+      elsif style == :thumb
+        x = 233
+      else
+        x = 700
       end
     end
 
