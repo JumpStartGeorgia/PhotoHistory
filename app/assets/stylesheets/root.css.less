@@ -5,13 +5,18 @@
   position: relative;
   background-color: #e2e2e2;
   margin: -20px -20px 0;
-  text-align: center;
 
-  .controls, & > .photo {
-    display: inline-block;
+  & > .inner {
+    display: table;
+    margin: 0 auto;
+  }
+
+  .controls, .photo {
+    float: left;
   }
 
   .controls {
+    margin-top: 100px;
     position: relative;
     &.left {
       margin-right: 30px;
@@ -50,7 +55,7 @@
     }
   }
 
-  & > .photo {
+  .photo {
     width: 980px;
     margin: 0px auto 10px auto;
     text-align: center;
@@ -91,6 +96,13 @@
           min-height: 100%;
           left: 49.5%;
           background: url('/assets/draggable.png') center center no-repeat;
+          opacity: .9;
+          filter: alpha(opacity=90);
+          .transition(opacity .3s);
+          &:hover {
+            opacity: 1;
+            filter: alpha(opacity=100);
+          }
         }
       }
 

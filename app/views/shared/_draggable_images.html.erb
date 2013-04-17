@@ -1,42 +1,44 @@
 <% if @pairing %>
 
   <div id="photo_container">
+    <div class="inner">
 
-    <div class="controls left">
-      <%= link_to image_tag('left_arrow.png') + image_tag('left_hover_arrow.png'), previous_path(@pairing.id, @param_options) %>
-    </div>
+      <div class="controls left">
+        <%= link_to image_tag('left_arrow.png') + image_tag('left_hover_arrow.png'), previous_path(@pairing.id, @param_options) %>
+      </div>
 
-    <div class="photo">
-      <div class="item">
-        <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)}px;" %>
-        <div class="layer2">
-          <%= image_tag @pairing.image_file2.file.url(:large) %>
-        </div>
-        <div class="overlay">
-          <div class="draggable"></div>
-        </div>
-        <div class="row-fluid" id="photo_years">
-          <div class="span4" id="image_left_year">
-            <%= @pairing.image_file1.year_formatted %>
-            <%= link_to t("helpers.links.edit"),
-                        edit_admin_image_file_path(@pairing.image_file1_id), :class => 'btn btn-mini' %>
+      <div class="photo">
+        <div class="item">
+          <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)}px;" %>
+          <div class="layer2">
+            <%= image_tag @pairing.image_file2.file.url(:large) %>
           </div>
-          <div class="span4" id="image_count">
-            <%= "#{@pairing_index} of #{@pairing_count}" %>
+          <div class="overlay">
+            <div class="draggable"></div>
           </div>
-          <div class="span4" id="image_right_year">
-            <%= @pairing.image_file2.year_formatted %>
-            <%= link_to t("helpers.links.edit"),
-                        edit_admin_image_file_path(@pairing.image_file2_id), :class => 'btn btn-mini' %>
+          <div class="row-fluid" id="photo_years">
+            <div class="span4" id="image_left_year">
+              <%= @pairing.image_file1.year_formatted %>
+              <%= link_to t("helpers.links.edit"),
+                          edit_admin_image_file_path(@pairing.image_file1_id), :class => 'btn btn-mini' %>
+            </div>
+            <div class="span4" id="image_count">
+              <%= "#{@pairing_index} of #{@pairing_count}" %>
+            </div>
+            <div class="span4" id="image_right_year">
+              <%= @pairing.image_file2.year_formatted %>
+              <%= link_to t("helpers.links.edit"),
+                          edit_admin_image_file_path(@pairing.image_file2_id), :class => 'btn btn-mini' %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="controls right">
-      <%= link_to image_tag('right_arrow.png') + image_tag('right_hover_arrow.png'), next_path(@pairing.id, @param_options) %>
-    </div>
+      <div class="controls right">
+        <%= link_to image_tag('right_arrow.png') + image_tag('right_hover_arrow.png'), next_path(@pairing.id, @param_options) %>
+      </div>
 
+    </div>
   </div>
 
   <div id="photo_title_social">

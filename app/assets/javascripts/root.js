@@ -21,4 +21,34 @@ $(function()
   });
 
 
+
+
+  $(window).keydown(function (event)
+  {
+    switch (event.keyCode)
+    {
+      case 37:
+      //console.log('left');
+        if ($('.controls.left a').length)
+        {
+          $('.controls.left a').get(0).click();
+        }
+        break;
+      case 38:
+      //console.log('up');
+        break;
+      case 39:
+      //console.log('right');
+        if ($('.controls.right a').length)
+        {
+          $('.controls.right a').get(0).click();
+        }
+        break;
+      case 40:
+      //console.log('down');
+        break;
+    }
+  });
+
+
 });
