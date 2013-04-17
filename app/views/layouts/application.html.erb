@@ -128,6 +128,7 @@
                     <% if current_user.role?(User::ROLES[:user]) %>
                       <li><%= link_to ImageFile.model_name.human, admin_image_files_path  %></li>
                       <li><%= link_to Pairing.model_name.human, admin_pairings_path  %></li>
+                      <li><%= link_to Location.model_name.human, admin_locations_path  %></li>
                     <% end %>
                     <% if current_user.role?(User::ROLES[:admin]) %>
 						          <li>

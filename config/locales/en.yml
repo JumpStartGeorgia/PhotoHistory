@@ -5,6 +5,7 @@ en:
       user: User
       image_file: Image
       pairing: Pairing
+      location: Location
     attributes:
       user:
         email: Email Address
@@ -18,7 +19,9 @@ en:
         lat: Latitude
         file: File
         district_id: District
+        district: District
         special_id: Special Area
+        special: Special Area
         source: Source
       image_file_translation:
         name: Name
@@ -28,6 +31,10 @@ en:
         image_file1_id: 1st Image File
         image_file2: 2nd Image File
         image_file2_id: 2nd Image File
+      location:
+        type_id: Type
+      location_translation:
+        name: Name
     errors:
       messages:
         required_field: "is a required field."

@@ -5,6 +5,7 @@ ka:
       user: მომხმარებელი
       image_file: გამოსახულება
       pairing: დაწყვილება
+      location: Location
     attributes:
       user:
         email: ელ.ფოსტა
@@ -18,7 +19,9 @@ ka:
         lat: განედი
         file: ფაილი
         district_id: რაიონი
+        district: რაიონი
         special_id: სპეციალური არე
+        special: სპეციალური არე
         source: წყარო
       image_file_translation:
         name: სახელი
@@ -28,6 +31,10 @@ ka:
         image_file1_id: პირველი გამოსახულების ფაილი
         image_file2: მეორე გამოსახულების ფაილი
         image_file2_id: მეორე გამოსახულების ფაილი
+      location:
+        type_id: Type
+      location_translation:
+        name: Name
     errors:
       messages:
         required_field: "სავალდებულოა"

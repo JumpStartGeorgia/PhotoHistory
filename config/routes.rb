@@ -12,6 +12,7 @@ BootstrapStarter::Application.routes.draw do
 			resources :users
       resources :pairings
       resources :image_files
+      resources :locations
 		end
 
 

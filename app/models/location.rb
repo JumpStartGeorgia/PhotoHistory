@@ -14,4 +14,11 @@ class Location < ActiveRecord::Base
     with_translations(I18n.locale).where(:type_id => type_id).order("location_translations.name asc")
   end
 
+  def type_name
+    index = TYPES.values.index(self.type_id)
+    if index
+      I18n.t("activerecord.attributes.image_file.#{TYPES.keys[index]}")
+    end
+  end
+
 end
