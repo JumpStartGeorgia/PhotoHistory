@@ -122,7 +122,7 @@
 }
 
 #photo_title_social{
-  background-color: #fff;
+  background-color: #f6f6f6;
   margin: -10px -20px 0;
   padding: 10px;
 
@@ -136,6 +136,34 @@
     & > div:last-of-type{
       text-align: right;
       padding-right: 10px;
+      & > div{
+        display: inline-block;
+      }
+      & #share{
+        margin-left: 10px;
+        & > a{
+          font-size: 13px;
+          font-weight: bold;
+          background-color: #fff;
+          padding: 3px 12px;
+          color: #b61827;
+          text-decoration: none;
+          &:hover{
+            color: #fff;
+            background-color: #b61827; 
+          }
+        }
+        & .dropdown-menu {
+          min-width: 80px;
+          text-align: center; 
+          a {
+            &:hover{
+              background-color: #fff;
+              opacity: 0.7;
+            }
+          }
+        }
+      }
     } 
     h2 {
       font-family: dejavu;

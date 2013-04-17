@@ -112,6 +112,7 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
+      og_description: this is the description of the site
     unsupported_browser:
       title: Unsupported Browser
       p1: We are sorry to report that your browser is out of date and will not properly render the content from this website.

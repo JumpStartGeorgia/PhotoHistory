@@ -73,6 +73,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     gon.edit_lat = 41.693312056765386
 		gon.edit_lon = 44.80155944824219
     gon.edit_zoom = 12
+
+		gon.fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
 	end
 
 	# after user logs in, go to admin page

@@ -35,6 +35,19 @@ module ApplicationHelper
     return p 
   end
 
+  def current_url_no_querystring
+		x = nil
+    uri = URI("#{request.protocol}#{request.host_with_port}#{request.fullpath}")
+    port = uri.port.present? && [80,443].index(uri.port).nil? ? ":#{uri.port}" : ""
+		url = "#{uri.scheme}://#{uri.host}#{port}#{uri.path}" 
+    # if pairing id in query string, include it in the url
+    url << "?pairing=#{params[:pairing_id]}" if params[:pairing_id].present?
+    return url
+	end
+
+	def full_url(path)
+		"#{request.protocol}#{request.host_with_port}#{path}"
+	end
 
 =begin
 	# Based on https://gist.github.com/1182136
