@@ -18,7 +18,6 @@ class RootController < ApplicationController
       @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
     end
 
-    gon.show_fb_comments = true
   end
 
   def about

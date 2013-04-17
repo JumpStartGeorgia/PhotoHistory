@@ -32,5 +32,9 @@ class User < ActiveRecord::Base
   def role_name
     ROLES.keys[ROLES.values.index(self.role)].to_s
   end
+
+  def nickname
+    self.email.split('@')[0]
+  end
   
 end

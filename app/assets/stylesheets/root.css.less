@@ -216,6 +216,11 @@
           }
           
         }
+        & > #image_comments{
+          .fb-comments, .fb-comments * {
+              width:100% !important;
+          }
+        }
       }
       &#map_container{
         padding: 0;
@@ -251,4 +256,29 @@
   padding: 10px;
   color: #000;
 }
+
+
+@media (max-width: 1175px) {
+  #photo_container > .photo,
+  #photo_title_social > div,
+  #photo_content_container > div {
+    width: 660px;
+  }
+
+}
+
+@media (max-width: 860px) {
+  #photo_container > .photo,
+  #photo_title_social > div,
+  #photo_content_container > div {
+    width: 330px;
+  }
+  #photo_content_container div.span6 {
+    width: 100%;
+    margin-left: 0;
+  }
+
+
+}
+
 

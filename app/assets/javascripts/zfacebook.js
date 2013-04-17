@@ -8,8 +8,4 @@ $(document).ready(function(){
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 
-	// set the width of the facebook comments box
-	if (gon.show_fb_comments){
-		$('div.fb-comments').attr('data-width',$('#image_comments').width());
-	}
 });
