@@ -53,7 +53,7 @@ module ApplicationHelper
     port = uri.port.present? && [80,443].index(uri.port).nil? ? ":#{uri.port}" : ""
 		url = "#{uri.scheme}://#{uri.host}#{port}#{uri.path}" 
     # if pairing id in query string, include it in the url
-    url << "?pairing=#{params[:pairing_id]}" if params[:pairing_id].present?
+    url << "?pairing=#{params[:pairing]}" if params[:pairing].present?
     return url
 	end
 
