@@ -20,6 +20,8 @@
   <%= simple_format @image_file.description %></p>
   <p><strong><%= model_class.human_attribute_name(:year) %>:</strong>
   <%= @image_file.year %></p>
+  <p><strong><%= model_class.human_attribute_name(:source) %>:</strong>
+  <%= @image_file.source %></p>
   <p><strong><%= model_class.human_attribute_name(:lat) %>:</strong>
   <%= @image_file.lat %></p>
   <p><strong><%= model_class.human_attribute_name(:lon) %>:</strong>

@@ -55,6 +55,15 @@
 
         <%= simple_format @pairing.description %>
 
+        <div id="image_sources">
+          <h3><%= t('.source_header') %></h3>
+          <span><%= t('.left_image') %>:</span>
+          <%= @pairing.image_file1.source.present? ? @pairing.image_file1.source : t('.unknown_source') %>
+
+          <span><%= t('.right_image') %>:</span>
+          <%= @pairing.image_file2.source.present? ? @pairing.image_file2.source : t('.unknown_source') %>
+        </div>
+
         <div id="image_links">
           <% if @pairing.image_file1.present? && @pairing.image_file1.district.present? %>
             <span><%= t('activerecord.attributes.image_file.district') %>:</span>

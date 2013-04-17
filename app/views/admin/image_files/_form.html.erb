@@ -9,7 +9,7 @@
 		</div>
 
 		<%= f.input :year, :as => :string, :input_html => {:size => 5, :maxlength => 4} %>
-		<%= f.input :source, :input_html => {:size => 50} %>
+		<%= f.input :source, :input_html => {:size => 75} %>
 
     <% @image_file.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
 		  <%= f.fields_for :image_file_translations, trans do |translation| %>
@@ -17,7 +17,7 @@
 			  <div id="form-<%= trans.locale %>" class="multilanguage">
 				  <h3><%= t("app.language.#{trans.locale}") %></h3>
 
-				  <%= translation.input :name %>
+				  <%= translation.input :name, :input_html => {:size => 75} %>
 				  <%= translation.input :description, :input_html => {:rows => 4} %>
 				  <%= translation.hidden_field :locale , :value => trans.locale %>
 			  </div>

@@ -19,7 +19,7 @@ ka:
         file: ფაილი
         district: რაიონი
         special: სპეციალური არე
-        source: Source
+        source: წყარო
       image_file_translation:
         name: სახელი
         description: აღწერა
@@ -165,4 +165,7 @@ ka:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
       comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, მოყევი დაასათაურე და ...
-
+      source_header: Image Sources
+      left_image: Left
+      right_image: Right
+      unknown_source: Unknown
