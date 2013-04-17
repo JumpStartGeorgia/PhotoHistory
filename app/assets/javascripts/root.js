@@ -1,34 +1,38 @@
 $(function()
 {
 
-  function recreate_draggable(){
-    // kill draggable if exists
-    $('.draggable').draggable( "destroy" );
+  window.draggable_ratio = .5;
+
+  function recreate_draggable ()
+  {
+    var el = $('.draggable');
+    var el_width = el.width();
 
     var overlay = $('.overlay');
+    var ow = overlay.width();
   //var offset = overlay.offset();
-    var w = overlay.offset().left - $('.draggable').width() / 2;
+    var w = overlay.offset().left - el_width / 2;
 
-    $('.draggable').draggable({
-      containment: [w, 0, w + overlay.width(), 0],
+    el.draggable('destroy').draggable({
+      containment: [w, 0, w + ow, 0],
       axis: 'x',
       cursor: 'col-resize',
       create: function (e, ui)
       {
-        //create a div on create event in overlay, give overlay overflow hidden
-        $(this).css('left', $(this).parent().width() / 2 - $(this).width() / 2).show().parent().siblings('.layer2').children('img').width($(this).parent().siblings('img.layer1').width());
+        var pwr = ow * draggable_ratio;
+        $(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
       },
       drag: function (e, ui)
       {
-        $(this).parent().siblings('.layer2').width($(this).parent().width() - ui.position.left - $(this).width() / 2);
+        $(this).parent().siblings('.layer2').width(ow - ui.position.left - el_width / 2);
+        window.draggable_ratio = (ui.position.left + el_width / 2) / ow;
       }
     });
-
   }
 
-  
+
   $(window).bind('load resize', recreate_draggable);
-  
+
 
   $(window).keydown(function (event)
   {
