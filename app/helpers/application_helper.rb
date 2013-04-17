@@ -3,6 +3,18 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
+  def page_title_only(page_title)
+    content_for(:page_title_only) { page_title }
+  end
+
+  def get_page_title
+    if content_for?(:page_title_only)
+      content_for(:page_title_only)
+    elsif content_for?(:title)
+      content_for(:title)
+    end
+  end
+
 	def flash_translation(level)
     case level
     when :notice then "alert-info"

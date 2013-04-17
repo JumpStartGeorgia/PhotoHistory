@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? "#{yield(:title)} > #{t('app.common.app_name')}" :
+    <title><%= get_page_title.present? ? "#{get_page_title} > #{t('app.common.app_name')}" :
 				t('app.common.app_name') %></title>
 
-		<meta property="og:title" content="<%= content_for?(:title) ? "#{yield(:title)} > #{t('app.common.app_name')}" :
+		<meta property="og:title" content="<%= get_page_title.present? ? "#{get_page_title} > #{t('app.common.app_name')}" :
 				t('app.common.app_name') %>" />
 		<% if @pairing.present? && @pairing.description.present? %>
   		<meta property="og:description" content="<%= @pairing.description %>" />
@@ -18,6 +18,8 @@
 		<meta property="og:url" content="<%= current_url_no_querystring %>" />
 		<% if @pairing.present? && @pairing.image_file1.present? && @pairing.image_file1.file_file_name.present? %>
 			<meta property="og:image" content="<%= full_url(@pairing.image_file1.file.url(:thumb, false)) %>" />
+    <% else %>
+			<meta property="og:image" content="<%= full_url(image_path('share_photo.jpg')) %>" />
 		<% end %>
 		<meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
 
