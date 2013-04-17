@@ -19,6 +19,7 @@ ka:
         file: ფაილი
         district: რაიონი
         special: სპეციალური არე
+        source: Source
       image_file_translation:
         name: სახელი
         description: აღწერა
