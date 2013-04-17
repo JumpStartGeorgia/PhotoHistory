@@ -92,7 +92,7 @@ class Admin::PairingsController < ApplicationController
     @pairing.destroy
 
     respond_to do |format|
-      format.html { redirect_to pairings_url }
+      format.html { redirect_to admin_pairings_url }
       format.json { head :ok }
     end
   end

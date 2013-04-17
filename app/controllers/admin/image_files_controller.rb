@@ -101,7 +101,7 @@ class Admin::ImageFilesController < ApplicationController
     @image_file.destroy
 
     respond_to do |format|
-      format.html { redirect_to image_files_url }
+      format.html { redirect_to admin_image_files_url }
       format.json { head :ok }
     end
   end
