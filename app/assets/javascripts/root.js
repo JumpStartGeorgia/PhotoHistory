@@ -9,22 +9,23 @@ $(function()
     var el_width = el.width();
 
     var overlay = $('.overlay');
+    var ow = overlay.width();
   //var offset = overlay.offset();
     var w = overlay.offset().left - el_width / 2;
 
     el.draggable('destroy').draggable({
-      containment: [w, 0, w + overlay.width(), 0],
+      containment: [w, 0, w + ow, 0],
       axis: 'x',
       cursor: 'col-resize',
       create: function (e, ui)
       {
-        $(this).css('left', $(this).parent().width() * draggable_ratio - el_width / 2).show().parent().siblings('.layer2').children('img').width($(this).parent().siblings('img.layer1').width());
+        var pwr = ow * draggable_ratio;
+        $(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
       },
       drag: function (e, ui)
       {
-        var pw = $(this).parent().width();
-        $(this).parent().siblings('.layer2').width(pw - ui.position.left - el_width / 2);
-        window.draggable_ratio = (ui.position.left + el_width / 2) / pw;
+        $(this).parent().siblings('.layer2').width(ow - ui.position.left - el_width / 2);
+        window.draggable_ratio = (ui.position.left + el_width / 2) / ow;
       }
     });
   }
