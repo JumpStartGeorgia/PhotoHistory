@@ -24,8 +24,18 @@
       </div>
 
     </div>
-    <div class="controls left"><%= link_to '&lsaquo;'.html_safe, previous_path(@pairing.id, @param_options) %></div>
-    <div class="controls right"><%= link_to '&rsaquo;'.html_safe, next_path(@pairing.id, @param_options) %></div>
+    <div class="controls left">
+      <a href="<%= previous_path(@pairing.id, @param_options) %>">
+        <img alt="Left_arrow" src="/assets/left_arrow.png">
+        <img alt="Left_arrow" src="/assets/left_hover_arrow.png">
+      </a>
+    </div>
+    <div class="controls right">
+      <a href="<%= next_path(@pairing.id, @param_options) %>">
+        <img alt="Right_arrow" src="/assets/right_arrow.png">
+        <img alt="Right_arrow" src="/assets/right_arrow.png">
+      </a>
+    </div>
   </div>
 
   <div id="photo_title_social">
