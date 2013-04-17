@@ -13,12 +13,16 @@
         <div class="row-fluid" id="photo_years">
           <div class="span4" id="image_left_year">
             <%= @pairing.image_file1.year_formatted %>
+            <%= link_to t("helpers.links.edit"),
+                        edit_admin_image_file_path(@pairing.image_file1_id), :class => 'btn btn-mini' %>
           </div>
           <div class="span4" id="image_count">
             <%= "#{@pairing_index} of #{@pairing_count}" %>
           </div>
           <div class="span4" id="image_right_year">
             <%= @pairing.image_file2.year_formatted %>
+            <%= link_to t("helpers.links.edit"),
+                        edit_admin_image_file_path(@pairing.image_file2_id), :class => 'btn btn-mini' %>
           </div>
         </div>
       </div>
@@ -74,7 +78,11 @@
   <div id="photo_content_container">
     <div class="row-fluid">
       <div class="span6" id="image_text">
-
+        <div class="pull-right">
+          <%= link_to t("helpers.links.edit"),
+                      edit_admin_pairing_path(@pairing), :class => 'btn btn-mini' %>
+        </div>
+    
         <%= simple_format @pairing.description %>
 
         <div id="image_sources">
