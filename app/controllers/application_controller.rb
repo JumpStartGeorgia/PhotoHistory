@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 #	before_filter :is_browser_supported?
 	before_filter :initialize_gon
   before_filter :create_querystring_hash
+	before_filter :preload_global_variables
 
 	unless Rails.application.config.consider_all_requests_local
 		rescue_from Exception,
@@ -76,6 +77,11 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
 		gon.fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
 	end
+
+  def preload_global_variables
+    @districts = Location.by_type(Location::TYPES[:district])
+    @special_areas = Location.by_type(Location::TYPES[:special])
+  end
 
 	# after user logs in, go to admin page
 	def after_sign_in_path_for(resource)

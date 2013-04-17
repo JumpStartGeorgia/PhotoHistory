@@ -17,8 +17,8 @@ en:
         lon: Longitude
         lat: Latitude
         file: File
-        district: District
-        special: Special Area
+        district_id: District
+        special_id: Special Area
         source: Source
       image_file_translation:
         name: Name

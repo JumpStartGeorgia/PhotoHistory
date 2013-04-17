@@ -95,14 +95,14 @@
         </div>
 
         <div id="image_links">
-          <% if @pairing.image_file1.present? && @pairing.image_file1.district.present? %>
+          <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
             <span><%= t('activerecord.attributes.image_file.district') %>:</span>
-            <%= link_to(@pairing.image_file1.district, root_path(update_params({:district => @pairing.image_file1.district, :pairing => nil, :special => nil}))) %>
+            <%= link_to(@pairing.image_file1.district_name, root_path(update_params({:district => @pairing.image_file1.district_permalink, :pairing => nil, :special => nil}))) %>
 		      <% end %>
 
-          <% if @pairing.image_file1.present? && @pairing.image_file1.special.present? %>
+          <% if @pairing.image_file1.present? && @pairing.image_file1.special_id.present? %>
             <span><%= t('activerecord.attributes.image_file.special') %>:</span>
-            <%= link_to(@pairing.image_file1.special, root_path(update_params({:special => @pairing.image_file1.special, :pairing => nil, :district => nil}))) %>
+            <%= link_to(@pairing.image_file1.special, root_path(update_params({:special => @pairing.image_file1.special_permalink, :pairing => nil, :district => nil}))) %>
 		      <% end %>
         </div>
 

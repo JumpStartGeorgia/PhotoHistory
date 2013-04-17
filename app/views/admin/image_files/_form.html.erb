@@ -33,8 +33,8 @@
     
 		<%= f.input :lat, :as => :string, :input_html => {:size => 20, :maxlength => 15} %>
 		<%= f.input :lon, :as => :string, :input_html => {:size => 20, :maxlength => 15} %>
-		<%= f.input :district, :as => :select, :collection => district_collection %>
-		<%= f.input :special, :as => :select, :collection => special_collection %>
+		<%= f.input :district_id, :as => :select, :collection => @districts.map{|x| [x.name, x.id]} %>
+		<%= f.input :special_id, :as => :select, :collection => @special_areas.map{|x| [x.name, x.id]} %>
 
 
 

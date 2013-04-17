@@ -44,17 +44,18 @@ protected
     end
 
     # add district
-    if params[:district].present? && params[:district] != I18n.t('filters.location.all') &&
-        I18n.t(:'filters.location.districts.list').index(params[:district])
+    if params[:district].present? && params[:district] != I18n.t('filters.location.all')
 
-        pairings = pairings.where("image_files.district = ?", params[:district])
+      index = @districts.map{|x| x.permalink}.index(params[:district])
+      pairings = pairings.where("image_files.district_id = ?", @districts[index].id) if index
     end
 
     # add special area
-    if params[:special].present? && params[:special] != I18n.t('filters.location.all') &&
+    if params[:special].present? && params[:special] != I18n.t('filters.location.all')
         I18n.t(:'filters.location.special.list').index(params[:special])
 
-        pairings = pairings.where("image_files.special = ?", params[:special])
+      index = @special_areas.map{|x| x.permalink}.index(params[:special])
+      pairings = pairings.where("image_files.special_id = ?", @special_areas[index].id) if index
     end
 
     # add time

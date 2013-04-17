@@ -73,10 +73,9 @@
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
                     <ul class="dropdown-menu">
-                      <% t(:'filters.location.districts.list').each_line do |item| %>
-                        <% item.chomp! %>
-					              <li <%= params[:district] == item ? "class=active" : '' %>>
-			       		         <%= link_to item, root_path(update_params({:district => item, :pairing => nil, :special => nil})) %>
+                      <% @districts.each do |item| %>
+					              <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
+			       		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :special => nil})) %>
 									      </li>
                       <% end %>                  
                     </ul>
@@ -84,10 +83,9 @@
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#"><%= t('filters.location.special.header') %></a>
                     <ul class="dropdown-menu">
-                      <% t(:'filters.location.special.list').each_line do |item| %>
-                        <% item.chomp! %>
-					              <li <%= params[:special] == item ? "class=active" : '' %>>
-			       		         <%= link_to item, root_path(update_params({:special => item, :pairing => nil, :district => nil})) %>
+                      <% @special_areas.each do |item| %>
+					              <li <%= params[:special] == item.permalink ? "class=active" : '' %>>
+			       		         <%= link_to item.name, root_path(update_params({:special => item.permalink, :pairing => nil, :district => nil})) %>
 									      </li>
                       <% end %>                  
                     </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417102621) do
+ActiveRecord::Schema.define(:version => 20130417133511) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -39,11 +39,37 @@ ActiveRecord::Schema.define(:version => 20130417102621) do
     t.string   "special"
     t.text     "file_meta"
     t.string   "source"
+    t.integer  "district_id"
+    t.integer  "special_id"
   end
 
   add_index "image_files", ["district"], :name => "index_image_files_on_district"
+  add_index "image_files", ["district_id"], :name => "index_image_files_on_district_id"
   add_index "image_files", ["source"], :name => "index_image_files_on_source"
   add_index "image_files", ["special"], :name => "index_image_files_on_special"
+  add_index "image_files", ["special_id"], :name => "index_image_files_on_special_id"
+
+  create_table "location_translations", :force => true do |t|
+    t.integer  "location_id"
+    t.string   "locale"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "location_translations", ["locale"], :name => "index_location_translations_on_locale"
+  add_index "location_translations", ["location_id"], :name => "index_location_translations_on_location_id"
+  add_index "location_translations", ["name"], :name => "index_location_translations_on_name"
+  add_index "location_translations", ["permalink"], :name => "index_location_translations_on_permalink"
+
+  create_table "locations", :force => true do |t|
+    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["type_id"], :name => "index_locations_on_type_id"
 
   create_table "pairing_translations", :force => true do |t|
     t.integer  "pairing_id"
