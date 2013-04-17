@@ -47,32 +47,24 @@
 
   <div id="photo_title_social">
     <div class="row-fluid">
-      <div class="span6">
+      <div class="span8">
         <h2><%= @pairing.title %></h2>
       </div>
-      <div class="span6">
+      <div class="span4">
   			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
-        <div id="share" class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            share+
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-				      <%= link_to(image_tag("share_fb.png"),
-							      "http://www.facebook.com/share.php?u=#{current_url_no_querystring}",
-							      :title => "facebook",	:target => "_blank", :tabindex => "-1") %>
-            </li>
-            <li>
-				      <%= link_to(image_tag("share_twitter.png"),
-							      "https://twitter.com/share?url=#{current_url_no_querystring}", :title => "twitter",
-							      :target => "_blank", :tabindex => "-1") %>
-            </li>
-            <li>
-				      <%= link_to(image_tag("share_gplus.png"),
-							      "https://plusone.google.com/_/+1/confirm?hl=en&url=#{current_url_no_querystring}", :title => "google+",
-							      :target => "_blank", :tabindex => "-1") %>
-            </li>
-          </ul>
+
+        <div id="share">
+	        <%= link_to(image_tag("share_fb.png"),
+				        "http://www.facebook.com/share.php?u=#{current_url_no_querystring}",
+				        :title => "facebook",	:target => "_blank", :tabindex => "-1") %>
+
+	        <%= link_to(image_tag("share_twitter.png"),
+				        "https://twitter.com/share?url=#{current_url_no_querystring}", :title => "twitter",
+				        :target => "_blank", :tabindex => "-1") %>
+
+	        <%= link_to(image_tag("share_gplus.png"),
+				        "https://plusone.google.com/_/+1/confirm?hl=en&url=#{current_url_no_querystring}", :title => "google+",
+				        :target => "_blank", :tabindex => "-1") %>
         </div>
       </div>
     </div>

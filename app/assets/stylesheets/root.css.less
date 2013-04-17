@@ -147,6 +147,7 @@
     margin: 0 auto;
     padding-top: 6px;
     & > div:first-of-type{
+      vertical-align: middle;
       padding-left: 10px;
     } 
     & > div:last-of-type{
@@ -154,6 +155,7 @@
       padding-right: 10px;
       & > div{
         display: inline-block;
+        vertical-align: middle;
       }
       & #share{
         margin-left: 10px;
@@ -161,22 +163,12 @@
           font-size: 13px;
           font-weight: bold;
           background-color: #fff;
-          padding: 3px 12px;
+          padding: 3px 5px;
           color: #b61827;
           text-decoration: none;
           &:hover{
-            color: #fff;
-            background-color: #b61827; 
-          }
-        }
-        & .dropdown-menu {
-          min-width: 80px;
-          text-align: center; 
-          a {
-            &:hover{
-              background-color: #fff;
-              opacity: 0.7;
-            }
+            background-color: #fff;
+            opacity: 0.7;
           }
         }
       }
