@@ -20,8 +20,8 @@ ka:
         file: ფაილი
         district_id: რაიონი
         district: რაიონი
-        place_id: ადგილები
-        place: ადგილები
+        place_id: ადგილი
+        place: ადგილი
         source: წყარო
       image_file_translation:
         name: სახელი
@@ -145,7 +145,7 @@ ka:
   shared:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
-      comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, მოყევი დაასათაურე და ...
+      comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, გაგვიზიარე. 
       source_header: სურათის წყაროები
       left_image: მარცხენა
       right_image: მარჯვენა

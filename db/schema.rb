@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418064905) do
+ActiveRecord::Schema.define(:version => 20130418105946) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -93,6 +93,10 @@ ActiveRecord::Schema.define(:version => 20130418064905) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.string   "stacked_img_file_name"
+    t.string   "stacked_img_content_type"
+    t.integer  "stacked_img_file_size"
+    t.datetime "stacked_img_updated_at"
   end
 
   add_index "pairings", ["image_file1_id"], :name => "index_pairings_on_image_file1_id"

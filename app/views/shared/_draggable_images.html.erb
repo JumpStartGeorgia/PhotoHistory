@@ -84,28 +84,28 @@
     
         <%= simple_format @pairing.description %>
 
+        <div id="image_links">
+          <h3><%= t('filters.location.header') %></h3>
+          <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
+            <span><%= t('activerecord.attributes.image_file.district') %>:</span>
+            <%= link_to(@pairing.image_file1.district_name, root_path(update_params({:district => @pairing.image_file1.district_permalink, :pairing => nil, :place => nil}))) %>
+		      <% end %>
+          <br />
+          <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
+            <span><%= t('activerecord.attributes.image_file.place') %>:</span>
+            <%= link_to(@pairing.image_file1.place, root_path(update_params({:place => @pairing.image_file1.place_permalink, :pairing => nil, :district => nil}))) %>
+		      <% end %>
+        </div>
+
         <div id="image_sources">
           <h3><%= t('.source_header') %></h3>
           <span><%= t('.left_image') %>:</span>
           <%= @pairing.image_file1.source.present? ? @pairing.image_file1.source : t('.unknown_source') %>
           <%= "(#{@pairing.image_file1.year_formatted})" %>
-
+          <br />
           <span><%= t('.right_image') %>:</span>
           <%= @pairing.image_file2.source.present? ? @pairing.image_file2.source : t('.unknown_source') %>
           <%= "(#{@pairing.image_file2.year_formatted})" %>
-
-        </div>
-
-        <div id="image_links">
-          <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
-            <span><%= t('activerecord.attributes.image_file.district') %>:</span>
-            <%= link_to(@pairing.image_file1.district_name, root_path(update_params({:district => @pairing.image_file1.district_permalink, :pairing => nil, :place => nil}))) %>
-		      <% end %>
-
-          <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
-            <span><%= t('activerecord.attributes.image_file.place') %>:</span>
-            <%= link_to(@pairing.image_file1.place, root_path(update_params({:place => @pairing.image_file1.place_permalink, :pairing => nil, :district => nil}))) %>
-		      <% end %>
         </div>
 
         <div id="image_comments">

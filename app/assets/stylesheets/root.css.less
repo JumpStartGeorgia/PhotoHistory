@@ -195,21 +195,9 @@
       &#image_text{
         & > #image_sources{
           margin: 15px 0;
-          span{
-            margin-left: 10px;
-            &:first-of-type{
-              margin-left: 0;
-            }
-          }
         }
         & > #image_links{
           margin: 15px 0;
-          span{
-            margin-left: 10px;
-            &:first-of-type{
-              margin-left: 0;
-            }
-          }
           a{
             text-decoration: none;
             color: #b61827;
@@ -297,6 +285,7 @@
     }
     .photo .item {
       & #photo_years{
+        /* do not let divs collapse */
         &.row-fluid .span4 {
           float: left;
           width: 31.491712707182323%;
