@@ -4,7 +4,8 @@
     <div class="inner">
 
       <div class="controls left">
-        <%= link_to image_tag('left_arrow.png') + image_tag('left_hover_arrow.png'), previous_path(@pairing.id, @param_options) %>
+        <%= link_to image_tag('left_arrow.png', :alt => t('helpers.links.previous')) + image_tag('left_hover_arrow.png', :alt => t('helpers.links.previous')), 
+            previous_path(@pairing.id, @param_options), :title => t('helpers.links.previous') %>
       </div>
 
       <div class="photo">
@@ -39,7 +40,8 @@
       </div>
 
       <div class="controls right">
-        <%= link_to image_tag('right_arrow.png') + image_tag('right_hover_arrow.png'), next_path(@pairing.id, @param_options) %>
+        <%= link_to image_tag('right_arrow.png', :alt => t('helpers.links.next')) + image_tag('right_hover_arrow.png', :alt => t('helpers.links.next')), 
+            next_path(@pairing.id, @param_options), :title => t('helpers.links.next') %>
       </div>
 
     </div>

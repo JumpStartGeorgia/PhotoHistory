@@ -52,6 +52,8 @@ ka:
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
       existing_file: არსებული ფაილის ნახვა
+      next: Next
+      previous: Previous
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"

@@ -52,6 +52,8 @@ en:
       cancel: Cancel
       reset: Reset
       existing_file: View Existing File
+      next: Next
+      previous: Previous
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
