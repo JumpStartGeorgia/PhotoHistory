@@ -101,7 +101,7 @@ ka:
       success_updated: "%{obj} განახლებულია."
   layouts:
     application:
-      menu_about: ჩვენ შესახებ
+      menu_about: შესახებ
       admin: ადმინისტრატო
       sign_out: გასვლა
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
