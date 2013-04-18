@@ -297,9 +297,13 @@
     }
     .photo .item {
       & #photo_years{
-        &.row-fluid [class*="span4"] {
+        &.row-fluid .span4 {
           float: left;
-          width: 31.4917%;
+          width: 31.491712707182323%;
+          margin-left: 2.7624309392265194%;
+          &:first-of-type{
+            margin-left: 0;
+          }
         }
       }
       & .overlay .draggable {
@@ -311,7 +315,11 @@
   
   #photo_title_social {
     .row-fluid [class*="span"] {
-      float: left;
+      float: none;
+      width: 100%;
+      text-align: left;
+      margin-left: 0;
+      padding-left: 0;
     }
     & > div > div:last-of-type #share a {
       padding: 2px;
