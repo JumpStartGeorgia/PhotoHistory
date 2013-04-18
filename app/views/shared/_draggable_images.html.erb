@@ -88,9 +88,12 @@
           <h3><%= t('.source_header') %></h3>
           <span><%= t('.left_image') %>:</span>
           <%= @pairing.image_file1.source.present? ? @pairing.image_file1.source : t('.unknown_source') %>
+          <%= "(#{@pairing.image_file1.year_formatted})" %>
 
           <span><%= t('.right_image') %>:</span>
           <%= @pairing.image_file2.source.present? ? @pairing.image_file2.source : t('.unknown_source') %>
+          <%= "(#{@pairing.image_file2.year_formatted})" %>
+
         </div>
 
         <div id="image_links">
