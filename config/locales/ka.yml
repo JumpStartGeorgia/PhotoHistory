@@ -58,10 +58,8 @@ ka:
   filters:
     time:
       header: პერიოდი
-      all: All
-      unknown: Year Unknown
-#      all: ყველა
-#      unknown: წელი უცნობია
+      all: ყველა
+      unknown: წელი უცნობია
       list: |
         1850-1900
         1900-1950
@@ -69,8 +67,7 @@ ka:
         2000-2050
     location:
       header: მდებარეობა
-      all: All
-#      all: ყველა
+      all: ყველა
       districts:
         header: რაიონები
       place:

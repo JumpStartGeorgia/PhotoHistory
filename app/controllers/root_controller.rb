@@ -43,14 +43,14 @@ protected
     end
 
     # add district
-    if params[:district].present? && params[:district] != I18n.t('filters.location.all')
+    if params[:district].present? && params[:district] != I18n.t('filters.location.all', :locale => :en)
 
       index = @districts.map{|x| x.permalink}.index(params[:district])
       pairings = pairings.where("image_files.district_id = ?", @districts[index].id) if index
     end
 
     # add place
-    if params[:place].present? && params[:place] != I18n.t('filters.location.all')
+    if params[:place].present? && params[:place] != I18n.t('filters.location.all', :locale => :en)
 
       index = @places.map{|x| x.permalink}.index(params[:place])
       pairings = pairings.where("image_files.place_id = ?", @places[index].id) if index
@@ -58,9 +58,9 @@ protected
 
     # add time
     if params[:time].present?
-      if params[:time] == I18n.t('filters.time.unknown')
+      if params[:time] == I18n.t('filters.time.unknown', :locale => :en)
         pairings = pairings.where("image_files.year is null or image_files.year = ''")
-      elsif params[:time] != I18n.t('filters.time.all')
+      elsif params[:time] != I18n.t('filters.time.all', :locale => :en)
         # format should be yyyy-yyyy
         years = params[:time].split('-')
         if years.length == 2 && years[0].length == 4 && years[1].length == 4 && is_i?(years[0]) && is_i?(years[1])
