@@ -49,12 +49,11 @@ protected
       pairings = pairings.where("image_files.district_id = ?", @districts[index].id) if index
     end
 
-    # add special area
-    if params[:special].present? && params[:special] != I18n.t('filters.location.all')
-        I18n.t(:'filters.location.special.list').index(params[:special])
+    # add place
+    if params[:place].present? && params[:place] != I18n.t('filters.location.all')
 
-      index = @special_areas.map{|x| x.permalink}.index(params[:special])
-      pairings = pairings.where("image_files.special_id = ?", @special_areas[index].id) if index
+      index = @places.map{|x| x.permalink}.index(params[:place])
+      pairings = pairings.where("image_files.place_id = ?", @places[index].id) if index
     end
 
     # add time

@@ -67,25 +67,25 @@
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-		              <li <%= !params[:district].present? && !params[:special].present? ? "class=active" : '' %>>
-	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :special => nil, :pairing => nil})) %>
+		              <li <%= !params[:district].present? && !params[:place].present? ? "class=active" : '' %>>
+	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :place => nil, :pairing => nil})) %>
 							    </li>
                   <li class="dropdown-submenu">
                     <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
                     <ul class="dropdown-menu">
                       <% @districts.each do |item| %>
 					              <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
-			       		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :special => nil})) %>
+			       		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
 									      </li>
                       <% end %>                  
                     </ul>
                   </li>
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#"><%= t('filters.location.special.header') %></a>
+                    <a tabindex="-1" href="#"><%= t('filters.location.place.header') %></a>
                     <ul class="dropdown-menu">
-                      <% @special_areas.each do |item| %>
-					              <li <%= params[:special] == item.permalink ? "class=active" : '' %>>
-			       		         <%= link_to item.name, root_path(update_params({:special => item.permalink, :pairing => nil, :district => nil})) %>
+                      <% @places.each do |item| %>
+					              <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
+			       		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
 									      </li>
                       <% end %>                  
                     </ul>

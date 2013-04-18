@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417205600) do
+ActiveRecord::Schema.define(:version => 20130418064905) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -36,18 +36,18 @@ ActiveRecord::Schema.define(:version => 20130417205600) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.string   "district"
-    t.string   "special"
+    t.string   "place"
     t.text     "file_meta"
     t.string   "source"
     t.integer  "district_id"
-    t.integer  "special_id"
+    t.integer  "place_id"
   end
 
   add_index "image_files", ["district"], :name => "index_image_files_on_district"
   add_index "image_files", ["district_id"], :name => "index_image_files_on_district_id"
+  add_index "image_files", ["place"], :name => "index_image_files_on_place"
+  add_index "image_files", ["place_id"], :name => "index_image_files_on_place_id"
   add_index "image_files", ["source"], :name => "index_image_files_on_source"
-  add_index "image_files", ["special"], :name => "index_image_files_on_special"
-  add_index "image_files", ["special_id"], :name => "index_image_files_on_special_id"
 
   create_table "location_translations", :force => true do |t|
     t.integer  "location_id"

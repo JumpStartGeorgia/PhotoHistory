@@ -20,8 +20,8 @@ ka:
         file: ფაილი
         district_id: რაიონი
         district: რაიონი
-        special_id: სპეციალური არე
-        special: სპეციალური არე
+        place_id: ადგილები
+        place: ადგილები
         source: წყარო
       image_file_translation:
         name: სახელი
@@ -57,7 +57,7 @@ ka:
       edit: "შეცვლა %{model}"
   filters:
     time:
-      header: დროის პერიოდი
+      header: პერიოდი
       all: All
       unknown: Year Unknown
 #      all: ყველა
@@ -72,35 +72,9 @@ ka:
       all: All
 #      all: ყველა
       districts:
-        header: რაიონი
-        list: |
-          Chugureti
-          Didube
-          Gldani
-          Isani
-          Krtsanisi
-          Mtatsminda
-          Nadzaladevi
-          Saburtalo
-          Samgori
-          Vake
-#        list: |
-#          გლდანი
-#          დიდუბე
-#          ვაკე
-#          ისანი
-#          კრწანისი
-#          მთაწმინდა
-#          ნაძალადევი
-#          საბურთალო
-#          სამგორი
-#          ჩუღურეთი
-      special:
-        header: სპეციალური არე
-        list: |
-          Rustaveli Avenue
-#        list: |
-#          რუსთაველის გამზირი
+        header: რაიონები
+      place:
+        header: ადგილები
   app:
     language:
       en: English
@@ -121,7 +95,7 @@ ka:
       confirm: დარწმუნებული ხართ?
       new: ახალი
     common:
-      app_name: ფოტოს ისტორია
+      app_name: ფოტო ისტორია
       unknown_year: წელი უცნობია
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.

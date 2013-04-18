@@ -20,8 +20,8 @@ en:
         file: File
         district_id: District
         district: District
-        special_id: Special Area
-        special: Special Area
+        place_id: Place
+        place: Place
         source: Source
       image_file_translation:
         name: Name
@@ -70,21 +70,8 @@ en:
       all: All
       districts:
         header: Districts
-        list: |
-          Chugureti
-          Didube
-          Gldani
-          Isani
-          Krtsanisi
-          Mtatsminda
-          Nadzaladevi
-          Saburtalo
-          Samgori
-          Vake
-      special:
-        header: Special Areas
-        list: |
-          Rustaveli Avenue
+      place:
+        header: Places
   app:
     language:
       en: English

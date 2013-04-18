@@ -80,7 +80,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 
   def preload_global_variables
     @districts = Location.by_type(Location::TYPES[:district])
-    @special_areas = Location.by_type(Location::TYPES[:special])
+    @places = Location.by_type(Location::TYPES[:place])
   end
 
 	# after user logs in, go to admin page

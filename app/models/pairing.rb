@@ -55,12 +55,12 @@ protected
             +repage \\
             +append #{temp_thumbnail_path}"
 
-      self.thumbnail = File.new(temp_thumbnail_path, 'r')
+      self.thumbnail = File.new(temp_thumbnail_path, 'r') if File.exists?(temp_thumbnail_path)
     end
   end
 
   def delete_generated_thumbnail
-    File.delete("#{temp_thumbnail_path}") if File.exists?("#{temp_thumbnail_path}")
+    File.delete("#{temp_thumbnail_path}") if File.exists?(temp_thumbnail_path)
   end
 
 end
