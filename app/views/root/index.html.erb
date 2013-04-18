@@ -1,4 +1,6 @@
 <% page_title_only @pairing.title.titleize if @pairing.present? %>
+<% @title_year1 = @pairing.image_file1.year_formatted if @pairing.image_file1_id.present? %>
+<% @title_year2 = @pairing.image_file2.year_formatted if @pairing.image_file2_id.present? %>
 
 <%= render :partial => 'shared/draggable_images' %>
 

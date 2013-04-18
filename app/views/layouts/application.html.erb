@@ -8,7 +8,7 @@
 				t('app.common.app_name') %></title>
 
 
-		<meta property="og:title" content="<%= get_page_title.present? ? "#{get_page_title} > #{t('app.common.app_name')}" :
+		<meta property="og:title" content="<%= get_page_title.present? ? "#{get_page_title} | #{t('app.common.app_name')}" :
 				t('app.common.app_name') %>" />
 		<% if @pairing.present? && @pairing.description.present? %>
   		<meta property="og:description" content="<%= @pairing.description %>" />
