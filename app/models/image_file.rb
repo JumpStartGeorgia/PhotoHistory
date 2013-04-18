@@ -38,7 +38,7 @@ class ImageFile < ActiveRecord::Base
   end
 
   def place_name
-    location_palce.name if self.place_id.present?
+    location_place.name if self.place_id.present?
   end
 
   def place_permalink

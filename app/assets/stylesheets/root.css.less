@@ -295,15 +295,29 @@
         height: 81px;
       }
     }
-    .photo .item .overlay .draggable {
-      background-size:40px 40px;
+    .photo .item {
+      & #photo_years{
+        &.row-fluid [class*="span4"] {
+          float: left;
+          width: 31.4917%;
+        }
+      }
+      & .overlay .draggable {
+        background-size:40px 40px;
+      }
     }
   }
 
-  #photo_title_social > div > div:last-of-type #share a {
-    padding: 2px;
-    img{
-      width: 20px;
+  
+  #photo_title_social {
+    .row-fluid [class*="span"] {
+      float: left;
+    }
+    & > div > div:last-of-type #share a {
+      padding: 2px;
+      img{
+        width: 20px;
+      }
     }
   }
 
