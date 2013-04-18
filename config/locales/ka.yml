@@ -5,7 +5,7 @@ ka:
       user: მომხმარებელი
       image_file: გამოსახულება
       pairing: დაწყვილება
-      location: Location
+      location: ადგილმდებარეობა
     attributes:
       user:
         email: ელ.ფოსტა
@@ -32,9 +32,9 @@ ka:
         image_file2: მეორე გამოსახულების ფაილი
         image_file2_id: მეორე გამოსახულების ფაილი
       location:
-        type_id: Type
+        type_id: ტიპი
       location_translation:
-        name: Name
+        name: სახელი
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -52,8 +52,8 @@ ka:
       cancel: გაუქმება
       reset: საწყის კონფიგურაციაზე დაბრუნება
       existing_file: არსებული ფაილის ნახვა
-      next: Next
-      previous: Previous
+      next: შემდეგი
+      previous: წინა
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
