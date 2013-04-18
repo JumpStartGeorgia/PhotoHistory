@@ -81,6 +81,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
   def preload_global_variables
     @districts = Location.by_type(Location::TYPES[:district])
     @places = Location.by_type(Location::TYPES[:place])
+		@fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
   end
 
 	# after user logs in, go to admin page

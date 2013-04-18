@@ -8,11 +8,23 @@ module ApplicationHelper
   end
 
   def get_page_title
+    x = ''
     if content_for?(:page_title_only)
-      content_for(:page_title_only)
+      x << content_for(:page_title_only)
     elsif content_for?(:title)
-      content_for(:title)
+      x << content_for(:title)
     end
+
+    # add years if exist
+    if @title_year1 && @title_year2
+      x << " ("
+      x << @title_year1.to_s
+      x << " - "
+      x << @title_year2.to_s
+      x << ")"
+    end
+
+    return x
   end
 
 	def flash_translation(level)
