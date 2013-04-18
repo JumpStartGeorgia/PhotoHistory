@@ -152,24 +152,13 @@
     } 
     & > div:last-of-type{
       text-align: right;
-      padding-right: 10px;
-      & > div{
+      padding-right: 0px;
+      .snshare {
+        vertical-align: top;
         display: inline-block;
-        vertical-align: middle;
-      }
-      & #share{
-        margin-left: 10px;
-        & > a{
-          font-size: 13px;
-          font-weight: bold;
-          background-color: #fff;
-          padding: 3px 5px;
-          color: #b61827;
-          text-decoration: none;
-          &:hover{
-            background-color: #fff;
-            opacity: 0.7;
-          }
+        margin-left: 6px;
+        &:first-child, &:nth-child(2) {
+          margin-left: 0px;
         }
       }
     } 
@@ -178,6 +167,17 @@
       text-transform: uppercase;
       font-weight: bold;
       color: #363636;
+    }
+  }
+}
+@media (max-width: 1175px) {
+  #photo_title_social {
+    & > div > div:last-of-type {
+    }
+    .snshare {
+      &:first-child {
+        width: 100%;
+      }
     }
   }
 }

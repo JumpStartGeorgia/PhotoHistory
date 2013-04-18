@@ -49,25 +49,39 @@
 
   <div id="photo_title_social">
     <div class="row-fluid">
-      <div class="span8">
+      <div class="span7">
         <h2><%= @pairing.title %></h2>
       </div>
-      <div class="span4">
-  			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
+      <div class="span5">
 
-        <div id="share">
-	        <%= link_to(image_tag("share_fb.png"),
-				        "http://www.facebook.com/share.php?u=#{current_url_no_querystring}",
-				        :title => "facebook",	:target => "_blank", :tabindex => "-1") %>
+        <div class="snshare">
+    			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
+  			</div>
 
-	        <%= link_to(image_tag("share_twitter.png"),
-				        "https://twitter.com/share?url=#{current_url_no_querystring}", :title => "twitter",
-				        :target => "_blank", :tabindex => "-1") %>
-
-	        <%= link_to(image_tag("share_gplus.png"),
-				        "https://plusone.google.com/_/+1/confirm?hl=en&url=#{current_url_no_querystring}", :title => "google+",
-				        :target => "_blank", :tabindex => "-1") %>
+        <div class="snshare">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-align="right">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         </div>
+
+        <div class="snshare">
+          <!-- Place this tag where you want the share button to render. -->
+          <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+          <!-- Place this tag after the last share tag. -->
+          <script type="text/javascript">
+            (function() {
+              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+              po.src = 'https://apis.google.com/js/plusone.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+          </script>
+        </div>
+
+
+        <div class="snshare">
+          <a href="//pinterest.com/pin/create/button/?url=<%=u current_url_no_querystring %>&media=<%=u @pairing.stacked_img.url %>&description=<%=u @pairing.title %>" data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
+          <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+        </div>
+
       </div>
     </div>
   </div>
