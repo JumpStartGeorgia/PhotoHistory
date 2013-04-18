@@ -281,7 +281,31 @@
     width: 100%;
     margin-left: 0;
   }
+  #photo_container {
+    .controls{
+      margin-top: 76px;
+      &.left {
+        margin-right: 15px;
+      }
+      &.right {
+        margin-left: 15px;
+      }
+      a {
+        width: 40px;
+        height: 81px;
+      }
+    }
+    .photo .item .overlay .draggable {
+      background-size:40px 40px;
+    }
+  }
 
+  #photo_title_social > div > div:last-of-type #share a {
+    padding: 2px;
+    img{
+      width: 20px;
+    }
+  }
 
 }
 
