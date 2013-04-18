@@ -25,7 +25,7 @@
 			<meta property="og:image" content="<%= full_url(image_path('share_photo.jpg')) %>" />
 		<% end %>
 		<meta property="og:site_name" content="<%= t('app.common.app_name') %>" />
-
+    <meta property="fb:app_id" content="<%= @fb_app_id %>" />
 
     <%= csrf_meta_tags %>
 	  <%= include_gon %>
