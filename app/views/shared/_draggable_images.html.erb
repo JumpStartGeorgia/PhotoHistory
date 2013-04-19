@@ -50,11 +50,10 @@
 
   <div id="photo_title_social">
     <div class="row-fluid">
-      <div class="span7">
+      <div class="span6">
         <h1><%= @pairing.title %></h1>
-  			<div id="fb-like" class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
       </div>
-      <div class="span5">
+      <div class="span6">
         <%
           fb_img_url = full_url(image_path('share_photo.jpg'))
           if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
@@ -67,31 +66,40 @@
 
           share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
         %>
-        <span class='st_facebook_hcount' displayText='Facebook' 
-          st_url="<%= current_url_no_querystring %>" 
-          st_image="<%= fb_img_url %>"
-          st_summary="<%= share_summary %>"
-        >
-        </span>
-        <span class='st_twitter_hcount' displayText='Tweet' 
-          st_url="<%= current_url_no_querystring %>"
-          st_image="<%= fb_img_url %>"
-          st_summary="<%= share_summary %>"
-        >
-        </span>
-        <span class='st_googleplus_hcount' displayText='Share' 
-          st_url="<%= current_url_no_querystring %>"
-          st_image="<%= fb_img_url %>"
-          st_summary="<%= share_summary %>"
-        >
-        </span>
-        <span class='st_pinterest_hcount' displayText='Pinterest' 
-          st_url="<%= current_url_no_querystring %>" 
-          st_image="<%= pin_img_url %>"
-          st_summary="<%= share_summary %>"
-        >
-        </span>
-
+        <div>
+          <span class='st_fblike_hcount' displayText='Facebook' 
+            st_url="<%= current_url_no_querystring %>" 
+            st_image="<%= fb_img_url %>"
+            st_summary="<%= share_summary %>"
+          >
+          </span>
+          <span class='st_twitter_hcount' displayText='Tweet' 
+            st_url="<%= current_url_no_querystring %>"
+            st_image="<%= fb_img_url %>"
+            st_summary="<%= share_summary %>"
+          >
+          </span>
+          <span class='st_googleplus_hcount' displayText='Share' 
+            st_url="<%= current_url_no_querystring %>"
+            st_image="<%= fb_img_url %>"
+            st_summary="<%= share_summary %>"
+          >
+          </span>
+        </div>
+        <div>
+          <span class='st_pinterest_hcount' displayText='Pinterest' 
+            st_url="<%= current_url_no_querystring %>" 
+            st_image="<%= pin_img_url %>"
+            st_summary="<%= share_summary %>"
+          >
+          </span>
+          <span class='st_sharethis_hcount' displayText='Share' 
+            st_url="<%= current_url_no_querystring %>" 
+            st_image="<%= pin_img_url %>"
+            st_summary="<%= share_summary %>"
+          >
+          </span>
+        </div>
       </div>
     </div>
   </div>
