@@ -161,8 +161,8 @@
     & > div:last-of-type{
       text-align: right;
       padding-right: 0px;
-      div:last-of-type {
-        margin-top: 5px;
+      div {
+        display:inline-block;
       }
     } 
   }
@@ -243,7 +243,12 @@
     width: 660px;
   }
 
-
+  #photo_title_social > div > div:last-of-type > div {
+    display:inherit;
+    &:last-of-type{
+      margin-top: 5px;
+    }
+  }
 }
 
 @media (max-width: 860px) {
@@ -288,7 +293,6 @@
     }
   }
 
-  
   #photo_title_social {
     .row-fluid [class*="span"] {
       float: none;
@@ -296,12 +300,6 @@
       text-align: left;
       margin-left: 0;
       padding-left: 0;
-    }
-    & > div > div:last-of-type #share a {
-      padding: 2px;
-      img{
-        width: 20px;
-      }
     }
   }
 
