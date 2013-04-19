@@ -1,4 +1,3 @@
-require 'utf8_converter'
 Paperclip.interpolates('converted_basename') do |attachment, style|
-  Utf8Converter.convert_ka_to_en(File.basename(attachment.original_filename, File.extname(attachment.original_filename)))
+  File.basename(attachment.original_filename, File.extname(attachment.original_filename)).to_ascii.gsub(/[^0-9A-Za-z_\- ]/,'').split.join('_')
 end

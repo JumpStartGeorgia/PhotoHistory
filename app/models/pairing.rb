@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Pairing < ActiveRecord::Base
 	translates :title, :description, :permalink
 
