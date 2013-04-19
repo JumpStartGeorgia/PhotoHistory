@@ -10,7 +10,8 @@
 
       <div class="photo">
         <div class="item">
-          <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", :style => "width: #{@pairing.image_file1.image_width(:large)}px;" %>
+          <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", 
+              :'data-original-width' => @pairing.image_file1.image_width(:large) %>
           <div class="layer2">
             <%= image_tag @pairing.image_file2.file.url(:large) %>
           </div>
