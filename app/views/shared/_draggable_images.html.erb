@@ -60,16 +60,32 @@
           if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
 	          fb_img_url = full_url(@pairing.thumbnail.url)
           end
+
+          share_summary = truncate(@pairing.description), :length => 150, :separator => ' '
         %>
         <span class='st_facebook_vcount' displayText='Facebook' 
           st_url="<%= current_url_no_querystring %>" 
-          st_image="<%= fb_img_url %>">
+          st_image="<%= fb_img_url %>"
+          st_summary="<%= share_summary %>"
+        >
         </span>
-        <span class='st_twitter_vcount' displayText='Tweet' st_url="<%= current_url_no_querystring %>"></span>
-        <span class='st_googleplus_vcount' displayText='Share' st_url="<%= current_url_no_querystring %>"></span>
+        <span class='st_twitter_vcount' displayText='Tweet' 
+          st_url="<%= current_url_no_querystring %>"
+          st_image="<%= fb_img_url %>"
+          st_summary="<%= share_summary %>"
+        >
+        </span>
+        <span class='st_googleplus_vcount' displayText='Share' 
+          st_url="<%= current_url_no_querystring %>"
+          st_image="<%= fb_img_url %>"
+          st_summary="<%= share_summary %>"
+        >
+        </span>
         <span class='st_pinterest_vcount' displayText='Pinterest' 
           st_url="<%= current_url_no_querystring %>" 
-          st_image="<%= full_url(@pairing.stacked_img.url) %>">
+          st_image="<%= full_url(@pairing.stacked_img.url) %>"
+          st_summary="<%= share_summary %>"
+        >
         </span>
 
       </div>
