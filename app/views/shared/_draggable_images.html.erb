@@ -51,8 +51,8 @@
   <div id="photo_title_social">
     <div class="row-fluid">
       <div class="span7">
-        <h2><%= @pairing.title %></h2>
-  			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
+        <h1><%= @pairing.title %></h1>
+  			<div id="fb-like" class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
       </div>
       <div class="span5">
         <%
@@ -65,7 +65,7 @@
 	          pin_img_url = full_url(@pairing.stacked_img.url)
           end
 
-          share_summary = truncate(@pairing.description, :length => 200, :separator => ' ', :omission => '...')
+          share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
         %>
         <span class='st_facebook_vcount' displayText='Facebook' 
           st_url="<%= current_url_no_querystring %>" 

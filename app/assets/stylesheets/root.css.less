@@ -149,6 +149,18 @@
     & > div:first-of-type{
       vertical-align: middle;
       padding-left: 10px;
+      height: 73px;
+      position: relative;
+      h1 {
+        font-family: dejavu;
+        text-transform: uppercase;
+        color: #363636;
+        font-size: 22px;
+      }
+      & #fb-like{
+        position: absolute;
+        bottom: 0;
+      }
     } 
     & > div:last-of-type{
       text-align: right;
@@ -162,12 +174,6 @@
         }
       }
     } 
-    h2 {
-      font-family: dejavu;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: #363636;
-    }
   }
 }
 
@@ -246,6 +252,15 @@
     width: 660px;
   }
 
+  #photo_title_social > div > div:first-of-type{
+    height: auto;
+    position: inherit;
+    & #fb-like{
+      position: inherit;
+      bottom: inherit;
+      margin-top: 5px;
+    }
+  }
   #photo_title_social > div > div:last-of-type .snshare:first-child{
     display: block;
   }
