@@ -61,7 +61,7 @@
 	          fb_img_url = full_url(@pairing.thumbnail.url)
           end
 
-          share_summary = truncate(@pairing.description, :length => 150, :separator => ' ')
+          share_summary = truncate(@pairing.description, :length => 200, :separator => ' ', :omission => '...')
         %>
         <span class='st_facebook_vcount' displayText='Facebook' 
           st_url="<%= current_url_no_querystring %>" 
