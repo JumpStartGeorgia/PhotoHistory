@@ -60,6 +60,10 @@
           if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
 	          fb_img_url = full_url(@pairing.thumbnail.url)
           end
+          pin_img_url = fb_img_url
+          if @pairing.present? && @pairing.stacked_img.present? && @pairing.stacked_img_file_name.present? 
+	          pin_img_url = full_url(@pairing.stacked_img.url)
+          end
 
           share_summary = truncate(@pairing.description, :length => 200, :separator => ' ', :omission => '...')
         %>
@@ -83,7 +87,7 @@
         </span>
         <span class='st_pinterest_vcount' displayText='Pinterest' 
           st_url="<%= current_url_no_querystring %>" 
-          st_image="<%= full_url(@pairing.stacked_img.url) %>"
+          st_image="<%= pin_img_url %>"
           st_summary="<%= share_summary %>"
         >
         </span>
