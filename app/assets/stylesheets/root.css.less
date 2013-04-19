@@ -170,17 +170,6 @@
     }
   }
 }
-@media (max-width: 1175px) {
-  #photo_title_social {
-    & > div > div:last-of-type {
-    }
-    .snshare {
-      &:first-child {
-        width: 100%;
-      }
-    }
-  }
-}
 
 #photo_content_container{
   padding: 20px;
@@ -255,6 +244,10 @@
   #photo_title_social > div,
   #photo_content_container > div {
     width: 660px;
+  }
+
+  #photo_title_social > div > div:last-of-type .snshare:first-child{
+    display: block;
   }
 
 }
