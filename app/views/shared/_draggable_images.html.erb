@@ -52,36 +52,25 @@
     <div class="row-fluid">
       <div class="span7">
         <h2><%= @pairing.title %></h2>
+  			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
       </div>
       <div class="span5">
-
-        <div class="snshare">
-    			<div class="fb-like" data-href="<%= current_url_no_querystring %>" data-send="false" data-layout="button_count" data-width="auto" data-show-faces="false"></div>
-  			</div>
-
-        <div class="snshare">
-          <a href="https://twitter.com/share" class="twitter-share-button" data-align="right">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>
-
-        <div class="snshare">
-          <!-- Place this tag where you want the share button to render. -->
-          <div class="g-plus" data-action="share" data-annotation="bubble"></div>
-          <!-- Place this tag after the last share tag. -->
-          <script type="text/javascript">
-            (function() {
-              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-              po.src = 'https://apis.google.com/js/plusone.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-            })();
-          </script>
-        </div>
-
-
-        <div class="snshare">
-          <a href="//pinterest.com/pin/create/button/?url=<%=u current_url_no_querystring %>&media=<%=u @pairing.stacked_img.url %>&description=<%=u @pairing.title %>" data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png" /></a>
-          <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
-        </div>
+        <%
+          fb_img_url = full_url(image_path('share_photo.jpg'))
+          if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
+	          fb_img_url = full_url(@pairing.thumbnail.url)
+          end
+        %>
+        <span class='st_facebook_vcount' displayText='Facebook' 
+          st_url="<%= current_url_no_querystring %>" 
+          st_image="<%= fb_img_url %>">
+        </span>
+        <span class='st_twitter_vcount' displayText='Tweet' st_url="<%= current_url_no_querystring %>"></span>
+        <span class='st_googleplus_vcount' displayText='Share' st_url="<%= current_url_no_querystring %>"></span>
+        <span class='st_pinterest_vcount' displayText='Pinterest' 
+          st_url="<%= current_url_no_querystring %>" 
+          st_image="<%= full_url(@pairing.stacked_img.url) %>">
+        </span>
 
       </div>
     </div>
