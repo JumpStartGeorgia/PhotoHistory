@@ -57,7 +57,7 @@
 
   .photo {
     width: 980px;
-    margin: 0px auto 10px auto;
+    margin: 0px auto -4px auto;
     text-align: center;
     .item {
       display: inline-block;
@@ -111,14 +111,14 @@
         height: 35px;
         position: absolute;
         bottom: 0px;
-        background-color: rgba(255, 255, 255, .7);
+        background-color: rgba(255, 255, 255, .5);
         color: #363636;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
         & > div
         {
-          padding-top: 9px;
-          font-family: dejavu;
+          padding-top: 10px;
+          font-family: arial;
           &#image_left_year{
             padding-left: 10px;
             text-align: left;
@@ -145,7 +145,6 @@
   & > div{
     width: 980px;
     margin: 0 auto;
-    padding-top: 6px;
     & > div:first-of-type{
       vertical-align: middle;
       padding-left: 10px;
@@ -155,10 +154,12 @@
         text-transform: uppercase;
         color: #363636;
         font-size: 22px;
-        line-height: 22px;
+        line-height: 27px;
+        margin-top: 25px;
       }
     } 
     & > div:last-of-type{
+      padding-top: 6px;
       text-align: right;
       padding-right: 0px;
       div {
@@ -179,6 +180,15 @@
       background-color: #fff;
       padding: 10px;
       &#image_text{
+        &, * {
+          font-size: 12px;
+        }
+        .desc {
+          font-size: 14px;
+          * {
+            font: inherit;
+          }
+        }
         & > #image_sources{
           margin: 15px 0;
         }
@@ -195,6 +205,12 @@
           
         }
         & > #image_comments{
+          margin-top: 35px;
+          h3 {
+            font-weight: normal;
+            color: #888;
+            margin-bottom: 6px;
+          }
           .fb-comments, .fb-comments * {
               width:100% !important;
           }

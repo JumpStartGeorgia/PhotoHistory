@@ -1,9 +1,27 @@
-@font-face
-{
-  font-family: 'dejavu';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/assets/TCCB.ttf');
+@font-face {
+	font-family: 'dejavu';
+	src: url('/assets/fonts/MetaPro-Bold.eot');
+	src: local('☺'), url('/assets/fonts/MetaPro-Bold.woff') format('woff'), url('/assets/fonts/MetaPro-Bold.ttf') format('truetype'), url('/assets/fonts/MetaPro-Bold.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+  font-family: arial, helvetica, sans-serif;
+}
+
+h1, h2, h3 {
 }
 
 
+.navbar .brand{
+  padding: 16px 20px 6px;
+}
+
+.navbar .nav > li > a {
+  padding: 13px 15px 7px;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+  margin-top: 5px;
+}
