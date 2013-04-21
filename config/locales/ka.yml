@@ -23,6 +23,7 @@ ka:
         place_id: ადგილი
         place: ადგილი
         source: წყარო
+        add_watermark: Use Source as Watermark on Image
       image_file_translation:
         name: სახელი
         description: აღწერა

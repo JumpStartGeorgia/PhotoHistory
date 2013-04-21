@@ -39,11 +39,15 @@ class Pairing < ActiveRecord::Base
   # recreate the images for all pairings
   def self.recreate_images
     Pairing.all.each do |p|
-      # change the orig id so on save, the thumbnail will be generated cause it thinks something chagned
-      p.orig_file1_id = nil
-      p.orig_file2_id = nil
-      p.save
+      p.recreate_image
     end
+  end
+
+  # change the orig id so on save, the thumbnail will be generated cause it thinks something chagned
+  def recreate_image
+    self.orig_file1_id = nil
+    self.orig_file2_id = nil
+    self.save
   end
 
 protected
@@ -78,8 +82,20 @@ protected
       self.thumbnail = File.new(temp_thumbnail_path, 'r') if File.exists?(temp_thumbnail_path)
 
       # create the stacked image
+      # - add watermark if needed
+      watermark1 = ''
+      watermark2 = ''
+      if self.image_file1.source.present? && self.image_file1.add_watermark
+        watermark1 = "-pointsize 16 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.image_file1.source}\""
+      end
+      if self.image_file2.source.present? && self.image_file2.add_watermark
+        watermark2 = "-pointsize 16 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.image_file2.source}\""
+      end
+      
       x = Subexec.run "convert  \"#{Rails.root}/public#{self.image_file1.file.url(:original, false)}\" \\
+            #{watermark1} \\
             \"#{Rails.root}/public#{self.image_file2.file.url(:original, false)}\" \\
+            #{watermark2} \\
             -append #{temp_stacked_img_path}"
 
       self.stacked_img = File.new(temp_stacked_img_path, 'r') if File.exists?(temp_stacked_img_path)
