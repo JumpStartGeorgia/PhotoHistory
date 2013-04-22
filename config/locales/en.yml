@@ -5,7 +5,7 @@ en:
       user: User
       image_file: Image
       pairing: Pairing
-      location: Location
+      category: Category
     attributes:
       user:
         email: Email Address
@@ -32,9 +32,9 @@ en:
         image_file1_id: 1st Image File
         image_file2: 2nd Image File
         image_file2_id: 2nd Image File
-      location:
+      category:
         type_id: Type
-      location_translation:
+      category_translation:
         name: Name
       year_range:
         start: Start Year
@@ -64,6 +64,10 @@ en:
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
+  categories:
+    district: District
+    place: Place
+    event: Event
   filters:
     time:
       header: Time Period

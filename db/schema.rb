@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422123133) do
+ActiveRecord::Schema.define(:version => 20130422131435) do
+
+  create_table "categories", :force => true do |t|
+    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["type_id"], :name => "index_category_on_type_id"
+
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
+  add_index "category_translations", ["name"], :name => "index_category_translations_on_name"
+  add_index "category_translations", ["permalink"], :name => "index_category_translations_on_permalink"
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -49,28 +71,6 @@ ActiveRecord::Schema.define(:version => 20130422123133) do
   add_index "image_files", ["place"], :name => "index_image_files_on_place"
   add_index "image_files", ["place_id"], :name => "index_image_files_on_place_id"
   add_index "image_files", ["source"], :name => "index_image_files_on_source"
-
-  create_table "location_translations", :force => true do |t|
-    t.integer  "location_id"
-    t.string   "locale"
-    t.string   "name"
-    t.string   "permalink"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "location_translations", ["locale"], :name => "index_location_translations_on_locale"
-  add_index "location_translations", ["location_id"], :name => "index_location_translations_on_location_id"
-  add_index "location_translations", ["name"], :name => "index_location_translations_on_name"
-  add_index "location_translations", ["permalink"], :name => "index_location_translations_on_permalink"
-
-  create_table "locations", :force => true do |t|
-    t.integer  "type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "locations", ["type_id"], :name => "index_locations_on_type_id"
 
   create_table "pairing_translations", :force => true do |t|
     t.integer  "pairing_id"

@@ -1,10 +1,10 @@
-<%- model_class = Location -%>
-<%- model_class_trans = LocationTranslation -%>
+<%- model_class = Category -%>
+<%- model_class_trans = CategoryTranslation -%>
 <% title t '.title', :default => model_class.model_name.human.pluralize %>
 
 <div class="form-actions">
   <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_admin_location_path,
+              new_admin_category_path,
               :class => 'btn btn-primary' %>
 </div>
 
@@ -17,15 +17,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @locations.each do |location| %>
+    <% @categories.each do |category| %>
       <tr>
-        <td><%= link_to location.name, admin_location_path(location) %></td>
-        <td><%= location.type_name %></td>
+        <td><%= link_to category.name, admin_category_path(category) %></td>
+        <td><%= category.type_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_location_path(location), :class => 'btn btn-mini' %>
+                      edit_admin_category_path(category), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      admin_location_path(location),
+                      admin_category_path(category),
                       :method => :delete,
 											:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
                       :class => 'btn btn-mini btn-danger' %>

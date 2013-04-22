@@ -5,7 +5,7 @@ ka:
       user: მომხმარებელი
       image_file: გამოსახულება
       pairing: დაწყვილება
-      location: ადგილმდებარეობა
+      category: Category
     attributes:
       user:
         email: ელ.ფოსტა
@@ -32,9 +32,9 @@ ka:
         image_file1_id: პირველი გამოსახულების ფაილი
         image_file2: მეორე გამოსახულების ფაილი
         image_file2_id: მეორე გამოსახულების ფაილი
-      location:
+      category:
         type_id: ტიპი
-      location_translation:
+      category_translation:
         name: სახელი
       year_range:
         start: Start Year
@@ -64,6 +64,10 @@ ka:
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
+  categories:
+    district: District
+    place: Place
+    event: Event
   filters:
     time:
       header: პერიოდი

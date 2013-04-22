@@ -10,8 +10,8 @@ class ImageFile < ActiveRecord::Base
 				}
 
 	has_many :image_file_translations, :dependent => :destroy
-  belongs_to :location_district, :class_name => 'Location', :foreign_key => 'district_id'
-  belongs_to :location_place, :class_name => 'Location', :foreign_key => 'place_id'
+  belongs_to :category_district, :class_name => 'Category', :foreign_key => 'district_id'
+  belongs_to :category_place, :class_name => 'Category', :foreign_key => 'place_id'
 
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
@@ -40,19 +40,19 @@ class ImageFile < ActiveRecord::Base
   end
 
   def district_name
-    location_district.name if self.district_id.present?
+    category_district.name if self.district_id.present?
   end
 
   def district_permalink
-    location_district.permalink if self.district_id.present?
+    category_district.permalink if self.district_id.present?
   end
 
   def place_name
-    location_place.name if self.place_id.present?
+    category_place.name if self.place_id.present?
   end
 
   def place_permalink
-    location_place.permalink if self.place_id.present?
+    category_place.permalink if self.place_id.present?
   end
 
   # pull out the image width from the image_size value
