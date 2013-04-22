@@ -36,6 +36,12 @@ en:
         type_id: Type
       location_translation:
         name: Name
+      year_range:
+        start: Start Year
+        end: End Year
+        sort: Sort Order
+      year_range_translations:
+        title: Title
     errors:
       messages:
         required_field: "is a required field."
@@ -63,11 +69,15 @@ en:
       header: Time Period
       all: All
       unknown: Year Unknown
+      years:
+        header: Years
+      events: 
+        header: Events
       list: |
-        1800-1900
+        Before 1900
         1900-1950
         1950-2000
-        2000-2050
+        2000-Present
     location:
       header: Location
       all: All

@@ -36,6 +36,12 @@ ka:
         type_id: ტიპი
       location_translation:
         name: სახელი
+      year_range:
+        start: Start Year
+        end: End Year
+        sort: Sort Order
+      year_range_translations:
+        title: Title
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -63,11 +69,15 @@ ka:
       header: პერიოდი
       all: ყველა
       unknown: წელი უცნობია
+      years:
+        header: Years
+      events: 
+        header: Events
       list: |
-        1800-1900
+        1900-მდე
         1900-1950
         1950-2000
-        2000-2050
+        2000-დღემდე
     location:
       header: მდებარეობა
       all: ყველა

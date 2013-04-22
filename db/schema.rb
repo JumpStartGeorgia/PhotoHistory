@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421184611) do
+ActiveRecord::Schema.define(:version => 20130422120926) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -121,5 +121,29 @@ ActiveRecord::Schema.define(:version => 20130421184611) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "year_range_translations", :force => true do |t|
+    t.integer  "year_range_id"
+    t.string   "locale"
+    t.string   "title"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "year_range_translations", ["locale"], :name => "index_year_range_translations_on_locale"
+  add_index "year_range_translations", ["permalink"], :name => "index_year_range_translations_on_permalink"
+  add_index "year_range_translations", ["title"], :name => "index_year_range_translations_on_title"
+  add_index "year_range_translations", ["year_range_id"], :name => "index_year_range_translations_on_year_range_id"
+
+  create_table "year_ranges", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "sort",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "year_ranges", ["sort"], :name => "index_year_ranges_on_sort"
 
 end
