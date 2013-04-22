@@ -71,7 +71,8 @@ protected
 
       # create the thumb nail
       # crop left, crop right and then append
-      x = Subexec.run "convert  \"#{Rails.root}/public#{self.image_file1.file.url(:thumb, false)}\" \\
+      x = Subexec.run "convert  \\
+            \"#{Rails.root}/public#{self.image_file1.file.url(:thumb, false)}\" \\
             -crop #{self.image_file1.image_width(:thumb).to_i/2}x#{self.image_file1.image_height(:thumb)}+0+0 \\
             +repage  \\
             \"#{Rails.root}/public#{self.image_file2.file.url(:thumb, false)}\" \\

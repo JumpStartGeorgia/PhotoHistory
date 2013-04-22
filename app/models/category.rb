@@ -21,4 +21,14 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def self.collection
+    x = []
+
+    TYPES.keys.each do |key|
+      x << [I18n.t("categories.#{key}"), TYPES[key]]
+    end
+
+    return x
+  end
+
 end
