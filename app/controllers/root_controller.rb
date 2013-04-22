@@ -66,6 +66,12 @@ protected
       end
     end
 
+    # add event
+    if params[:event].present?
+      index = @events.map{|x| x.permalink}.index(params[:event])
+      pairings = pairings.where(@years[index].query_clause) if index
+    end
+
     return pairings
   end
 

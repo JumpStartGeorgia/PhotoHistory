@@ -72,12 +72,7 @@ ka:
       years:
         header: Years
       events: 
-        header: Events
-      list: |
-        1900-მდე
-        1900-1950
-        1950-2000
-        2000-დღემდე
+        header: მოვლენები
     location:
       header: მდებარეობა
       all: ყველა

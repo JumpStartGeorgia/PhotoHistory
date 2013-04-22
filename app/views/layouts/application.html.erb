@@ -108,7 +108,7 @@
 			          </a>
 			          <ul class="dropdown-menu">
 		              <li <%= !params[:year].present? && !params[:event].present? ? "class=active" : '' %>>
-	     		         <%= link_to t('filters.time.all'), root_path(update_params({:time => t('filters.time.all', :locale => :en), :pairing => nil})) %>
+	     		         <%= link_to t('filters.time.all'), root_path(update_params({:pairing => nil, :year => nil, :event => nil})) %>
 							    </li>
                   <% if @years.present? %>
                     <li class="dropdown-submenu">

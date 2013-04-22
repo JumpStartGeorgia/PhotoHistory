@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422120926) do
+ActiveRecord::Schema.define(:version => 20130422123133) do
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"

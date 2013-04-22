@@ -52,7 +52,7 @@ module ApplicationHelper
   def update_params(options)
     p = @param_options.clone
     options.each do |option|
-      if !option[0].blank? && !option[1].blank?
+      if !option[0].blank?
         p[option[0].to_s] = option[1]
       end
     end

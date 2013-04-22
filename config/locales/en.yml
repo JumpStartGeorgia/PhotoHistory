@@ -73,11 +73,6 @@ en:
         header: Years
       events: 
         header: Events
-      list: |
-        Before 1900
-        1900-1950
-        1950-2000
-        2000-Present
     location:
       header: Location
       all: All
