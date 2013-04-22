@@ -23,6 +23,7 @@ en:
         place_id: Place
         place: Place
         source: Source
+        photographer: Photographer
         add_watermark: Use Source as Watermark on Image
         events: Events
         event_ids: Events
@@ -108,6 +109,7 @@ en:
     common:
       app_name: Speaking Stones
       unknown_year: Year Unknown
+      unknown_source: Unknown
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -159,7 +161,7 @@ en:
     draggable_images:
       no_records: No photos were found matching your selection.
       comment_header: If you have any information on this picture, let us know.
-      source_header: Image Sources
-      left_image: Left
-      right_image: Right
-      unknown_source: Unknown
+      credit_header: Image Credit
+      left_image: Left Image
+      right_image: Right Image
+

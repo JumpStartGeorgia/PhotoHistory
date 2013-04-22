@@ -20,7 +20,7 @@ class ImageFile < ActiveRecord::Base
     :year, :lat, :lon, 
     #:district, :place, - old
     :file_meta, :source, :district_id, :place_id,
-    :add_watermark, :event_ids
+    :add_watermark, :event_ids, :photographer
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
 
@@ -39,6 +39,25 @@ class ImageFile < ActiveRecord::Base
   
   def year_formatted
     self.year.present? ? self.year : I18n.t('app.common.unknown_year')
+  end
+
+  def source_formatted
+    x = ''
+     
+    if self.source.present?
+      x << self.source
+    else
+      x << I18n.t('app.common.unknown_source')
+    end
+    x << " ("
+    x << self.year_formatted.to_s
+    x << ")"
+
+    return x
+  end
+
+  def photographer_formatted
+    self.photographer.present? ? self.photographer : I18n.t('app.common.unknown_source')
   end
 
   def district_name

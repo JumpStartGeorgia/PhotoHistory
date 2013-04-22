@@ -23,6 +23,7 @@ ka:
         place_id: ადგილი
         place: ადგილი
         source: წყარო
+        photographer: Photographer
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
         events: მოვლენები
         event_ids: მოვლენები
@@ -108,6 +109,7 @@ ka:
     common:
       app_name: ქვათა ღაღადი
       unknown_year: წელი უცნობია
+      unknown_source: უცნობი
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
@@ -160,7 +162,7 @@ ka:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
       comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, გაგვიზიარე. 
-      source_header: სურათის წყაროები
-      left_image: მარცხენა
-      right_image: მარჯვენა
-      unknown_source: უცნობი
+      credit_header: Image Credit
+      left_image: Left Image
+      right_image: Right Image
+

@@ -1,3 +1,5 @@
+<%- model_class = ImageFile -%>
+
 <% if @pairing %>
 
   <div id="photo_container">
@@ -138,14 +140,30 @@
         </div>
 
         <div id="image_sources">
-          <h3><%= t('.source_header') %></h3>
-          <span><%= t('.left_image') %>:</span>
-          <%= @pairing.image_file1.source.present? ? @pairing.image_file1.source : t('.unknown_source') %>
-          <%= "(#{@pairing.image_file1.year_formatted})" %>
-          <br />
-          <span><%= t('.right_image') %>:</span>
-          <%= @pairing.image_file2.source.present? ? @pairing.image_file2.source : t('.unknown_source') %>
-          <%= "(#{@pairing.image_file2.year_formatted})" %>
+          <h3><%= t('.credit_header') %></h3>
+          <h4><%= t('.left_image') %>:</h4>
+          <ul>
+            <li>
+              <%= model_class.human_attribute_name(:source) %>:
+              <%= @pairing.image_file1.source_formatted %>
+            </li>
+            <li>
+              <%= model_class.human_attribute_name(:photographer) %>:
+              <%= @pairing.image_file1.photographer_formatted %>
+            </li>
+          </ul>
+
+          <h4><%= t('.right_image') %>:</h4>
+          <ul>
+            <li>
+              <%= model_class.human_attribute_name(:source) %>:
+              <%= @pairing.image_file2.source_formatted %>
+            </li>
+            <li>
+              <%= model_class.human_attribute_name(:photographer) %>:
+              <%= @pairing.image_file2.photographer_formatted %>
+            </li>
+          </ul>
         </div>
 
         <div id="image_comments">
