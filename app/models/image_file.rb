@@ -36,6 +36,14 @@ class ImageFile < ActiveRecord::Base
 	def self.sorted
 		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
 	end
+
+  def self.distinct_district_ids
+    select("distinct district_id").where("district_id is not null").map{|x| x.district_id}
+  end
+  
+  def self.distinct_place_ids
+    select("distinct place_id").where("place_id is not null").map{|x| x.place_id}
+  end
   
   def year_formatted
     self.year.present? ? self.year : I18n.t('app.common.unknown_year')

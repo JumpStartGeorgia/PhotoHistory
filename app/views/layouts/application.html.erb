@@ -73,26 +73,30 @@
 		              <li <%= !params[:district].present? && !params[:place].present? ? "class=active" : '' %>>
 	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :place => nil, :pairing => nil})) %>
 							    </li>
-                  <% if @districts.present? %>
+                  <% if @districts.present? && @image_districts.present? %>
                     <li class="dropdown-submenu">
                       <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
                       <ul class="dropdown-menu">
                         <% @districts.each do |item| %>
-					                <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
-			         		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
-									        </li>
+                          <% if @image_districts.index(item.id).present? %>
+					                  <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
+									          </li>
+                          <% end %>                  
                         <% end %>                  
                       </ul>
                     </li>
                   <% end %>
-                  <% if @places.present? %>
+                  <% if @places.present? && @image_places.present? %>
                     <li class="dropdown-submenu">
                       <a tabindex="-1" href="#"><%= t('filters.location.place.header') %></a>
                       <ul class="dropdown-menu">
                         <% @places.each do |item| %>
-					                <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
-			         		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
-									        </li>
+                          <% if @image_places.index(item.id).present? %>
+					                  <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
+									          </li>
+                          <% end %>                  
                         <% end %>                  
                       </ul>
                     </li>
@@ -125,14 +129,16 @@
                       </ul>
                     </li>
                   <% end %>
-                  <% if @events.present? %>
+                  <% if @events.present? && @image_events.present?%>
                     <li class="dropdown-submenu">
                       <a tabindex="-1" href="#"><%= t('filters.time.events.header') %></a>
                       <ul class="dropdown-menu">
                         <% @events.each do |item| %>
-					                <li <%= params[:event] == item.permalink ? "class=active" : '' %>>
-			         		         <%= link_to item.name, root_path(update_params({:event => item.permalink, :pairing => nil, :year => nil})) %>
-									        </li>
+                          <% if @image_events.index(item.id).present? %>
+					                  <li <%= params[:event] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:event => item.permalink, :pairing => nil, :year => nil})) %>
+									          </li>
+                          <% end %>                  
                         <% end %>                  
                       </ul>
                     </li>

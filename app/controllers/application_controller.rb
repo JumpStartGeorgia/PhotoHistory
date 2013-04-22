@@ -83,6 +83,11 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     @places = Category.by_type(Category::TYPES[:place])
     @events = Category.by_type(Category::TYPES[:event])
     @years = YearRange.sorted
+
+    @image_districts = ImageFile.distinct_district_ids
+    @image_places = ImageFile.distinct_place_ids
+    @image_events = ImageFileEvent.distinct_event_ids
+
 		@fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
   end
 
