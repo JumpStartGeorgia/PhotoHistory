@@ -119,7 +119,7 @@
           <br />
           <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
             <span><%= t('activerecord.attributes.image_file.place') %>:</span>
-            <%= link_to(@pairing.image_file1.place, root_path(update_params({:place => @pairing.image_file1.place_permalink, :pairing => nil, :district => nil}))) %>
+            <%= link_to(@pairing.image_file1.place_name, root_path(update_params({:place => @pairing.image_file1.place_permalink, :pairing => nil, :district => nil}))) %>
 		      <% end %>
         </div>
 

@@ -13,8 +13,8 @@
     <tr>
       <th><%= model_class_trans.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:year) %></th>
-      <th><%= model_class.human_attribute_name(:lat) %></th>
-      <th><%= model_class.human_attribute_name(:lon) %></th>
+      <th><%= model_class.human_attribute_name(:district_id) %></th>
+      <th><%= model_class.human_attribute_name(:place_id) %></th>
       <th><%= model_class.human_attribute_name(:file) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -24,8 +24,8 @@
       <tr>
         <td><%= link_to image_file.name, admin_image_file_path(image_file) %></td>
         <td><%= image_file.year %></td>
-        <td><%= image_file.lat %></td>
-        <td><%= image_file.lon %></td>
+        <td><%= image_file.district_name %></td>
+        <td><%= image_file.place_name %></td>
         <td><%= image_tag image_file.file.url(:thumb) if image_file.file_file_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
