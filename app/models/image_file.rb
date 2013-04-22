@@ -24,6 +24,7 @@ class ImageFile < ActiveRecord::Base
 
 
   validates :file_file_name, :presence => true
+  validates :file_file_name, :length => {:maximum => 120}
 
   after_find :save_orig_values
   after_post_process :reprocess_images
@@ -134,11 +135,11 @@ class ImageFile < ActiveRecord::Base
   def generate_watermarks
     # large
     path = "#{Rails.root}/public#{self.file.url(:large, false)}"
-    Subexec.run "convert \"#{path}\" -pointsize 16 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +35+35 \"#{self.source}\" #{path}"
+    Subexec.run "convert \"#{path}\" -pointsize 14 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +35+35 \"#{self.source}\" #{path}"
 
     # medium
     path = "#{Rails.root}/public#{self.file.url(:medium, false)}"
-    Subexec.run "convert \"#{path}\" -pointsize 14 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.source}\" #{path}"
+    Subexec.run "convert \"#{path}\" -pointsize 12 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.source}\" #{path}"
 
     # thumb
     path = "#{Rails.root}/public#{self.file.url(:thumb, false)}"
