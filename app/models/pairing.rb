@@ -86,10 +86,12 @@ protected
       watermark1 = ''
       watermark2 = ''
       if self.image_file1.source.present? && self.image_file1.add_watermark
-        watermark1 = "-pointsize 16 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.image_file1.source}\""
+        text = "#{self.image_file1.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+        watermark1 = "-pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\""
       end
       if self.image_file2.source.present? && self.image_file2.add_watermark
-        watermark2 = "-pointsize 16 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.image_file2.source}\""
+        text = "#{self.image_file2.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+        watermark2 = "-pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\""
       end
       
       x = Subexec.run "convert  \"#{Rails.root}/public#{self.image_file1.file.url(:original, false)}\" \\

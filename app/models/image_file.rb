@@ -133,17 +133,18 @@ class ImageFile < ActiveRecord::Base
   # add watermark to the 3 sizes 
   # - do not modify original
   def generate_watermarks
+    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
     # large
     path = "#{Rails.root}/public#{self.file.url(:large, false)}"
-    Subexec.run "convert \"#{path}\" -pointsize 14 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.source}\" #{path}"
+    Subexec.run "convert \"#{path}\" -pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"
 
     # medium
     path = "#{Rails.root}/public#{self.file.url(:medium, false)}"
-    Subexec.run "convert \"#{path}\" -pointsize 12 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.source}\" #{path}"
+    Subexec.run "convert \"#{path}\" -pointsize 11 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"
 
     # thumb
     path = "#{Rails.root}/public#{self.file.url(:thumb, false)}"
-    Subexec.run "convert \"#{path}\" -pointsize 10 -font Arial-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +5+0 \"#{self.source}\" #{path}"
+    Subexec.run "convert \"#{path}\" -pointsize 9 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"
 
   end
 end
