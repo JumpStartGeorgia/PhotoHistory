@@ -95,7 +95,7 @@ en:
       confirm: Are you sure?
       new: New
     common:
-      app_name: Photo History
+      app_name: Speaking Stones
       unknown_year: Year Unknown
     msgs:
       does_not_exist: You tried to access a page that does not exist.
@@ -109,7 +109,7 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
-      og_description: "Photo History is an application created by JumpStart Georgia which allows you to discover, explore and compare old and new faces of different places, districts, regions, cities and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature or people have changed from the past to the present. "
+      og_description: "Speaking Stones is an application created by JumpStart Georgia which allows you to discover, explore and compare old and new faces of different places, districts, regions, cities and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature or people have changed from the past to the present. "
     unsupported_browser:
       title: Unsupported Browser
       p1: We are sorry to report that your browser is out of date and will not properly render the content from this website.
@@ -141,9 +141,9 @@ en:
   root:
     index:
     about:
-      title: About Photo History
+      title: About Speaking Stones
       email_title: Send us an email
-      email_subject: "Photo History Website Email Link: Inquiry"
+      email_subject: "Speaking Stones Website Email Link: Inquiry"
   shared:
     draggable_images:
       no_records: No photos were found matching your selection.
