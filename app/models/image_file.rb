@@ -10,6 +10,8 @@ class ImageFile < ActiveRecord::Base
 				}
 
 	has_many :image_file_translations, :dependent => :destroy
+  has_many :image_file_events, :dependent => :destroy
+  has_many :events, :through => :image_file_events
   belongs_to :category_district, :class_name => 'Category', :foreign_key => 'district_id'
   belongs_to :category_place, :class_name => 'Category', :foreign_key => 'place_id'
 
@@ -18,7 +20,7 @@ class ImageFile < ActiveRecord::Base
     :year, :lat, :lon, 
     #:district, :place, - old
     :file_meta, :source, :district_id, :place_id,
-    :add_watermark
+    :add_watermark, :event_ids
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
 

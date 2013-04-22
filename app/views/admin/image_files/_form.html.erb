@@ -37,6 +37,19 @@
 		<%= f.input :district_id, :as => :select, :collection => @districts.map{|x| [x.name, x.id]} %>
 		<%= f.input :place_id, :as => :select, :collection => @places.map{|x| [x.name, x.id]} %>
 
+    <div class="check_boxes control-group optional" id="image_file_events_input">
+      <label class=" control-label"><%= t('activerecords.attributes.image_file.events') %></label>
+      <input id="image_file_events_none" name="image_file[event_ids][]" type="hidden" value="">
+      <div class="choices controls">
+        <% @events.each do |event| %>
+          <label class="choice checkbox" for="<%= "image_file_event_ids_#{event.id}"%>">
+            <input id="<%= "image_file_event_ids_#{event.id}"%>" name="image_file[event_ids][]" type="checkbox" 
+              value="<%= event.id%>" <%= @image_file.image_file_events.index{|x| x.event_id == event.id}.nil? ? '' : "checked=checked" %>>
+            <%= event.name %>
+          </label>
+        <% end %>
+      </div>
+    </div>
 
 
   <div class="form-actions">

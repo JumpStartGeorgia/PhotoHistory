@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422131435) do
+ActiveRecord::Schema.define(:version => 20130422132802) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20130422131435) do
   add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
   add_index "category_translations", ["name"], :name => "index_category_translations_on_name"
   add_index "category_translations", ["permalink"], :name => "index_category_translations_on_permalink"
+
+  create_table "image_file_events", :force => true do |t|
+    t.integer  "image_file_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "image_file_events", ["event_id"], :name => "index_image_file_events_on_event_id"
+  add_index "image_file_events", ["image_file_id"], :name => "index_image_file_events_on_image_file_id"
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"

@@ -30,6 +30,8 @@
   <%= @image_file.district_name %></p>
   <p><strong><%= model_class.human_attribute_name(:place) %>:</strong>
   <%= @image_file.place_name %></p>
+  <p><strong><%= model_class.human_attribute_name(:events) %>:</strong>
+  <%= @image_file.events.map{|x| [x.name]}.join(', ') if @image_file.events.present? %></p>
   <p><strong><%= model_class.human_attribute_name(:file) %>:</strong>
   <br />
   <%= image_tag @image_file.file.url(:medium) if @image_file.file_file_name %>

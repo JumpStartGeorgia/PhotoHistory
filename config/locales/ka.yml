@@ -24,6 +24,8 @@ ka:
         place: ადგილი
         source: წყარო
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
+        events: მოვლენები
+        event_ids: მოვლენები
       image_file_translation:
         name: სახელი
         description: აღწერა

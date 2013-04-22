@@ -69,7 +69,7 @@ protected
     # add event
     if params[:event].present?
       index = @events.map{|x| x.permalink}.index(params[:event])
-      pairings = pairings.where(@years[index].query_clause) if index
+      pairings = pairings.includes(:image_file1 => :image_file_events).where("image_file_events.event_id = ?", @events[index].id) if index
     end
 
     return pairings

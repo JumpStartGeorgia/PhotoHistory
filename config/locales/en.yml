@@ -24,6 +24,8 @@ en:
         place: Place
         source: Source
         add_watermark: Use Source as Watermark on Image
+        events: Events
+        event_ids: Events
       image_file_translation:
         name: Name
         description: Description
