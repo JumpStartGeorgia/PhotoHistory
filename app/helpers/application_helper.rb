@@ -73,6 +73,60 @@ module ApplicationHelper
 		"#{request.protocol}#{request.host_with_port}#{path}"
 	end
 
+	# since the url contains english or georgian text, the text must be updated to the correct language
+	# for the language switcher link to work
+  # - applies to district, place, event, year
+	def generate_language_switcher_link(locale)
+    distrct = nil
+    place = nil
+    year = nil
+    event = nil
+
+    if params[:district].present?
+      index = @districts.map{|x| x.permalink}.index(params[:district])
+      if index
+        x = CategoryTranslation.where(:locale => locale, :category_id => @districts[index].id)
+        if x.present?
+          district = x.first.permalink
+        end
+      end
+    end
+
+    if params[:place].present?
+      index = @places.map{|x| x.permalink}.index(params[:place])
+      if index
+        x = CategoryTranslation.where(:locale => locale, :category_id => @places[index].id)
+        if x.present?
+          place = x.first.permalink
+        end
+      end
+    end
+
+    if params[:year].present? && params[:year] != I18n.t('filters.time.unknown', :locale => :en)
+      index = @years.map{|x| x.permalink}.index(params[:year])
+      if index
+        x = YearRangeTranslation.where(:locale => locale, :year_range_id => @years[index].id)
+        if x.present?
+          year = x.first.permalink
+        end
+      end
+    end
+
+    if params[:event].present?
+      index = @events.map{|x| x.permalink}.index(params[:event])
+      if index
+        x = CategoryTranslation.where(:locale => locale, :category_id => @events[index].id)
+        if x.present?
+          event = x.first.permalink
+        end
+      end
+    end
+
+
+	  link_to t("app.language.#{locale}"), params.merge(:locale => locale, :event => event, :year => year, :district => district, :place => place)
+
+	end
+
 =begin
 	# Based on https://gist.github.com/1182136
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
