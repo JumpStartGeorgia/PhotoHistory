@@ -1,4 +1,5 @@
 <%- model_class = ImageFile -%>
+<%- model_class_trans = ImageFileTranslation -%>
 
 <% if @pairing %>
 
@@ -152,7 +153,7 @@
               <%= @pairing.image_file1.source_formatted %>
             </li>
             <li>
-              <%= model_class.human_attribute_name(:photographer) %>:
+              <%= model_class_trans.human_attribute_name(:photographer) %>:
               <%= @pairing.image_file1.photographer_formatted %>
             </li>
           </ul>
@@ -168,7 +169,7 @@
               <%= @pairing.image_file2.source_formatted %>
             </li>
             <li>
-              <%= model_class.human_attribute_name(:photographer) %>:
+              <%= model_class_trans.human_attribute_name(:photographer) %>:
               <%= @pairing.image_file2.photographer_formatted %>
             </li>
           </ul>
