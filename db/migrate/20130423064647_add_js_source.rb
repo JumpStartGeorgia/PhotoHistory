@@ -2,7 +2,7 @@
 class AddJsSource < ActiveRecord::Migration
   def up
     ImageFile.transaction do
-      ImageFile.where(:year => 2013).update_all(:source => 'JumpStart Georgia')
+      ImageFile.where(:year => 2013).update_all(:source => 'JumpStart Georgia', :add_watermark => true)
 
       ids = ImageFile.select("id").where(:year => 2013).map{|x| x.id}
 
