@@ -84,14 +84,15 @@ protected
 
       # create the stacked image
       # - add watermark if needed
+      # - watermark does not exist in original photo
       watermark1 = ''
       watermark2 = ''
       if self.image_file1.source.present? && self.image_file1.add_watermark
-        text = "#{self.image_file1.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+        text = "#{self.image_file1.source} | #{I18n.t('app.common.app_name', :locale => :ka)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'').titlecase
         watermark1 = "-pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\""
       end
       if self.image_file2.source.present? && self.image_file2.add_watermark
-        text = "#{self.image_file2.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+        text = "#{self.image_file2.source} | #{I18n.t('app.common.app_name', :locale => :ka)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'').titlecase
         watermark2 = "-pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\""
       end
       

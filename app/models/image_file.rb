@@ -162,7 +162,7 @@ class ImageFile < ActiveRecord::Base
   # add watermark to the 3 sizes 
   # - do not modify original
   def generate_watermarks
-    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :ka)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'').titlecase
     # large
     path = "#{Rails.root}/public#{self.file.url(:large, false)}"
     Subexec.run "convert \"#{path}\" -pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"
