@@ -5,7 +5,7 @@ ka:
       user: მომხმარებელი
       image_file: გამოსახულება
       pairing: დაწყვილება
-      category: Category
+      category: კატეგორია
     attributes:
       user:
         email: ელ.ფოსტა
@@ -29,7 +29,7 @@ ka:
       image_file_translation:
         name: სახელი
         description: აღწერა
-        photographer: Photographer
+        photographer: ფოტოგრაფი
       pairing:
         image_file1: პირველი გამოსახულების ფაილი
         image_file1_id: პირველი გამოსახულების ფაილი
@@ -40,11 +40,11 @@ ka:
       category_translation:
         name: სახელი
       year_range:
-        start: Start Year
-        end: End Year
-        sort: Sort Order
+        start: დაწყების თარიღი
+        end: დასასრულის თარიღი
+        sort: დაალაგეთ
       year_range_translations:
-        title: Title
+        title: სათაური
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -68,16 +68,16 @@ ka:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
   categories:
-    district: District
-    place: Place
-    event: Event
+    district: რაიონი
+    place: ადგილი
+    event: მოვლენა
   filters:
     time:
       header: პერიოდი
       all: ყველა
       unknown: წელი უცნობია
       years:
-        header: Years
+        header: წლები
       events: 
         header: მოვლენები
     location:
@@ -162,7 +162,7 @@ ka:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
       comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, გაგვიზიარე. 
-      credit_header: Image Credit
-      left_image: Left Image
-      right_image: Right Image
+      credit_header: საავტორო უფლებები
+      left_image: მარცხენა სურათი
+      right_image: მარჯვენა სურათი
 
