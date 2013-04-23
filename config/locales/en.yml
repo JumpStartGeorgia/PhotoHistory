@@ -122,7 +122,7 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
-      og_description: "Speaking Stones is an application created by JumpStart Georgia which allows you to discover, explore and compare old and new faces of different places, districts, regions, cities and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature or people have changed from the past to the present. "
+      og_description: "Speaking Stones is a tool by JumpStart Georgia which allows you to explore, compare, and engage in the old and new faces of different places, districts, regions, cities,  and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature, or people have changed over time."
     unsupported_browser:
       title: Unsupported Browser
       p1: We are sorry to report that your browser is out of date and will not properly render the content from this website.
