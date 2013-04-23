@@ -8,6 +8,10 @@ class AddJsSource < ActiveRecord::Migration
 
       ImageFileTranslation.where(:image_file_id => ids, :locale => 'ka').update_all(:photographer => 'ირაკლი ჭუმბურიძე')
       ImageFileTranslation.where(:image_file_id => ids, :locale => 'en').update_all(:photographer => 'Irakli Chumburidze')
+
+      ImageFile.where(:add_watermark => true).each do |img|
+        img.file.reprocess!
+      end
     end
   end
 
