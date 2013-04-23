@@ -1,5 +1,5 @@
 class ImageFile < ActiveRecord::Base
-	translates :name, :description
+	translates :name, :description, :photographer
   
 	has_attached_file :file,
     :url => "/system/images/:id/:converted_basename_:style.:extension",
@@ -20,7 +20,7 @@ class ImageFile < ActiveRecord::Base
     :year, :lat, :lon, 
     #:district, :place, - old
     :file_meta, :source, :district_id, :place_id,
-    :add_watermark, :event_ids, :photographer
+    :add_watermark, :event_ids, :photographer_old
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
 
@@ -50,18 +50,7 @@ class ImageFile < ActiveRecord::Base
   end
 
   def source_formatted
-    x = ''
-     
-    if self.source.present?
-      x << self.source
-    else
-      x << I18n.t('app.common.unknown_source')
-    end
-    x << " ("
-    x << self.year_formatted.to_s
-    x << ")"
-
-    return x
+    self.source.present? ? self.source : I18n.t('app.common.unknown_source')
   end
 
   def photographer_formatted

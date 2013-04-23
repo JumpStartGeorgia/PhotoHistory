@@ -144,6 +144,10 @@
           <h4><%= t('.left_image') %>:</h4>
           <ul>
             <li>
+              <%= model_class.human_attribute_name(:year) %>:
+              <%= @pairing.image_file1.year_formatted %>
+            </li>
+            <li>
               <%= model_class.human_attribute_name(:source) %>:
               <%= @pairing.image_file1.source_formatted %>
             </li>
@@ -155,6 +159,10 @@
 
           <h4><%= t('.right_image') %>:</h4>
           <ul>
+            <li>
+              <%= model_class.human_attribute_name(:year) %>:
+              <%= @pairing.image_file2.year_formatted %>
+            </li>
             <li>
               <%= model_class.human_attribute_name(:source) %>:
               <%= @pairing.image_file2.source_formatted %>

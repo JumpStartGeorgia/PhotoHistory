@@ -23,13 +23,13 @@ ka:
         place_id: ადგილი
         place: ადგილი
         source: წყარო
-        photographer: Photographer
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
         events: მოვლენები
         event_ids: მოვლენები
       image_file_translation:
         name: სახელი
         description: აღწერა
+        photographer: Photographer
       pairing:
         image_file1: პირველი გამოსახულების ფაილი
         image_file1_id: პირველი გამოსახულების ფაილი

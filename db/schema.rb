@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422144909) do
+ActiveRecord::Schema.define(:version => 20130423064647) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130422144909) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photographer"
   end
 
   add_index "image_file_translations", ["image_file_id"], :name => "index_image_file_translations_on_image_file_id"
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20130422144909) do
     t.integer  "district_id"
     t.integer  "place_id"
     t.boolean  "add_watermark",                                     :default => false
-    t.string   "photographer"
+    t.string   "photographer_old"
   end
 
   add_index "image_files", ["district"], :name => "index_image_files_on_district"

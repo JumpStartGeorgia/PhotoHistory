@@ -10,7 +10,6 @@
 
 		<%= f.input :year, :as => :string, :input_html => {:size => 5, :maxlength => 4} %>
 		<%= f.input :source, :input_html => {:size => 75} %>
-		<%= f.input :photographer, :input_html => {:size => 75} %>
 		<%= f.input :add_watermark, :as => :radio %>
 
     <% @image_file.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
@@ -20,6 +19,7 @@
 				  <h3><%= t("app.language.#{trans.locale}") %></h3>
 
 				  <%= translation.input :name, :input_html => {:size => 75} %>
+      		<%= translation.input :photographer, :input_html => {:size => 75} %>
 				  <%= translation.input :description, :input_html => {:rows => 4} %>
 				  <%= translation.hidden_field :locale , :value => trans.locale %>
 			  </div>
