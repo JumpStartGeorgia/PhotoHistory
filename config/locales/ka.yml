@@ -161,7 +161,7 @@ ka:
   shared:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
-      comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, გაგვიზიარე. 
+      comment_header: "თუ გაქვს ინფორმაცია ამ ფოტოზე, ადგილზე ან მოვლენაზე, გაგვიზიარე."
       credit_header: საავტორო უფლებები
       left_image: მარცხენა სურათი
       right_image: მარჯვენა სურათი

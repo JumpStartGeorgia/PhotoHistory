@@ -160,7 +160,7 @@ en:
   shared:
     draggable_images:
       no_records: No photos were found matching your selection.
-      comment_header: If you have any information on this picture, let us know.
+      comment_header: "If you have any information on this picture, place or event, let us know."
       credit_header: Image Credit
       left_image: Left Image
       right_image: Right Image
