@@ -76,6 +76,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     gon.edit_zoom = 12
 
 		gon.fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
+		gon.fb_app_secret = ENV['PHOTO_HISTORY_FACEBOOK_APP_SECRET']
+
 	end
 
   def preload_global_variables
