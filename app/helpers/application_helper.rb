@@ -1,10 +1,10 @@
 module ApplicationHelper
   def title(page_title)
-    content_for(:title) { page_title }
+    content_for(:title) { page_title.html_safe }
   end
 
   def page_title_only(page_title)
-    content_for(:page_title_only) { page_title }
+    content_for(:page_title_only) { page_title.html_safe }
   end
 
   def get_page_title
@@ -24,7 +24,7 @@ module ApplicationHelper
       x << ")"
     end
 
-    return x
+    return x.html_safe
   end
 
 	def flash_translation(level)
