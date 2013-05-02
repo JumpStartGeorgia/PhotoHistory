@@ -8,6 +8,7 @@
 //= require i18n/translations
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require jquery-ui
 //= require jquery.ui.touch-punch.min
 //= require twitter/bootstrap

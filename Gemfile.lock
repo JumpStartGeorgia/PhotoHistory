@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 494f752b8eb8350f33841c822a67d014c869219f
+  specs:
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
+
+GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
   revision: 3e25b06c5c536db4ce30647a9edb3ea94f739001
   specs:
@@ -228,6 +235,7 @@ DEPENDENCIES
   gon (~> 2.2.2)
   has_permalink (~> 0.1.4)
   i18n-js (~> 2.1.2)
+  jquery-datatables-rails!
   jquery-rails (~> 1.0.19)
   json
   kaminari (~> 0.14.1)

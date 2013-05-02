@@ -42,6 +42,7 @@ group :assets do
   gem "therubyracer"
   gem "less-rails"
 	gem "twitter-bootstrap-rails", "~> 2.1.0"
+	gem "jquery-datatables-rails", :git => "git://github.com/rweng/jquery-datatables-rails.git"
 end
 
 group :development do
