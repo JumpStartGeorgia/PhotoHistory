@@ -110,6 +110,9 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
+    jquery-ui-rails (3.0.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.7)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -216,6 +219,7 @@ GEM
     unidecoder (1.1.1)
     warden (1.1.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -237,6 +241,7 @@ DEPENDENCIES
   i18n-js (~> 2.1.2)
   jquery-datatables-rails!
   jquery-rails (~> 1.0.19)
+  jquery-ui-rails
   json
   kaminari (~> 0.14.1)
   less-rails
@@ -255,3 +260,4 @@ DEPENDENCIES
   unicorn (~> 4.2.1)
   unidecoder (~> 1.1.1)
   useragent!
+  will_paginate (= 3.0.3)

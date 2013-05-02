@@ -11,7 +11,7 @@ class Admin::ImageFilesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @image_files }
+      format.json { render json: ImageFilesDatatable.new(view_context) }
     end
   end
 

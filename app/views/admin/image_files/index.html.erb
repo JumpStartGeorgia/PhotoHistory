@@ -8,7 +8,7 @@
               :class => 'btn btn-primary' %>
 </div>
 
-<table class="table table-striped">
+<table class="table table-striped display" id="images-table" data-source="<%= admin_image_files_url(format: "json") %>">
   <thead>
     <tr>
       <th><%= model_class_trans.human_attribute_name(:name) %></th>
@@ -23,27 +23,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @image_files.each do |image_file| %>
-      <tr>
-        <td><%= link_to image_file.name, admin_image_file_path(image_file) %></td>
-        <td><%= image_file.year %></td>
-        <td><%= image_file.source %></td>
-        <td><%= image_file.photographer %></td>
-        <td><%= image_file.district_name %></td>
-        <td><%= image_file.place_name %></td>
-        <td><%= image_file.events.map{|x| x.name}.join(', ') if image_file.events.present? %></td>
-        <td><%= image_tag image_file.file.url(:thumb) if image_file.file_file_name %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_image_file_path(image_file), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      admin_image_file_path(image_file),
-                      :method => :delete,
-											:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 
