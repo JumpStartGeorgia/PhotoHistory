@@ -56,17 +56,20 @@ protected
       pairings = pairings.where("image_files.place_id = ?", @places[index].id) if index
     end
 
-    # add time
-    if params[:time].present?
-      if params[:time] == I18n.t('filters.time.unknown', :locale => :en)
+    # add year
+    if params[:year].present?
+      if params[:year] == I18n.t('filters.time.unknown', :locale => :en)
         pairings = pairings.where("image_files.year is null or image_files.year = ''")
-      elsif params[:time] != I18n.t('filters.time.all', :locale => :en)
-        # format should be yyyy-yyyy
-        years = params[:time].split('-')
-        if years.length == 2 && years[0].length == 4 && years[1].length == 4 && is_i?(years[0]) && is_i?(years[1])
-          pairings = pairings.where("image_files.year between ? and ?", years[0], years[1])
-        end
+      elsif params[:year] != I18n.t('filters.time.all', :locale => :en)
+        index = @years.map{|x| x.permalink}.index(params[:year])
+        pairings = pairings.where(@years[index].query_clause) if index
       end
+    end
+
+    # add event
+    if params[:event].present?
+      index = @events.map{|x| x.permalink}.index(params[:event])
+      pairings = pairings.includes(:image_file1 => :image_file_events).where("image_file_events.event_id = ?", @events[index].id) if index
     end
 
     return pairings

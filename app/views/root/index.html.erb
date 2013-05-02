@@ -4,3 +4,13 @@
 
 <%= render :partial => 'shared/draggable_images' %>
 
+<% if @pairing.present? %>
+  <div style="display: none;">
+    <%= image_tag @pairing.thumbnail.url(false) %>
+    <%= image_tag @pairing.stacked_img.url(false) %>
+  </div>
+<% end %>
+
+
+
+

@@ -5,7 +5,7 @@ ka:
       user: მომხმარებელი
       image_file: გამოსახულება
       pairing: დაწყვილება
-      location: ადგილმდებარეობა
+      category: კატეგორია
     attributes:
       user:
         email: ელ.ფოსტა
@@ -24,18 +24,27 @@ ka:
         place: ადგილი
         source: წყარო
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
+        events: მოვლენები
+        event_ids: მოვლენები
       image_file_translation:
         name: სახელი
         description: აღწერა
+        photographer: ფოტოგრაფი
       pairing:
         image_file1: პირველი გამოსახულების ფაილი
         image_file1_id: პირველი გამოსახულების ფაილი
         image_file2: მეორე გამოსახულების ფაილი
         image_file2_id: მეორე გამოსახულების ფაილი
-      location:
+      category:
         type_id: ტიპი
-      location_translation:
+      category_translation:
         name: სახელი
+      year_range:
+        start: დაწყების თარიღი
+        end: დასასრულის თარიღი
+        sort: დაალაგეთ
+      year_range_translations:
+        title: სათაური
     errors:
       messages:
         required_field: "სავალდებულოა"
@@ -58,16 +67,19 @@ ka:
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
+  categories:
+    district: რაიონი
+    place: ადგილი
+    event: მოვლენა
   filters:
     time:
       header: პერიოდი
       all: ყველა
       unknown: წელი უცნობია
-      list: |
-        1800-1900
-        1900-1950
-        1950-2000
-        2000-2050
+      years:
+        header: წლები
+      events: 
+        header: მოვლენები
     location:
       header: მდებარეობა
       all: ყველა
@@ -97,6 +109,7 @@ ka:
     common:
       app_name: ქვათა ღაღადი
       unknown_year: წელი უცნობია
+      unknown_source: უცნობი
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
@@ -109,7 +122,7 @@ ka:
       sign_out: გასვლა
       js_link_title: "ეწვიეთ ჯამპსტარტ ჯორჯიას ვებ-გვერდს"
       js_link_text: აგებულია
-      og_description: "ქვათა ღაღადი JumpStart Georgia-ს მიერ შექმნილი აპლიკაციაა, რომელიც საშუალებას გაძლევთ, აღმოაჩინოთ, გამოიკვლიოთ და შეადაროთ სხვადასხვა ადგილის, რაიონის, რეგიონის, ქალაქისა თუ ქვეყნის ძველი და ახალი სახეები. ფოტოს “სახელურის” გამოყენებით, თქვენ შეგიძლიათ, სურათები ისე ამოძრაოთ, რომ დაინახოთ, როგორ შეიცვალნენ ადამიანები, ადგილები, შენობები, ქანდაკებები და ბუნება წარსულიდან დღევანდელობამდე. "
+      og_description: "“ქვათა ღაღადი” JumpStart Georgia-ს მიერ შექმნილი ონლაინ აპლიკაციაა, რომელიც საშუალებას გაძლევთ, აღმოაჩინოთ, გამოიკვლიოთ და შეადაროთ სხვადასხვა ადგილის, რაიონის, რეგიონის, ქალაქისა თუ ქვეყნის ძველი და ახალი სახეები. ფოტოს “სახელურის” გამოყენებით, თქვენ შეძლებთ სურათების ისე დათვალიერებას, რომ დაინახავთ, როგორ შეიცვალნენ ადამიანები, ადგილები, შენობები, ქანდაკებები და ბუნება წარსულიდან დღევანდელობამდე. "
     unsupported_browser:
       title: არასათანადო ბრაუზერი
       p1: სამწუხაროდ თქვენი ინტერნეტ ბრაუზერის მოხმარების ვადა გასულია და ვერ მოხდება ვებ-გვერდთან სრულად დაკავშირება.
@@ -142,14 +155,16 @@ ka:
   root:
     index:
     about:
-      title: ფოტო ისტორიის შესახებ
+      title: "\"ქვათა ღაღადის\" შესახებ"
       email_title: მოგვწერეთ
       email_subject: "Speaking Stones Website Email Link: Inquiry"
   shared:
     draggable_images:
       no_records: შესაბამისი ფოტო არ მოიძებნა.
-      comment_header: თუ გაქვს ინფორმაცია ამ ფოტოზე, გაგვიზიარე. 
-      source_header: სურათის წყაროები
-      left_image: მარცხენა
-      right_image: მარჯვენა
-      unknown_source: უცნობი
+      comment_header: "თუ გაქვს ინფორმაცია ამ ფოტოზე, ადგილზე ან მოვლენაზე, გაგვიზიარე."
+      credit_header: საავტორო უფლებები
+      left_image: მარცხენა სურათი
+      right_image: მარჯვენა სურათი
+      fb_popup_header: მოიწონეთ ჩვენი გვერდი! 
+      fb_popup_text: "შეიტყვეთ სიახლეები \"ქვათა ღაღადის\" და სხვა ვიზუალიზაციების შესახებ!"
+

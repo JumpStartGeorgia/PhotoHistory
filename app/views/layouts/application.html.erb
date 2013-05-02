@@ -73,27 +73,34 @@
 		              <li <%= !params[:district].present? && !params[:place].present? ? "class=active" : '' %>>
 	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :place => nil, :pairing => nil})) %>
 							    </li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
-                    <ul class="dropdown-menu">
-                      <% @districts.each do |item| %>
-					              <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
-			       		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
-									      </li>
-                      <% end %>                  
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#"><%= t('filters.location.place.header') %></a>
-                    <ul class="dropdown-menu">
-                      <% @places.each do |item| %>
-					              <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
-			       		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
-									      </li>
-                      <% end %>                  
-                    </ul>
-                  </li>
-
+                  <% if @districts.present? && @image_districts.present? %>
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
+                      <ul class="dropdown-menu">
+                        <% @districts.each do |item| %>
+                          <% if @image_districts.index(item.id).present? %>
+					                  <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
+									          </li>
+                          <% end %>                  
+                        <% end %>                  
+                      </ul>
+                    </li>
+                  <% end %>
+                  <% if @places.present? && @image_places.present? %>
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#"><%= t('filters.location.place.header') %></a>
+                      <ul class="dropdown-menu">
+                        <% @places.each do |item| %>
+                          <% if @image_places.index(item.id).present? %>
+					                  <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
+									          </li>
+                          <% end %>                  
+                        <% end %>                  
+                      </ul>
+                    </li>
+                  <% end %>
 			          </ul>
 			        </li>
 
@@ -104,18 +111,38 @@
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-		              <li <%= !params[:time].present? || params[:time] == t('filters.time.all') ? "class=active" : '' %>>
-	     		         <%= link_to t('filters.time.all'), root_path(update_params({:time => t('filters.time.all', :locale => :en), :pairing => nil})) %>
+		              <li <%= !params[:year].present? && !params[:event].present? ? "class=active" : '' %>>
+	     		         <%= link_to t('filters.time.all'), root_path(update_params({:pairing => nil, :year => nil, :event => nil})) %>
 							    </li>
-                  <% t(:'filters.time.list').each_line do |item| %>
-                    <% item.chomp! %>
-			              <li <%= params[:time] == item ? "class=active" : '' %>>
-			   		         <%= link_to item, root_path(update_params({:time => item, :pairing => nil})) %>
-									  </li>
-                  <% end %>                  
-		              <li <%= params[:time].present? && params[:time] == t('filters.time.unknown') ? "class=active" : '' %>>
-	     		         <%= link_to t('filters.time.unknown'), root_path(update_params({:time => t('filters.time.unknown', :locale => :en), :pairing => nil})) %>
-							    </li>
+                  <% if @years.present? %>
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#"><%= t('filters.time.years.header') %></a>
+                      <ul class="dropdown-menu">
+                        <% @years.each do |item| %>
+					                <li <%= params[:year] == item.permalink ? "class=active" : '' %>>
+			         		         <%= link_to item.title, root_path(update_params({:year => item.permalink, :pairing => nil, :event => nil})) %>
+									        </li>
+                        <% end %>                  
+		                    <li <%= params[:year] == t('filters.time.unknown') ? "class=active" : '' %>>
+	           		         <%= link_to t('filters.time.unknown'), root_path(update_params({:year => t('filters.time.unknown', :locale => :en), :pairing => nil, :event => nil})) %>
+							          </li>
+                      </ul>
+                    </li>
+                  <% end %>
+                  <% if @events.present? && @image_events.present?%>
+                    <li class="dropdown-submenu">
+                      <a tabindex="-1" href="#"><%= t('filters.time.events.header') %></a>
+                      <ul class="dropdown-menu">
+                        <% @events.each do |item| %>
+                          <% if @image_events.index(item.id).present? %>
+					                  <li <%= params[:event] == item.permalink ? "class=active" : '' %>>
+			           		         <%= link_to item.name, root_path(update_params({:event => item.permalink, :pairing => nil, :year => nil})) %>
+									          </li>
+                          <% end %>                  
+                        <% end %>                  
+                      </ul>
+                    </li>
+                  <% end %>
 			          </ul>
 			        </li>
             </ul>
@@ -131,7 +158,7 @@
                     <% if current_user.role?(User::ROLES[:user]) %>
                       <li><%= link_to ImageFile.model_name.human, admin_image_files_path  %></li>
                       <li><%= link_to Pairing.model_name.human, admin_pairings_path  %></li>
-                      <li><%= link_to Location.model_name.human, admin_locations_path  %></li>
+                      <li><%= link_to Category.model_name.human, admin_categories_path  %></li>
                     <% end %>
                     <% if current_user.role?(User::ROLES[:admin]) %>
 						          <li>
@@ -147,7 +174,7 @@
               <li><%= link_to t('.menu_about'), about_path, :id => 'menu_about', :class => 'fancybox' %></li>
 							<% I18n.available_locales.each do |locale| %>
 								<% if locale != I18n.locale %>
-									<li><%= link_to t("app.language.#{locale}"), params.merge(:locale => locale) %></li>
+                  <li><%= generate_language_switcher_link(locale) %></li>
 								<% end %>
 							<% end %>
 	          </ul>
@@ -218,13 +245,21 @@
 			I18n.locale = "<%= I18n.locale %>";
 		</script>
 
-
     <script type="text/javascript">var switchTo5x=false;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "5e03882d-880c-43e2-b015-163ee338d8c0", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
 
 		<% if Rails.env.production? %>
-			<!-- insert google analytics for production site here -->
+      <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12801815-22']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      </script>
 		<% elsif Rails.env.staging? %>
       <script type="text/javascript">
         var _gaq = _gaq || [];

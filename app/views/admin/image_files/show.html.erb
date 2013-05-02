@@ -22,6 +22,8 @@
   <%= @image_file.year %></p>
   <p><strong><%= model_class.human_attribute_name(:source) %>:</strong>
   <%= @image_file.source %></p>
+  <p><strong><%= model_class_trans.human_attribute_name(:photographer) %>:</strong>
+  <%= @image_file.photographer %></p>
   <p><strong><%= model_class.human_attribute_name(:lat) %>:</strong>
   <%= @image_file.lat %></p>
   <p><strong><%= model_class.human_attribute_name(:lon) %>:</strong>
@@ -30,6 +32,8 @@
   <%= @image_file.district_name %></p>
   <p><strong><%= model_class.human_attribute_name(:place) %>:</strong>
   <%= @image_file.place_name %></p>
+  <p><strong><%= model_class.human_attribute_name(:events) %>:</strong>
+  <%= @image_file.events.map{|x| [x.name]}.join(', ') if @image_file.events.present? %></p>
   <p><strong><%= model_class.human_attribute_name(:file) %>:</strong>
   <br />
   <%= image_tag @image_file.file.url(:medium) if @image_file.file_file_name %>

@@ -1,3 +1,6 @@
+<%- model_class = ImageFile -%>
+<%- model_class_trans = ImageFileTranslation -%>
+
 <% if @pairing %>
 
   <div id="photo_container">
@@ -114,27 +117,62 @@
         <div class="desc"><%= simple_format @pairing.description %></div>
 
         <div id="image_links">
-          <h3><%= t('filters.location.header') %></h3>
-          <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
-            <span><%= t('activerecord.attributes.image_file.district') %>:</span>
-            <%= link_to(@pairing.image_file1.district_name, root_path(update_params({:district => @pairing.image_file1.district_permalink, :pairing => nil, :place => nil}))) %>
-		      <% end %>
-          <br />
-          <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
-            <span><%= t('activerecord.attributes.image_file.place') %>:</span>
-            <%= link_to(@pairing.image_file1.place_name, root_path(update_params({:place => @pairing.image_file1.place_permalink, :pairing => nil, :district => nil}))) %>
-		      <% end %>
+          <div id="image_links_location">
+            <h3><%= t('filters.location.header') %></h3>
+            <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
+              <span><%= t('activerecord.attributes.image_file.district') %>:</span>
+              <%= link_to(@pairing.image_file1.district_name, root_path(:district => @pairing.image_file1.district_permalink)) %>
+		        <% end %>
+            <br />
+            <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
+              <span><%= t('activerecord.attributes.image_file.place') %>:</span>
+              <%= link_to(@pairing.image_file1.place_name, root_path(:place => @pairing.image_file1.place_permalink)) %>
+		        <% end %>
+          </div>
+          <% if @pairing.image_file1.present? && @pairing.image_file1.events.present? %>
+            <div id="image_links_events">
+              <h3><%= t('filters.time.events.header') %></h3>
+              <% @pairing.image_file1.events.each_with_index do |event, i| %>
+                <%= link_to(event.name, root_path(:event => event.permalink)) %>
+                <%= i < @pairing.image_file1.events.length-1 ? "<br />".html_safe : "" %>
+              <% end %>
+            </div>
+	        <% end %>
         </div>
 
         <div id="image_sources">
-          <h3><%= t('.source_header') %></h3>
-          <span><%= t('.left_image') %>:</span>
-          <%= @pairing.image_file1.source.present? ? @pairing.image_file1.source : t('.unknown_source') %>
-          <%= "(#{@pairing.image_file1.year_formatted})" %>
-          <br />
-          <span><%= t('.right_image') %>:</span>
-          <%= @pairing.image_file2.source.present? ? @pairing.image_file2.source : t('.unknown_source') %>
-          <%= "(#{@pairing.image_file2.year_formatted})" %>
+          <h3><%= t('.credit_header') %></h3>
+          <h4><%= t('.left_image') %>:</h4>
+          <ul>
+            <li>
+              <%= model_class.human_attribute_name(:year) %>:
+              <%= @pairing.image_file1.year_formatted %>
+            </li>
+            <li>
+              <%= model_class.human_attribute_name(:source) %>:
+              <%= @pairing.image_file1.source_formatted %>
+            </li>
+            <li>
+              <%= model_class_trans.human_attribute_name(:photographer) %>:
+              <%= @pairing.image_file1.photographer_formatted %>
+            </li>
+          </ul>
+
+          <h4><%= t('.right_image') %>:</h4>
+          <ul>
+            <li>
+              <%= model_class.human_attribute_name(:year) %>:
+              <%= @pairing.image_file2.year_formatted %>
+            </li>
+            <li>
+              <%= model_class.human_attribute_name(:source) %>:
+              <%= @pairing.image_file2.source_formatted %>
+            </li>
+            <li>
+              <%= model_class_trans.human_attribute_name(:photographer) %>:
+              <%= @pairing.image_file2.photographer_formatted %>
+            </li>
+          </ul>
         </div>
 
         <div id="image_comments">
@@ -144,6 +182,14 @@
       </div>
       <div class="span6" id="map_container">
         <div id="map"></div>    
+
+        <div id="fb-popup-like-box">
+          <div id="fb-popup-like-box-container">
+            <h2><%= t('.fb_popup_header') %></h2>
+            <p><%= t('.fb_popup_text') %></p>
+              <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/feradi.info&amp;width=450&amp;height=185&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23fff&amp;header=false" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>

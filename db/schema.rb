@@ -11,7 +11,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421184611) do
+ActiveRecord::Schema.define(:version => 20130423064647) do
+
+  create_table "categories", :force => true do |t|
+    t.integer  "type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["type_id"], :name => "index_category_on_type_id"
+
+  create_table "category_translations", :force => true do |t|
+    t.integer  "category_id"
+    t.string   "locale"
+    t.string   "name"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
+  add_index "category_translations", ["name"], :name => "index_category_translations_on_name"
+  add_index "category_translations", ["permalink"], :name => "index_category_translations_on_permalink"
+
+  create_table "image_file_events", :force => true do |t|
+    t.integer  "image_file_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "image_file_events", ["event_id"], :name => "index_image_file_events_on_event_id"
+  add_index "image_file_events", ["image_file_id"], :name => "index_image_file_events_on_image_file_id"
 
   create_table "image_file_translations", :force => true do |t|
     t.integer  "image_file_id"
@@ -20,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130421184611) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photographer"
   end
 
   add_index "image_file_translations", ["image_file_id"], :name => "index_image_file_translations_on_image_file_id"
@@ -42,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130421184611) do
     t.integer  "district_id"
     t.integer  "place_id"
     t.boolean  "add_watermark",                                     :default => false
+    t.string   "photographer_old"
   end
 
   add_index "image_files", ["district"], :name => "index_image_files_on_district"
@@ -49,28 +83,6 @@ ActiveRecord::Schema.define(:version => 20130421184611) do
   add_index "image_files", ["place"], :name => "index_image_files_on_place"
   add_index "image_files", ["place_id"], :name => "index_image_files_on_place_id"
   add_index "image_files", ["source"], :name => "index_image_files_on_source"
-
-  create_table "location_translations", :force => true do |t|
-    t.integer  "location_id"
-    t.string   "locale"
-    t.string   "name"
-    t.string   "permalink"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "location_translations", ["locale"], :name => "index_location_translations_on_locale"
-  add_index "location_translations", ["location_id"], :name => "index_location_translations_on_location_id"
-  add_index "location_translations", ["name"], :name => "index_location_translations_on_name"
-  add_index "location_translations", ["permalink"], :name => "index_location_translations_on_permalink"
-
-  create_table "locations", :force => true do |t|
-    t.integer  "type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "locations", ["type_id"], :name => "index_locations_on_type_id"
 
   create_table "pairing_translations", :force => true do |t|
     t.integer  "pairing_id"
@@ -121,5 +133,29 @@ ActiveRecord::Schema.define(:version => 20130421184611) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "year_range_translations", :force => true do |t|
+    t.integer  "year_range_id"
+    t.string   "locale"
+    t.string   "title"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "year_range_translations", ["locale"], :name => "index_year_range_translations_on_locale"
+  add_index "year_range_translations", ["permalink"], :name => "index_year_range_translations_on_permalink"
+  add_index "year_range_translations", ["title"], :name => "index_year_range_translations_on_title"
+  add_index "year_range_translations", ["year_range_id"], :name => "index_year_range_translations_on_year_range_id"
+
+  create_table "year_ranges", :force => true do |t|
+    t.integer  "start"
+    t.integer  "end"
+    t.integer  "sort",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "year_ranges", ["sort"], :name => "index_year_ranges_on_sort"
 
 end

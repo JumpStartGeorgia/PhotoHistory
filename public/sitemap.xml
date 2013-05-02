@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?district=mtatsminda</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?place=tavisuplebis-moedani</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?place=rustavelis-gamziri</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?year=1900-mde</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?year=1900-1950</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?year=1950-2000</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?year=2000-dghemde</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?year=Year+Unknown</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?event=sabtchota-okupatsia-1921-1989</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka?event=samoqalaqo-omi-1991-1992</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/ka/about</loc>
+  <changefreq>daily</changefreq>
+</url>
+
+
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en/about</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?district=mtatsminda</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?event=soviet-occupation-1921-1991</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?event=civil-war-1991-1992</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?place=freedom-square</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?place=rustaveli-avenue</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?year=before-1900</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?year=1900-1950</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?year=1950-2000</loc>
+  <changefreq>daily</changefreq>
+</url>
+<url>
+  <loc>http://speakingstones.jumpstart.ge/en?year=2000-present</loc>
+  <changefreq>daily</changefreq>
+</url>
+
+
+</urlset>

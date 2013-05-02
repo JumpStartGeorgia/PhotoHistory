@@ -1,5 +1,5 @@
 class ImageFile < ActiveRecord::Base
-	translates :name, :description
+	translates :name, :description, :photographer
   
 	has_attached_file :file,
     :url => "/system/images/:id/:converted_basename_:style.:extension",
@@ -10,15 +10,17 @@ class ImageFile < ActiveRecord::Base
 				}
 
 	has_many :image_file_translations, :dependent => :destroy
-  belongs_to :location_district, :class_name => 'Location', :foreign_key => 'district_id'
-  belongs_to :location_place, :class_name => 'Location', :foreign_key => 'place_id'
+  has_many :image_file_events, :dependent => :destroy
+  has_many :events, :through => :image_file_events
+  belongs_to :category_district, :class_name => 'Category', :foreign_key => 'district_id'
+  belongs_to :category_place, :class_name => 'Category', :foreign_key => 'place_id'
 
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
     :year, :lat, :lon, 
     #:district, :place, - old
     :file_meta, :source, :district_id, :place_id,
-    :add_watermark
+    :add_watermark, :event_ids, :photographer_old
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
 
@@ -34,25 +36,41 @@ class ImageFile < ActiveRecord::Base
 	def self.sorted
 		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
 	end
+
+  def self.distinct_district_ids
+    select("distinct district_id").where("district_id is not null").map{|x| x.district_id}
+  end
+  
+  def self.distinct_place_ids
+    select("distinct place_id").where("place_id is not null").map{|x| x.place_id}
+  end
   
   def year_formatted
     self.year.present? ? self.year : I18n.t('app.common.unknown_year')
   end
 
+  def source_formatted
+    self.source.present? ? self.source : I18n.t('app.common.unknown_source')
+  end
+
+  def photographer_formatted
+    self.photographer.present? ? self.photographer : I18n.t('app.common.unknown_source')
+  end
+
   def district_name
-    location_district.name if self.district_id.present?
+    category_district.name if self.district_id.present?
   end
 
   def district_permalink
-    location_district.permalink if self.district_id.present?
+    category_district.permalink if self.district_id.present?
   end
 
   def place_name
-    location_place.name if self.place_id.present?
+    category_place.name if self.place_id.present?
   end
 
   def place_permalink
-    location_place.permalink if self.place_id.present?
+    category_place.permalink if self.place_id.present?
   end
 
   # pull out the image width from the image_size value
@@ -133,7 +151,7 @@ class ImageFile < ActiveRecord::Base
   # add watermark to the 3 sizes 
   # - do not modify original
   def generate_watermarks
-    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :ka)}"
+    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :en)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'')
     # large
     path = "#{Rails.root}/public#{self.file.url(:large, false)}"
     Subexec.run "convert \"#{path}\" -pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"

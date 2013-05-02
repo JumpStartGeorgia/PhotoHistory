@@ -1,10 +1,10 @@
-class LocationTranslation < ActiveRecord::Base
+class CategoryTranslation < ActiveRecord::Base
 	require 'utf8_converter'
   has_permalink :create_permalink
 
-	belongs_to :location
+	belongs_to :category
 
-  attr_accessible :location_id, :name, :locale, :permalink
+  attr_accessible :category_id, :name, :locale, :permalink
 
   validates :name, :permalink, :presence => true
 

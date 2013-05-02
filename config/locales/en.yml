@@ -5,7 +5,7 @@ en:
       user: User
       image_file: Image
       pairing: Pairing
-      location: Location
+      category: Category
     attributes:
       user:
         email: Email Address
@@ -24,18 +24,27 @@ en:
         place: Place
         source: Source
         add_watermark: Use Source as Watermark on Image
+        events: Events
+        event_ids: Events
       image_file_translation:
         name: Name
         description: Description
+        photographer: Photographer
       pairing:
         image_file1: 1st Image File
         image_file1_id: 1st Image File
         image_file2: 2nd Image File
         image_file2_id: 2nd Image File
-      location:
+      category:
         type_id: Type
-      location_translation:
+      category_translation:
         name: Name
+      year_range:
+        start: Start Year
+        end: End Year
+        sort: Sort Order
+      year_range_translations:
+        title: Title
     errors:
       messages:
         required_field: "is a required field."
@@ -58,16 +67,19 @@ en:
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
+  categories:
+    district: District
+    place: Place
+    event: Event
   filters:
     time:
       header: Time Period
       all: All
       unknown: Year Unknown
-      list: |
-        1800-1900
-        1900-1950
-        1950-2000
-        2000-2050
+      years:
+        header: Years
+      events: 
+        header: Events
     location:
       header: Location
       all: All
@@ -97,6 +109,7 @@ en:
     common:
       app_name: Speaking Stones
       unknown_year: Year Unknown
+      unknown_source: Unknown
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -109,7 +122,7 @@ en:
       sign_out: Sign Out
       js_link_title: "Visit JumpStart Georgia's website"
       js_link_text: Built by
-      og_description: "Speaking Stones is an application created by JumpStart Georgia which allows you to discover, explore and compare old and new faces of different places, districts, regions, cities and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature or people have changed from the past to the present. "
+      og_description: "Speaking Stones is a tool by JumpStart Georgia which allows you to explore, compare, and engage in the old and new faces of different places, districts, regions, cities,  and countries. Using the slide bar, you can drag the photos overlapping each other so that you can see how places, buildings, statues, nature, or people have changed over time."
     unsupported_browser:
       title: Unsupported Browser
       p1: We are sorry to report that your browser is out of date and will not properly render the content from this website.
@@ -147,8 +160,10 @@ en:
   shared:
     draggable_images:
       no_records: No photos were found matching your selection.
-      comment_header: If you have any information on this picture, let us know.
-      source_header: Image Sources
-      left_image: Left
-      right_image: Right
-      unknown_source: Unknown
+      comment_header: "If you have any information on this picture, place or event, let us know."
+      credit_header: Image Credit
+      left_image: Left Image
+      right_image: Right Image
+      fb_popup_header: Like Us!
+      fb_popup_text: Get updates for Speaking Stones and other visualizations!
+

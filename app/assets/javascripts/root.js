@@ -20,7 +20,7 @@ $(function()
       create: function (e, ui)
       {
         var pwr = ow * draggable_ratio;
-        $(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').data('original-width'));
+        $(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
       },
       drag: function (e, ui)
       {
