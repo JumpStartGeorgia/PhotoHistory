@@ -7,11 +7,9 @@ class Admin::ImageFilesController < ApplicationController
   # GET /image_files
   # GET /image_files.json
   def index
-    @image_files = ImageFile.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @image_files }
+      format.json { render json: ImageFilesDatatable.new(view_context) }
     end
   end
 

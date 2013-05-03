@@ -14,8 +14,8 @@ gem "formtastic-bootstrap", :git => "https://github.com/cgunther/formtastic-boot
 #gem "nested_form", "~> 0.1.1", :git => "https://github.com/davidray/nested_form.git" # easily build nested model forms with ajax links
 gem "globalize3", "~> 0.2.0" # internationalization
 gem "psych", "~> 1.2.2" # yaml parser - default psych in rails has issues
-#gem "will_paginate", "3.0.3" # add paging to long lists
-gem "kaminari", "~> 0.14.1" # paging
+gem "will_paginate", "3.0.3" # add paging to long lists
+#gem "kaminari", "~> 0.14.1" # paging
 gem "gon", "~> 2.2.2" # push data into js
 gem "dynamic_form", "~> 1.1.4" # to see form error messages
 gem "i18n-js", "~> 2.1.2" # to show translations in javascript
@@ -32,6 +32,7 @@ gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser det
 #gem "paper_trail", "~> 2.6.3" # keep audit log of all transactions
 gem "subexec", "~> 0.2.2" # run imagemagick from command line
 gem "unidecoder", "~> 1.1.1" # convert utf8 to ascii
+gem "impressionist", "~> 1.1.1" # keep track of views
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,6 +43,8 @@ group :assets do
   gem "therubyracer"
   gem "less-rails"
 	gem "twitter-bootstrap-rails", "~> 2.1.0"
+  gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+  gem "jquery-ui-rails"
 end
 
 group :development do

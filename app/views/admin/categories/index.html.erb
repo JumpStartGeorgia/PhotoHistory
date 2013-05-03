@@ -8,7 +8,7 @@
               :class => 'btn btn-primary' %>
 </div>
 
-<table class="table table-striped">
+<table class="table table-striped display" id="categories-datatable" data-source="<%= admin_categories_url(:format => :json) %>">
   <thead>
     <tr>
       <th><%= model_class_trans.human_attribute_name(:name) %></th>
@@ -17,21 +17,6 @@
     </tr>
   </thead>
   <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, admin_category_path(category) %></td>
-        <td><%= category.type_name %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_admin_category_path(category), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      admin_category_path(category),
-                      :method => :delete,
-											:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
 

@@ -9,8 +9,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require jquery.ui.touch-punch.min
 //= require twitter/bootstrap
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
+//= require jquery.ui.touch-punch.min
 //= require fancybox
 //= require fancybox2
 //= require vendor

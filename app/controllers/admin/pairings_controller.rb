@@ -7,11 +7,9 @@ class Admin::PairingsController < ApplicationController
   # GET /pairings
   # GET /pairings.json
   def index
-    @pairings = Pairing.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @pairings }
+      format.json { render json: PairingsDatatable.new(view_context) }
     end
   end
 
@@ -22,6 +20,7 @@ class Admin::PairingsController < ApplicationController
 
     gon.lat = @pairing.image_file1.lat
     gon.lon = @pairing.image_file1.lon
+    gon.load_image_pairing = true
 
     respond_to do |format|
       format.html # show.html.erb

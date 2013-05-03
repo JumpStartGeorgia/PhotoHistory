@@ -16,8 +16,20 @@ class RootController < ApplicationController
       pairings = build_pairing_query(true)
       @pairing_count = pairings.count
       @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
-    end
 
+      gon.load_image_pairing = true
+
+		  respond_to do |format|
+		    format.html # index.html.erb
+		    format.json { render json: @pairing }
+		  end
+
+      # update the view count
+      impressionist(@pairing)
+		else
+			flash[:info] =  t('app.msgs.does_not_exist')
+			redirect_to root_path
+    end
   end
 
   def about

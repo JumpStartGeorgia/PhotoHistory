@@ -35,6 +35,10 @@ en:
         image_file1_id: 1st Image File
         image_file2: 2nd Image File
         image_file2_id: 2nd Image File
+      pairing_translation:
+        title: Title
+        description: Short Description
+        long_description: Long Description
       category:
         type_id: Type
       category_translation:
