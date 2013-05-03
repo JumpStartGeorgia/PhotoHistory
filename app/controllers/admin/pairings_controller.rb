@@ -7,11 +7,9 @@ class Admin::PairingsController < ApplicationController
   # GET /pairings
   # GET /pairings.json
   def index
-    @pairings = Pairing.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @pairings }
+      format.json { render json: PairingsDatatable.new(view_context) }
     end
   end
 
