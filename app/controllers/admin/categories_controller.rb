@@ -7,11 +7,9 @@ class Admin::CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @categories }
+      format.json { render json: CategoriesDatatable.new(view_context) }
     end
   end
 
