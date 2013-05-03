@@ -8,7 +8,7 @@
               :class => 'btn btn-primary' %>
 </div>
 
-<table class="table table-striped display" id="images-table" data-source="<%= admin_image_files_url(format: "json") %>">
+<table class="table table-striped display" id="images-datatable" data-source="<%= admin_image_files_url(:format => :json) %>">
   <thead>
     <tr>
       <th><%= model_class_trans.human_attribute_name(:name) %></th>

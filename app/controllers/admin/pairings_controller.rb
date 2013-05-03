@@ -22,6 +22,7 @@ class Admin::PairingsController < ApplicationController
 
     gon.lat = @pairing.image_file1.lat
     gon.lon = @pairing.image_file1.lon
+    gon.load_image_pairing = true
 
     respond_to do |format|
       format.html # show.html.erb

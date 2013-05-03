@@ -33,6 +33,11 @@ class ImageFile < ActiveRecord::Base
   after_save :update_watermarks
   after_commit :update_images
 
+  def self.for_datatable
+    includes(:category_district => :category_translations, :category_place => :category_translations)
+    .with_translations(I18n.locale)
+  end
+
 	def self.sorted
 		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
 	end

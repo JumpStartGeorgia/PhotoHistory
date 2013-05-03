@@ -16,8 +16,9 @@ class RootController < ApplicationController
       pairings = build_pairing_query(true)
       @pairing_count = pairings.count
       @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
-    end
 
+      gon.load_image_pairing = true
+    end
   end
 
   def about
