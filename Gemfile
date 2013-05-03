@@ -32,6 +32,7 @@ gem "useragent", :git => "https://github.com/jilion/useragent.git" # browser det
 #gem "paper_trail", "~> 2.6.3" # keep audit log of all transactions
 gem "subexec", "~> 0.2.2" # run imagemagick from command line
 gem "unidecoder", "~> 1.1.1" # convert utf8 to ascii
+gem "impressionist", "~> 1.1.1" # keep track of views
 
 # Gems used only for assets and not required
 # in production environments by default.

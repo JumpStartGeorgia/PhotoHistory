@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130423064647) do
+ActiveRecord::Schema.define(:version => 20130503181802) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -84,6 +84,30 @@ ActiveRecord::Schema.define(:version => 20130423064647) do
   add_index "image_files", ["place_id"], :name => "index_image_files_on_place_id"
   add_index "image_files", ["source"], :name => "index_image_files_on_source"
 
+  create_table "impressions", :force => true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], :name => "controlleraction_ip_index"
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], :name => "controlleraction_request_index"
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], :name => "controlleraction_session_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
+  add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
+
   create_table "pairing_translations", :force => true do |t|
     t.integer  "pairing_id"
     t.string   "locale"
@@ -110,10 +134,12 @@ ActiveRecord::Schema.define(:version => 20130423064647) do
     t.string   "stacked_img_content_type"
     t.integer  "stacked_img_file_size"
     t.datetime "stacked_img_updated_at"
+    t.integer  "impressions_count",        :default => 0
   end
 
   add_index "pairings", ["image_file1_id"], :name => "index_pairings_on_image_file1_id"
   add_index "pairings", ["image_file2_id"], :name => "index_pairings_on_image_file2_id"
+  add_index "pairings", ["impressions_count"], :name => "index_pairings_on_impressions_count"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -1,5 +1,6 @@
 # encoding: UTF-8
 class Pairing < ActiveRecord::Base
+  is_impressionable :counter_cache => true
 	translates :title, :description, :permalink
 
 	has_attached_file :thumbnail,
