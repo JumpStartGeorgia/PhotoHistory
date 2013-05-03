@@ -4,7 +4,7 @@ class PairingTranslation < ActiveRecord::Base
 
 	belongs_to :pairing
 
-  attr_accessible :pairing_id, :title, :description, :permalink, :locale
+  attr_accessible :pairing_id, :title, :description, :long_description, :permalink, :locale
 
   validates :title, :permalink, :presence => true
 # not using the permalink so turning this off

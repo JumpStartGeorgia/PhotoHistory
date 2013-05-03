@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Pairing < ActiveRecord::Base
   is_impressionable :counter_cache => true
-	translates :title, :description, :permalink
+	translates :title, :description, :permalink, :long_description
 
 	has_attached_file :thumbnail,
     :url => "/system/images/pairings/thumbnails/:id.:extension"

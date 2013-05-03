@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503181802) do
+ActiveRecord::Schema.define(:version => 20130503182119) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20130503181802) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "long_description", :limit => 16777215
   end
 
   add_index "pairing_translations", ["locale"], :name => "index_pairing_translations_on_locale"
