@@ -1,0 +1,27 @@
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+#galleriffic1, #galleriffic2 {
+
+  ul.thumbs {
+    & > li {
+      float: left;
+      display: block;
+      margin: 5px 10px;
+      padding: 2px;
+      border: 1px solid rgba(0, 0, 0, .1);
+      .transition(border .2s);
+      &.selected {
+        border: 1px solid rgba(0, 0, 0, .5);
+      }
+      a {
+        text-decoration: none;
+        display: block;
+        img {
+          display: block;
+        }
+      }
+    }
+  }
+
+}
