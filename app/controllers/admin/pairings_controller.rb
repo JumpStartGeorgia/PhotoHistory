@@ -9,7 +9,7 @@ class Admin::PairingsController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: PairingsDatatable.new(view_context) }
+      format.json { render json: PairingsDatatable.new(view_context, params[:not_published]) }
     end
   end
 

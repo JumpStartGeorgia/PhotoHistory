@@ -1,4 +1,9 @@
+var not_published = false;
 $(document).ready(function(){
+  var value = getParameterByName('not_published');
+  if (value == "true"){
+    not_published = true;
+  }
 
   $.extend( $.fn.dataTableExt.oStdClasses, {
       "sWrapper": "dataTables_wrapper form-inline"
@@ -23,7 +28,8 @@ $(document).ready(function(){
   });
 
   $('#pairings-datatable').dataTable({
-    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",    
+//    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",    
+    "sDom": "<'row-fluid'<'span5'l><'span2'<'#not_published_button'>><'span5'f>r>t<'row-fluid'<'span6'i><'span6'p>>",    
     "sPaginationType": "bootstrap",
     "bJQueryUI": true,
     "bProcessing": true,
@@ -34,8 +40,12 @@ $(document).ready(function(){
     "oLanguage": {
       "sUrl": gon.datatable_i18n_url
     },
-    "aaSorting": [[3, 'desc']]
+    "aaSorting": [[4, 'desc']],
+    "fnServerParams": function ( aoData ) {
+      aoData.push( { name: "not_published", value: not_published} );
+    }
   });
+  $("div#not_published_button").html($('#hidden_not_published_button').html());
 
   $('#categories-datatable').dataTable({
     "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",    

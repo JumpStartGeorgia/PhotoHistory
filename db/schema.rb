@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503182119) do
+ActiveRecord::Schema.define(:version => 20130508064356) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -136,11 +136,14 @@ ActiveRecord::Schema.define(:version => 20130503182119) do
     t.integer  "stacked_img_file_size"
     t.datetime "stacked_img_updated_at"
     t.integer  "impressions_count",        :default => 0
+    t.boolean  "published",                :default => false
+    t.datetime "published_date"
   end
 
   add_index "pairings", ["image_file1_id"], :name => "index_pairings_on_image_file1_id"
   add_index "pairings", ["image_file2_id"], :name => "index_pairings_on_image_file2_id"
   add_index "pairings", ["impressions_count"], :name => "index_pairings_on_impressions_count"
+  add_index "pairings", ["published"], :name => "index_pairings_on_published"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

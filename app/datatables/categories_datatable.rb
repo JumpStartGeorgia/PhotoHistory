@@ -38,7 +38,7 @@ private
 								    :data => { :confirm => I18n.t("helpers.links.confirm") },
                     :class => 'btn btn-mini btn-danger')
     x << "<br /><br />"
-    x << I18n.l(category.updated_at, :format => :short)
+    x << I18n.t('app.common.added_on', :date => I18n.l(category.created_at, :format => :short))
     return x.html_safe
   end
 
@@ -65,7 +65,7 @@ private
   end
 
   def sort_column
-    columns = %w[category_translations.name categories.type_id categories.updated_at]
+    columns = %w[category_translations.name categories.type_id categories.created_at]
     columns[params[:iSortCol_0].to_i]
   end
 
