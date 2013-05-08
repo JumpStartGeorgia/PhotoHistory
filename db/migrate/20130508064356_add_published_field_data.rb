@@ -1,6 +1,10 @@
 class AddPublishedFieldData < ActiveRecord::Migration
   def up
-    Pairing.update_all(:published => true, :published_date => Time.now)
+    Pairing.all.each do |p|
+      p.published = true
+      p.published_date = p.updated_at
+      p.save
+    end
   end
 
   def down

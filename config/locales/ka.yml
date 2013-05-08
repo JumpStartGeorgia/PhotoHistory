@@ -125,6 +125,7 @@ ka:
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
       success_created: "%{obj} შექმნილია."
       success_updated: "%{obj} განახლებულია."
+      selected_published: "%{number} selected records have been published."
   layouts:
     application:
       menu_about: შესახებ
@@ -164,8 +165,10 @@ ka:
         title: მომხმარებლის დეტალები
     pairings:
       index:
-        btn_not_published: Not Published Records Only
-        btn_all_records: All Records
+        btn_not_published: View Unpublished Records
+        btn_all_records: View All Records
+        btn_select_all: Select All
+        btn_publish_selected: Publish Selected Records
   root:
     index:
     about:

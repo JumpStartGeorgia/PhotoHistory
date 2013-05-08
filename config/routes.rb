@@ -10,11 +10,14 @@ BootstrapStarter::Application.routes.draw do
 
 		namespace :admin do
 			resources :users
-      resources :pairings
+      resources :pairings do
+        collection do 
+          put :publish
+        end
+      end
       resources :image_files
       resources :categories
 		end
-
 
     # root
 	  match '/about', :to => 'root#about', :as => :about, :via => :get

@@ -95,4 +95,23 @@ class Admin::PairingsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+  # publish the records that have the ids listed in params[:publish_ids]
+  def publish
+    x = 0
+    if params[:publish_ids].present?
+      params[:publish_ids].each do |id|
+        p = Pairing.find_by_id(id)
+        if p.present?
+          p.published = true
+          if p.save
+            x += 1
+          end
+        end
+      end
+    end
+		flash[:notice] =  t('app.msgs.selected_published', :number => x)
+		redirect_to admin_pairings_path
+  end
 end

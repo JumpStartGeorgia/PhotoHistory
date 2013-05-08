@@ -59,6 +59,12 @@ private
       x << "<div class=\"not_published\">"
       x << I18n.t('app.common.not_published')
       x << "</div>"
+      x << "<div>"
+      x << "<label>"
+      x << "<input type=\"checkbox\" name=\"publish_ids[]\" value=\"#{pairing.id}\" \>"
+      x << " Publish"
+      x << "</label>"
+      x << "</div>"
     end
     return x.html_safe
   end
