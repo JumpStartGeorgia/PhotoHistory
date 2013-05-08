@@ -1,5 +1,11 @@
 class ImageFile < ActiveRecord::Base
 	translates :name, :description, :photographer
+
+  geocoded_by :address, :latitude  => :lat, :longitude => :lon
+  reverse_geocoded_by :lat, :lon
+  def address
+    [place, district].compact.join(', ')
+  end
   
 	has_attached_file :file,
     :url => "/system/images/:id/:converted_basename_:style.:extension",
@@ -23,7 +29,6 @@ class ImageFile < ActiveRecord::Base
     :add_watermark, :event_ids, :photographer_old
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
-
 
   validates :file_file_name, :presence => true
   validates :file_file_name, :length => {:maximum => 120}

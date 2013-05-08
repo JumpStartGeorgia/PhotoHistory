@@ -17,11 +17,50 @@
       a {
         text-decoration: none;
         display: block;
+        width: 75px;
+        height: 75px;
+        overflow: hidden;
         img {
           display: block;
+          max-width: none;
         }
       }
     }
   }
 
+  .pagination {
+    padding-left: 10px;
+    span, a {
+      display: block;
+      float: left;
+      margin: 0px 6px 6px 0px;
+      padding: 3px 6px;
+      border: 1px solid #eee;
+      text-decoration: none;
+      .border-radius(1px);
+      &:not(.ellipsis):not(.current):hover {
+        background: #eee;
+      }
+      &.current {
+        cursor: default;
+        border-color: #ccc;
+        background: #eee;
+      }
+    }
+  }
+
+}
+
+#galleriffic2, #galleriffic2-image {
+  display: none;
+}
+
+.gallerific-image {
+  a {
+    text-decoration: none !important;
+    font-size: 0px;
+    cursor: default;
+  }
+  img {
+  }
 }

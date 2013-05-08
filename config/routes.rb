@@ -13,6 +13,8 @@ BootstrapStarter::Application.routes.draw do
       resources :pairings
       resources :image_files
       resources :categories
+
+	    match '/pairings/near/:id/:year', :to => 'pairings#near', :as => :pairings_near, :via => :get
 		end
 
 

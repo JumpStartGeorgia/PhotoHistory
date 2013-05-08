@@ -2,21 +2,20 @@
 	<%= f.error_messages %>
 
 
-
   <div class="row-fluid">
 
     <div class="span6">
       <div class="row-fluid">
-        <div id="galleriffic1" class="span4">
+        <div id="galleriffic1" class="span5">
           <div class="controls"></div>
           <div class="loading"></div>
           <div class="slideshow"></div>
           <div class="caption"></div>
           <div id="galleriffic1-thumbs">
             <input type="hidden" name="pairing[image_file1_id]" />
-            <ul class="thumbs">
+            <ul class="thumbs clearfix">
               <% ImageFile.sorted.each do |x| %>
-                <li data-value="<%= x.id %>">
+                <li data-value="<%= x.id %>" data-year="<%= x.year %>">
                   <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
                     <img src="<%= x.file.url(:thumb) %>" alt="<%= x.name %>" />
                   </a>
@@ -26,20 +25,20 @@
             </ul>
           </div>
         </div>
-        <div id="galleriffic1-image" class="span8"></div>
+        <div id="galleriffic1-image" class="gallerific-image span7"></div>
       </div>
     </div>
 
     <div class="span6">
       <div class="row-fluid">
-        <div id="galleriffic2" class="span4">
+        <div id="galleriffic2" class="span5">
           <div class="controls"></div>
           <div class="loading"></div>
           <div class="slideshow"></div>
           <div class="caption"></div>
           <div id="galleriffic2-thumbs">
             <input type="hidden" name="pairing[image_file2_id]" />
-            <ul class="thumbs">
+            <ul class="thumbs clearfix">
               <% ImageFile.sorted.each do |x| %>
                 <li data-value="<%= x.id %>">
                   <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
@@ -51,7 +50,7 @@
             </ul>
           </div>
         </div>
-        <div id="galleriffic2-image" class="span8"></div>
+        <div id="galleriffic2-image" class="gallerific-image span7"></div>
       </div>
     </div>
 

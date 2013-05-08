@@ -41,6 +41,8 @@ class Admin::PairingsController < ApplicationController
 			@pairing.build_image_file2
 		end
 
+    gon.get_near_url = url_for :controller => 'pairings', :action => 'near', :id => ':id', :year => ':year'
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pairing }
@@ -95,4 +97,12 @@ class Admin::PairingsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def near
+    imagefile = ImageFile.find(params[:id])
+    respond_to do |format|
+      format.json { render json: ImageFile.where("year >= ? or year IS NULL", imagefile.year).near([imagefile.lat, imagefile.lon], 0.021).map {|x| x.id } }
+    end
+  end
+
 end

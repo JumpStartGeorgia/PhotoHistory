@@ -94,6 +94,7 @@ GEM
     ffi (1.7.0)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    geocoder (1.1.8)
     globalize3 (0.2.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -237,6 +238,7 @@ DEPENDENCIES
   fancybox-rails (~> 0.1.4)
   formtastic (~> 2.1.1)
   formtastic-bootstrap!
+  geocoder
   globalize3 (~> 0.2.0)
   gon (~> 2.2.2)
   has_permalink (~> 0.1.4)
