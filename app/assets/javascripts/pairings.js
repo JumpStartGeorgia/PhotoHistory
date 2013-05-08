@@ -1,6 +1,11 @@
 $(function ()
 {
 
+  if (!$('[id*=galleriffic]').length)
+  {
+    return;
+  }
+
   var options = {
     delay:                     9e+9, // in milliseconds
     numThumbs:                 20, // The number of thumbnails to show page
