@@ -120,6 +120,7 @@ en:
       published_on: "Published on: %{date}"
       not_published: "Not Published"
       added_on: "Added on: %{date}" 
+      publish: Publish
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
