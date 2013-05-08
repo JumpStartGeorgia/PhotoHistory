@@ -35,6 +35,9 @@ ka:
         image_file1_id: პირველი გამოსახულების ფაილი
         image_file2: მეორე გამოსახულების ფაილი
         image_file2_id: მეორე გამოსახულების ფაილი
+        published_date: გამოქვეყნების თარიღი
+        published: გსურთ გამოქვეყნება?
+        is_published: გამოქვეყნდა?
       pairing_translation:
         title: Title
         description: Short Description
@@ -114,11 +117,15 @@ ka:
       app_name: ქვათა ღაღადი
       unknown_year: წელი უცნობია
       unknown_source: უცნობი
+      published_on: "Published on: %{date}"
+      not_published: გამოუქვეყნებელი
+      added_on: "Added on: %{date}" 
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
       success_created: "%{obj} შექმნილია."
       success_updated: "%{obj} განახლებულია."
+      selected_published: "%{number} selected records have been published."
   layouts:
     application:
       menu_about: შესახებ
@@ -156,6 +163,12 @@ ka:
         title: ახალი მომხმარებელი
       show:
         title: მომხმარებლის დეტალები
+    pairings:
+      index:
+        btn_not_published: View Unpublished Records
+        btn_all_records: View All Records
+        btn_select_all: Select All
+        btn_publish_selected: Publish Selected Records
   root:
     index:
     about:

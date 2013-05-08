@@ -44,7 +44,7 @@ private
 								    :data => { :confirm => I18n.t("helpers.links.confirm") },
                     :class => 'btn btn-mini btn-danger')
     x << "<br /><br />"
-    x << I18n.l(image_file.updated_at, :format => :short)
+    x << I18n.t('app.common.added_on', :date => "<br/>#{I18n.l(image_file.created_at, :format => :short)}")
     return x.html_safe
   end
 
@@ -76,7 +76,7 @@ private
   end
 
   def sort_column
-    columns = %w[image_file_translations.name image_files.year image_files.source image_file_translations.photographer category_translations.name category_translations_categories.name image_files.year image_files.year image_files.updated_at]
+    columns = %w[image_file_translations.name image_files.year image_files.source image_file_translations.photographer category_translations.name category_translations_categories.name image_files.year image_files.year image_files.created_at]
     columns[params[:iSortCol_0].to_i]
   end
 

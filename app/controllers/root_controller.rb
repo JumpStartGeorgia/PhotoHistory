@@ -3,9 +3,9 @@ class RootController < ApplicationController
   def index
     @pairing = build_pairing_query
     if params[:pairing].present?
-      @pairing = @pairing.find(params[:pairing])
+      @pairing = @pairing.published.find_by_id(params[:pairing])
     else
-      @pairing = @pairing.first
+      @pairing = @pairing.published.first
     end
 
     if @pairing.present?

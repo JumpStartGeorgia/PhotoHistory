@@ -9,7 +9,7 @@ class Admin::PairingsController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: PairingsDatatable.new(view_context) }
+      format.json { render json: PairingsDatatable.new(view_context, params[:not_published]) }
     end
   end
 
@@ -105,4 +105,22 @@ class Admin::PairingsController < ApplicationController
     end
   end
 
+
+  # publish the records that have the ids listed in params[:publish_ids]
+  def publish
+    x = 0
+    if params[:publish_ids].present?
+      params[:publish_ids].each do |id|
+        p = Pairing.find_by_id(id)
+        if p.present?
+          p.published = true
+          if p.save
+            x += 1
+          end
+        end
+      end
+    end
+		flash[:notice] =  t('app.msgs.selected_published', :number => x)
+		redirect_to admin_pairings_path
+  end
 end

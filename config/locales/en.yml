@@ -35,6 +35,9 @@ en:
         image_file1_id: 1st Image File
         image_file2: 2nd Image File
         image_file2_id: 2nd Image File
+        published_date: Publication Date
+        published: Release to Public?
+        is_published: Published?
       pairing_translation:
         title: Title
         description: Short Description
@@ -114,11 +117,15 @@ en:
       app_name: Speaking Stones
       unknown_year: Year Unknown
       unknown_source: Unknown
+      published_on: "Published on: %{date}"
+      not_published: "Not Published"
+      added_on: "Added on: %{date}" 
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
       success_created: "%{obj} was successfully created."
       success_updated: "%{obj} was successfully updated."
+      selected_published: "%{number} selected records have been published."
   layouts:
     application:
       menu_about: About
@@ -155,6 +162,12 @@ en:
         title: New User
       show:
         title: User Details
+    pairings:
+      index:
+        btn_not_published: View Unpublished Records
+        btn_all_records: View All Records
+        btn_select_all: Select All
+        btn_publish_selected: Publish Selected Records
   root:
     index:
     about:

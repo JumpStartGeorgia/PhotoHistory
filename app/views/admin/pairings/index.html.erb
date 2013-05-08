@@ -8,12 +8,28 @@
             :class => 'btn btn-primary' %>
 </div>
 
+<%= form_tag(publish_admin_pairings_path, :method => :put) do %>
+
+
+<div id="hidden_not_published_button" style="display: none;">
+  <% if params[:not_published].present? && params[:not_published] == 'true' %>
+    <%= link_to t('.btn_all_records'), url_for(params.merge(:not_published => nil)), :class => 'btn' %>
+  <% else %>
+    <%= link_to t('.btn_not_published'), url_for(params.merge(:not_published => 'true')), :class => 'btn' %>
+  <% end %>
+  <br />
+  <br />
+  <%= link_to t('.btn_select_all'), '#', :class => 'btn btn-mini', :id => 'select_all_unpublished' %>
+  <%= submit_tag t('.btn_publish_selected'), :class => 'btn btn-primary btn-mini'  %>
+</div>
+
 <table class="table table-striped display" id="pairings-datatable" data-source="<%= admin_pairings_url(:format => :json) %>">
   <thead>
     <tr>
       <th><%= model_class_trans.human_attribute_name(:title) %></th>
       <th><%= model_class.human_attribute_name(:image_file1_id) %></th>
       <th><%= model_class.human_attribute_name(:image_file2_id) %></th>
+      <th><%= model_class.human_attribute_name(:is_published) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,3 +37,4 @@
   </tbody>
 </table>
 
+<% end %>

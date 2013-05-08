@@ -17,15 +17,20 @@ class Pairing < ActiveRecord::Base
   accepts_nested_attributes_for :image_file2
   attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, :image_file1_attributes, :image_file2_attributes,
     :thumbnail, :thumbnail_content_type, :thumbnail_file_size, :thumbnail_updated_at, :thumbnail_file_name,
-    :stacked_img, :stacked_img_content_type, :stacked_img_file_size, :stacked_img_updated_at, :stacked_img_file_name
+    :stacked_img, :stacked_img_content_type, :stacked_img_file_size, :stacked_img_updated_at, :stacked_img_file_name,
+    :published, :published_date
 
-	attr_accessor :orig_file1_id, :orig_file2_id
+	attr_accessor :orig_file1_id, :orig_file2_id, :send_notification, :was_published
 
   validates :image_file1_id, :image_file2_id, :presence => true
 
-	after_find :save_original_ids
+	after_find :save_original_values
   before_save :generate_images
+  before_save :set_published_date
   after_save :delete_generated_images
+
+  scope :published, where("published = '1'")
+  scope :unpublished, where("published != '1'")
 
   def self.with_images
     includes(:image_file1, :image_file2).with_translations(I18n.locale)
@@ -52,9 +57,18 @@ class Pairing < ActiveRecord::Base
   end
 
 protected
-  def save_original_ids
+  # save values that existed when recorded was loaded
+  def save_original_values
     self.orig_file1_id = self.image_file1_id if self.has_attribute?(:image_file1_id)
     self.orig_file2_id = self.image_file2_id if self.has_attribute?(:image_file2_id)
+		self.was_published = self.has_attribute?(:published) && self.published ? true : false
+  end
+
+  # if the record was published, save the date
+  def set_published_date
+    if self.published && !self.was_published
+      self.published_date = Time.now
+    end
   end
 
   def temp_thumbnail_path
