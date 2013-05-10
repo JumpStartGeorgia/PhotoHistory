@@ -18,7 +18,7 @@ BootstrapStarter::Application.routes.draw do
       resources :image_files
       resources :categories
 
-	    match '/pairings/near/:id/:year', :to => 'pairings#near', :as => :pairings_near, :via => :get
+	    match '/pairings/near/:id/:lat/:lon', :to => 'pairings#near', :as => :pairings_near, :via => :get, :constraints => {:lon => /.+\..*/, :lat => /.+\..*/}
 		end
 
     # root

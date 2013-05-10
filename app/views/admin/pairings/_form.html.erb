@@ -15,7 +15,7 @@
             <input type="hidden" name="pairing[image_file1_id]" />
             <ul class="thumbs clearfix">
               <% ImageFile.sorted.each do |x| %>
-                <li data-value="<%= x.id %>" data-year="<%= x.year %>">
+                <li data-value="<%= x.id %>" data-href="<%= admin_pairings_near_url(:id => x.id, :lat => x.lat.to_s, :lon => x.lon.to_s) %>">
                   <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
                     <img src="<%= x.file.url(:thumb) %>" alt="<%= x.name %>" />
                   </a>
@@ -36,19 +36,7 @@
           <div class="loading"></div>
           <div class="slideshow"></div>
           <div class="caption"></div>
-          <div id="galleriffic2-thumbs">
-            <input type="hidden" name="pairing[image_file2_id]" />
-            <ul class="thumbs clearfix">
-              <% ImageFile.sorted.each do |x| %>
-                <li data-value="<%= x.id %>">
-                  <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
-                    <img src="<%= x.file.url(:thumb) %>" alt="<%= x.name %>" />
-                  </a>
-                  <!--<div class="caption"></div>-->
-                </li>
-              <% end %>
-            </ul>
-          </div>
+          <div id="galleriffic2-thumbs"></div>
         </div>
         <div id="galleriffic2-image" class="gallerific-image span7"></div>
       </div>

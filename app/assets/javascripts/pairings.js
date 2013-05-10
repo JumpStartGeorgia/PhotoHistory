@@ -6,7 +6,11 @@ $(function ()
     return;
   }
 
-  var options = {
+  window.gf = {
+    stepsCount: 0
+  };
+
+  gf.options1 = {
     delay:                       9e+9, // in milliseconds
     numThumbs:                   9, // The number of thumbnails to show page
     preloadAhead:                40, // Set to -1 to preload all images
@@ -40,6 +44,10 @@ $(function ()
     onImageRemoved:               undefined  // accepts a delegate like such: function(imageData, $li) { ... }
   };
 
+  gf.options2 = Object.create(gf.options1);
+  gf.options2.imageContainerSel = '#galleriffic2-image';
+  gf.options2.onSlideChange = slideChange2;
+
   function slideChange1 (prev, index)
   {
     var el = this.find('ul.thumbs > li').eq(index);
@@ -48,23 +56,20 @@ $(function ()
     var year = el.data('year');
     input.val(id);
 
-    window.gallerifficStepsCount || (window.gallerifficStepsCount = 0);
-    window.gallerifficStepsCount ++;
-    if (window.gallerifficStepsCount > 1)
+    gf.stepsCount ++;
+    if (gf.stepsCount > 1)
     {
-      // getting images near selected one
-      $.getJSON(gon.get_near_url.replace('/:id', '/' + id).replace('/:year', '/' + year), function (resp)
+      if (gf.ajax != undefined)
       {
-        $('#galleriffic2 ul.thumbs > li').show().each(function ()
-        {
-          if ($.inArray($(this).data('value'), resp) === -1)
-          {
-            $(this).hide();
-          }
-        });
-      })
+        gf.ajax.abort();
+      }
+      gf.ajax = $.get(el.data('href'), function (resp)
+      {
+        $('#galleriffic2-thumbs').replaceWith(resp);
+        $('#galleriffic2-thumbs').galleriffic(gf.options2);
+      });
     }
-    if (window.gallerifficStepsCount == 2)
+    if (gf.stepsCount == 2)
     {
       $('#galleriffic2, #galleriffic2-image').fadeIn('fast');
     }
@@ -77,9 +82,7 @@ $(function ()
     input.val(el.data('value'));
   }
 
-  var gallery1 = $('#galleriffic1-thumbs').galleriffic(options);
-  options.imageContainerSel = '#galleriffic2-image';
-  options.onSlideChange = slideChange2;
-  var gallery2 = $('#galleriffic2-thumbs').galleriffic(options);
+  var gallery1 = $('#galleriffic1-thumbs').galleriffic(gf.options1);
+//var gallery2 = $('#galleriffic2-thumbs').galleriffic(gf.options2);
 
 });
