@@ -39,6 +39,7 @@
       <div class="file control-group optional" id="image_file1_file_input">
         <label class=" control-label" for="image_file1_file">
           <%= model_class_if.human_attribute_name(:file) %>
+          <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
         <div class="controls">  
           <input id="image_file1_file" name="image_file1[file]" type="file" />
@@ -103,6 +104,7 @@
       <div class="file control-group optional" id="image_file2_file_input">
         <label class=" control-label" for="image_file2_file">
           <%= model_class_if.human_attribute_name(:file) %>
+          <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
         <div class="controls">
           <input id="image_file2_file" name="image_file2[file]" type="file" />
@@ -168,7 +170,7 @@
       <div class="string control-group required stringish" id="pairing_pairing_translations_attributes_<%=locale_index%>_title_input">
         <label class=" control-label" for="pairing_pairing_translations_attributes_<%=locale_index%>_title">
           <%= model_class_pt.human_attribute_name(:title) %>
-          <abbr title="required">*</abbr>
+          <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
         <div class="controls">
           <input id="pairing_pairing_translations_attributes_<%=locale_index%>_title" maxlength="255" name="pairing[pairing_translations_attributes][<%=locale_index%>][title]" size="75" type="text">
