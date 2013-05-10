@@ -36,6 +36,10 @@ class Admin::ImageFilesController < ApplicationController
 		end
 
     gon.edit_image_file = true
+  
+    # initialize lat/lon
+    @image_file.lat = gon.edit_lat
+    @image_file.lon = gon.edit_lon
 
     respond_to do |format|
       format.html # new.html.erb

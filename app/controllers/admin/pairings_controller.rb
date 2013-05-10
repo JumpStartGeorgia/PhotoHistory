@@ -35,10 +35,10 @@ class Admin::PairingsController < ApplicationController
 
     # create the translation object for the locales that were selected
 	  # so the form will properly create all of the nested form fields
+		@pairing.build_image_file1
+		@pairing.build_image_file2
 		I18n.available_locales.each do |locale|
 			@pairing.pairing_translations.build(:locale => locale.to_s)
-			@pairing.build_image_file1
-			@pairing.build_image_file2
 		end
 
     respond_to do |format|
@@ -114,4 +114,28 @@ class Admin::PairingsController < ApplicationController
 		flash[:notice] =  t('app.msgs.selected_published', :number => x)
 		redirect_to admin_pairings_path
   end
+
+  def full_form
+    @pairing = Pairing.new
+
+    # create the translation object for the locales that were selected
+	  # so the form will properly create all of the nested form fields
+		@pairing.build_image_file1
+    @pairing.image_file1.lat = gon.edit_lat
+    @pairing.image_file1.lon = gon.edit_lon
+		@pairing.build_image_file2
+		I18n.available_locales.each do |locale|
+			@pairing.pairing_translations.build(:locale => locale.to_s)
+      @pairing.image_file1.image_file_translations.build(:locale => locale.to_s)
+      @pairing.image_file2.image_file_translations.build(:locale => locale.to_s)
+		end
+
+    gon.edit_image_file = true
+
+    respond_to do |format|
+      format.html # full_form.html.erb
+      format.json { render json: @pairing }
+    end
+  end
+
 end
