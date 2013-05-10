@@ -71,7 +71,7 @@ ka:
       existing_file: არსებული ფაილის ნახვა
       next: შემდეგი
       previous: წინა
-      upload_pairing: Upload New Pairing
+      upload_pairing: ახალი წყვილის ატვირთვა
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
@@ -172,7 +172,7 @@ ka:
         btn_select_all: ყველას არჩევა
         btn_publish_selected: არჩეული ჩანაწერების გამოქვეყნება
       upload:
-        title: Upload New Pairing
+        title: ახალი წყვილის ატვირთვა
   root:
     index:
     about:
