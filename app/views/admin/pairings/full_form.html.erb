@@ -5,33 +5,6 @@
 <%= semantic_form_for([:admin,@pairing], :url => full_form_admin_pairings_path, :html => { :class => 'form-horizontal' }, :method => :put) do |f| %>
 	<%= f.error_messages %>
 
-  <% @pairing.pairing_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
-		<%= f.fields_for :pairing_translations, trans do |translation| %>
-
-			<div id="form-<%= trans.locale %>" class="multilanguage">
-				<h3><%= t("app.language.#{trans.locale}") %></h3>
-
-				<%= translation.input :title, :input_html => {:size => 75} %>
-
-        <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_photographer_input">
-          <label class=" control-label" for="pairing_image_file1_image_file_translations_attributes_<%=locale_index%>_photographer">
-            <%= model_class_ift.human_attribute_name(:photographer) %>
-          </label>
-          <div class="controls">
-            <input id="pairing_image_file1_image_file_translations_attributes_<%=locale_index%>_photographer" maxlength="255" name="pairing[image_file1][image_file_translations_attributes][<%=locale_index%>][photographer]" size="75" type="text" value="">
-          </div>
-        </div>
-
-				<%= translation.input :description, :input_html => {:rows => 4} %>
-				<%= translation.input :long_description, :input_html => {:rows => 4} %>
-				<%= translation.hidden_field :locale , :value => trans.locale %>
-			</div>
-
-		<% end %>
-	<% end %>
-
-  <hr />
-
 	<%= f.fields_for :image_file, @pairing.image_file1 do |img_file1| %>
 
 		<div>
@@ -82,6 +55,23 @@
           </label>
         </div>
       </div>
+
+      <% @pairing.image_file1.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
+		    <div id="form-<%= trans.locale %>" class="multilanguage">
+			    <h3><%= t("app.language.#{trans.locale}") %></h3>
+
+          <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_photographer_input">
+            <label class=" control-label" for="pairing_image_file1_image_file_translations_attributes_<%=locale_index%>_photographer">
+              <%= model_class_ift.human_attribute_name(:photographer) %>
+            </label>
+            <div class="controls">
+              <input id="pairing_image_file1_image_file_translations_attributes_<%=locale_index%>_photographer" maxlength="255" name="pairing[image_file1][image_file_translations_attributes][<%=locale_index%>][photographer]" size="75" type="text" value="">
+              <input id="pairing_pairing_translations_attributes_<%=locale_index%>_locale" name="pairing[image_file1][image_file_translations_attributes][<%=locale_index%>][locale]" type="hidden" value="<%=trans.locale%>">
+            </div>
+          </div>
+		    </div>
+	    <% end %>
+
 		</div>
 	<% end %>
 
@@ -137,10 +127,46 @@
           </label>
         </div>
       </div>
+
+      <% @pairing.image_file2.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
+		    <div id="form-<%= trans.locale %>" class="multilanguage">
+			    <h3><%= t("app.language.#{trans.locale}") %></h3>
+
+          <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_photographer_input">
+            <label class=" control-label" for="pairing_image_file2_image_file_translations_attributes_<%=locale_index%>_photographer">
+              <%= model_class_ift.human_attribute_name(:photographer) %>
+            </label>
+            <div class="controls">
+              <input id="pairing_image_file2_image_file_translations_attributes_<%=locale_index%>_photographer" maxlength="255" name="pairing[image_file2][image_file_translations_attributes][<%=locale_index%>][photographer]" size="75" type="text" value="">
+              <input id="pairing_pairing_translations_attributes_<%=locale_index%>_locale" name="pairing[image_file2][image_file_translations_attributes][<%=locale_index%>][locale]" type="hidden" value="<%=trans.locale%>">
+            </div>
+          </div>
+		    </div>
+	    <% end %>
+
 		</div>
+
 	<% end %>
 
   <hr />
+
+  <% @pairing.pairing_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
+		<%= f.fields_for :pairing_translations, trans do |translation| %>
+
+			<div id="form-<%= trans.locale %>" class="multilanguage">
+				<h3><%= t("app.language.#{trans.locale}") %></h3>
+
+				<%= translation.input :title, :input_html => {:size => 75} %>
+				<%= translation.input :description, :input_html => {:rows => 4} %>
+				<%= translation.input :long_description, :input_html => {:rows => 4} %>
+				<%= translation.hidden_field :locale , :value => trans.locale %>
+			</div>
+
+		<% end %>
+	<% end %>
+
+  <hr />
+
 	<%= f.fields_for :image_file, @pairing.image_file1 do |img_file1| %>
 
 		<div class="control-group">
