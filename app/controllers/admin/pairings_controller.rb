@@ -115,7 +115,7 @@ class Admin::PairingsController < ApplicationController
 		redirect_to admin_pairings_path
   end
 
-  def full_form
+  def upload
     @pairing = Pairing.new
     @image_file1 = ImageFile.new
     @image_file2 = ImageFile.new

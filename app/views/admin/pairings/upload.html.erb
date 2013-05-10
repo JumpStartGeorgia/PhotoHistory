@@ -3,7 +3,9 @@
 <%- model_class_if = ImageFile -%>
 <%- model_class_ift = ImageFileTranslation -%>
 
-<%= form_tag(full_form_admin_pairings_path, :method => :put, :class => 'form-horizontal formtastic', :multipart => true) do %>
+<% title t '.title' %>
+
+<%= form_tag(upload_admin_pairings_path, :method => :put, :class => 'form-horizontal formtastic', :multipart => true) do %>
 
     <% if @error_count && @error_count > 0 %>
 
