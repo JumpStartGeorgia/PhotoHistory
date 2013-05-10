@@ -15,6 +15,9 @@ class ImageFile < ActiveRecord::Base
   belongs_to :category_district, :class_name => 'Category', :foreign_key => 'district_id'
   belongs_to :category_place, :class_name => 'Category', :foreign_key => 'place_id'
 
+  has_many :pairing1s, :class_name => 'Pairing', :foreign_key => 'image_file1_id'
+  has_many :pairing2s, :class_name => 'Pairing', :foreign_key => 'image_file1_id'
+
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
     :year, :lat, :lon, 
@@ -43,11 +46,11 @@ class ImageFile < ActiveRecord::Base
 	end
 
   def self.distinct_district_ids
-    select("distinct district_id").where("district_id is not null").map{|x| x.district_id}
+    joins(:pairing1s).select("distinct image_files.district_id").where("image_files.district_id is not null and pairings.published = 1").map{|x| x.district_id}
   end
   
   def self.distinct_place_ids
-    select("distinct place_id").where("place_id is not null").map{|x| x.place_id}
+    joins(:pairing1s).select("distinct image_files.place_id").where("image_files.place_id is not null and pairings.published = 1").map{|x| x.place_id}
   end
   
   def year_formatted

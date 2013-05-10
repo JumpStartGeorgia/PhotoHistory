@@ -39,7 +39,6 @@ class Pairing < ActiveRecord::Base
     .order("if(isnull(image_files.year), 1,0) asc, image_files.year asc, pairing_translations.title asc")
   end
 
-
   # recreate the images for all pairings
   def self.recreate_images
     Pairing.all.each do |p|
