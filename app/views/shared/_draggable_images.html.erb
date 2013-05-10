@@ -64,46 +64,49 @@
         <h1><%= @pairing.title %></h1>
       </div>
       <div class="span6">
-        <%
-          fb_img_url = full_url(image_path('share_photo.jpg'))
-          if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
-	          fb_img_url = full_url(@pairing.thumbnail.url)
-          end
-          pin_img_url = fb_img_url
-          if @pairing.present? && @pairing.stacked_img.present? && @pairing.stacked_img_file_name.present? 
-	          pin_img_url = full_url(@pairing.stacked_img.url)
-          end
+        <% if params[:controller] == "root" && params[:action] == "index" %>
 
-          share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
-        %>
-        <div>
-          <span class='st_fblike_hcount' displayText='Facebook' 
-            st_url="<%= current_url_no_querystring %>" 
-            st_image="<%= fb_img_url %>"
-            st_summary="<%= share_summary %>"
-          >
-          </span>
-          <span class='st_twitter_hcount' displayText='Tweet' 
-            st_url="<%= current_url_no_querystring %>"
-            st_image="<%= fb_img_url %>"
-            st_summary="<%= share_summary %>"
-          >
-          </span>
-        </div>
-        <div>
-          <span class='st_pinterest_hcount' displayText='Pinterest' 
-            st_url="<%= current_url_no_querystring %>" 
-            st_image="<%= pin_img_url %>"
-            st_summary="<%= share_summary %>"
-          >
-          </span>
-          <span class='st_sharethis_hcount' displayText='Share' 
-            st_url="<%= current_url_no_querystring %>" 
-            st_image="<%= pin_img_url %>"
-            st_summary="<%= share_summary %>"
-          >
-          </span>
-        </div>
+          <%
+            fb_img_url = full_url(image_path('share_photo.jpg'))
+            if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
+	            fb_img_url = full_url(@pairing.thumbnail.url)
+            end
+            pin_img_url = fb_img_url
+            if @pairing.present? && @pairing.stacked_img.present? && @pairing.stacked_img_file_name.present? 
+	            pin_img_url = full_url(@pairing.stacked_img.url)
+            end
+
+            share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
+          %>
+          <div>
+            <span class='st_fblike_hcount' displayText='Facebook' 
+              st_url="<%= current_url_no_querystring %>" 
+              st_image="<%= fb_img_url %>"
+              st_summary="<%= share_summary %>"
+            >
+            </span>
+            <span class='st_twitter_hcount' displayText='Tweet' 
+              st_url="<%= current_url_no_querystring %>"
+              st_image="<%= fb_img_url %>"
+              st_summary="<%= share_summary %>"
+            >
+            </span>
+          </div>
+          <div>
+            <span class='st_pinterest_hcount' displayText='Pinterest' 
+              st_url="<%= current_url_no_querystring %>" 
+              st_image="<%= pin_img_url %>"
+              st_summary="<%= share_summary %>"
+            >
+            </span>
+            <span class='st_sharethis_hcount' displayText='Share' 
+              st_url="<%= current_url_no_querystring %>" 
+              st_image="<%= pin_img_url %>"
+              st_summary="<%= share_summary %>"
+            >
+            </span>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -181,19 +184,22 @@
 
         <div id="image_comments">
           <h3><%= t('.comment_header') %></h3>
-          <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="457"></div>
+          <% if params[:controller] == "root" && params[:action] == "index" %>
+            <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="457"></div>
+          <% end %>
         </div>
       </div>
       <div class="span6" id="map_container">
         <div id="map"></div>    
-
-        <div id="fb-popup-like-box">
-          <div id="fb-popup-like-box-container">
-            <h2><%= t('.fb_popup_header') %></h2>
-            <p><%= t('.fb_popup_text') %></p>
-              <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/feradi.info&amp;width=450&amp;height=185&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23fff&amp;header=false" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+        <% if params[:controller] == "root" && params[:action] == "index" %>
+          <div id="fb-popup-like-box">
+            <div id="fb-popup-like-box-container">
+              <h2><%= t('.fb_popup_header') %></h2>
+              <p><%= t('.fb_popup_text') %></p>
+                <iframe id="fb_iframe" src="//www.facebook.com/plugins/likebox.php?href=http://www.facebook.com/feradi.info&amp;width=450&amp;height=185&amp;show_faces=true&amp;colorscheme=light&amp;stream=false&amp;border_color=%23fff&amp;header=false" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

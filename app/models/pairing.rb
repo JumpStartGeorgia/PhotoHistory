@@ -13,9 +13,7 @@ class Pairing < ActiveRecord::Base
   belongs_to :image_file2, :class_name => 'ImageFile', :foreign_key => 'image_file2_id'
 
   accepts_nested_attributes_for :pairing_translations
-  accepts_nested_attributes_for :image_file1
-  accepts_nested_attributes_for :image_file2
-  attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, :image_file1_attributes, :image_file2_attributes,
+  attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, 
     :thumbnail, :thumbnail_content_type, :thumbnail_file_size, :thumbnail_updated_at, :thumbnail_file_name,
     :stacked_img, :stacked_img_content_type, :stacked_img_file_size, :stacked_img_updated_at, :stacked_img_file_name,
     :published, :published_date
