@@ -83,6 +83,10 @@ $(function ()
   }
 
   var gallery1 = $('#galleriffic1-thumbs').galleriffic(gf.options1);
-//var gallery2 = $('#galleriffic2-thumbs').galleriffic(gf.options2);
+  if ($('#galleriffic2-thumbs .thumbs > li').length)
+  {
+    $('#galleriffic2, #galleriffic2-image').show();
+    var gallery2 = $('#galleriffic2-thumbs').galleriffic(gf.options2);
+  }
 
 });

@@ -41,6 +41,8 @@ class Admin::PairingsController < ApplicationController
 			@pairing.build_image_file2
 		end
 
+    @imagefiles = ImageFile.sorted
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pairing }
@@ -50,6 +52,8 @@ class Admin::PairingsController < ApplicationController
   # GET /pairings/1/edit
   def edit
     @pairing = Pairing.find(params[:id])
+
+    @imagefiles = [@pairing.image_file1] + ImageFile.sorted.where('image_files.id != ?', @pairing.image_file1_id)
   end
 
   # POST /pairings
