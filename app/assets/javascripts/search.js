@@ -46,8 +46,17 @@ $(document).ready(function(){
       aoData.push( { name: "not_published", value: not_published} );
     }
   });
+
   // add the published button to the header
-  $("div#not_published_button").html($('#hidden_not_published_button').html());
+  function load_html_into_button ()
+  {
+    if ($("div#not_published_button").length)
+      $("div#not_published_button").html($('#hidden_not_published_button').html());
+    else
+      setTimeout(load_html_into_button, 25);
+  }
+  load_html_into_button();
+
   // select all checkboxes
   $('a#select_all_unpublished').click(function(){
     $('input', pairing_dt.fnGetNodes()).attr('checked', 'checked');
