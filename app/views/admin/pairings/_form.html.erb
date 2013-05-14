@@ -40,13 +40,14 @@
           <% if !@pairing.id.nil? %>
             <input type="hidden" name="pairing[image_file2_id]" value="<%= @pairing.image_file2_id %>" />
             <ul class="thumbs clearfix">
-              <% x = @pairing.image_file2 %>
-              <li data-value="<%= x.id %>">
-                <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
-                  <img src="<%= x.file.url(:thumb) %>" alt="<%= x.name %>" />
-                </a>
-                <!--<div class="caption"></div>-->
-              </li>
+              <% @imagefiles2.each do |x| %>
+                <li data-value="<%= x.id %>">
+                  <a class="thumb" name="<%= x.name %>" href="<%= x.file.url(:large) %>" title="<%= x.name %>">
+                    <img src="<%= x.file.url(:thumb) %>" alt="<%= x.name %>" />
+                  </a>
+                  <!--<div class="caption"></div>-->
+                </li>
+              <% end %>
             </ul>
           <% end %>
           </div>

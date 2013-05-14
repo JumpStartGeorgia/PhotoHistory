@@ -39,9 +39,9 @@ ka:
         published: გსურთ გამოქვეყნება?
         is_published: გამოქვეყნდა?
       pairing_translation:
-        title: Title
-        description: Short Description
-        long_description: Long Description
+        title: სათაური
+        description: მოკლე აღწერა
+        long_description: გრძელი აღწერა
       category:
         type_id: ტიპი
       category_translation:
@@ -71,6 +71,7 @@ ka:
       existing_file: არსებული ფაილის ნახვა
       next: შემდეგი
       previous: წინა
+      upload_pairing: ახალი წყვილის ატვირთვა
     titles:
       new: "ახალი %{model}"
       edit: "შეცვლა %{model}"
@@ -117,15 +118,16 @@ ka:
       app_name: ქვათა ღაღადი
       unknown_year: წელი უცნობია
       unknown_source: უცნობი
-      published_on: "Published on: %{date}"
+      published_on: "გამოქვეყნებულია: %{date}"
       not_published: გამოუქვეყნებელი
-      added_on: "Added on: %{date}" 
+      added_on: "დამატებულია: %{date}" 
+      publish: გამოქვეყნება
     msgs:
       does_not_exist: თქვენ ცდილობთ იხილოთ გვერდი, რომელიც არ არსებობს.
       not_authorized: თქვენ არ გაქვთ უფლება იხილოთ ეს გვერდი.
       success_created: "%{obj} შექმნილია."
       success_updated: "%{obj} განახლებულია."
-      selected_published: "%{number} selected records have been published."
+      selected_published: "%{number} არჩეული ჩანაწერები გამოქვეყნდა."
   layouts:
     application:
       menu_about: შესახებ
@@ -165,10 +167,12 @@ ka:
         title: მომხმარებლის დეტალები
     pairings:
       index:
-        btn_not_published: View Unpublished Records
-        btn_all_records: View All Records
-        btn_select_all: Select All
-        btn_publish_selected: Publish Selected Records
+        btn_not_published: გამოუქვეყნებელი ჩანაწერების ნახვა
+        btn_all_records: ყველა ჩანაწერის ნახვა
+        btn_select_all: ყველას არჩევა
+        btn_publish_selected: არჩეული ჩანაწერების გამოქვეყნება
+      upload:
+        title: ახალი წყვილის ატვირთვა
   root:
     index:
     about:
@@ -184,4 +188,3 @@ ka:
       right_image: მარჯვენა სურათი
       fb_popup_header: მოიწონეთ ჩვენი გვერდი! 
       fb_popup_text: "შეიტყვეთ სიახლეები \"ქვათა ღაღადის\" და სხვა ვიზუალიზაციების შესახებ!"
-
