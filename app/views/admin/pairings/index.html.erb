@@ -6,6 +6,10 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_admin_pairing_path,
             :class => 'btn btn-primary' %>
+
+<%= link_to t("helpers.links.upload_pairing"),
+            upload_admin_pairings_path,
+            :class => 'btn btn-primary' %>
 </div>
 
 <%= form_tag(publish_admin_pairings_path, :method => :put) do %>

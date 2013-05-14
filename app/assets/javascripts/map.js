@@ -38,6 +38,8 @@ $(function()
         coords = e.target.getLatLng();
         $('#image_file_lat').attr('value', coords.lat);
         $('#image_file_lon').attr('value', coords.lng);
+        $('#image_file1_lat').attr('value', coords.lat);
+        $('#image_file1_lon').attr('value', coords.lng);
     });
   }
 });

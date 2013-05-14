@@ -61,8 +61,8 @@ private
       x << "</div>"
       x << "<div>"
       x << "<label>"
-      x << "<input type=\"checkbox\" name=\"publish_ids[]\" value=\"#{pairing.id}\" \>"
-      x << " Publish"
+      x << "<input type=\"checkbox\" name=\"publish_ids[]\" value=\"#{pairing.id}\" \> "
+      x << I18n.t('app.common.publish')
       x << "</label>"
       x << "</div>"
     end

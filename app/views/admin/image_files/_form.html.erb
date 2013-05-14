@@ -1,3 +1,4 @@
+<%- model_class_if = ImageFile -%>
 <%= semantic_form_for([:admin,@image_file], :html => { :class => 'form-horizontal' }) do |f| %>
 	<%= f.error_messages %>
 
@@ -11,6 +12,8 @@
 		<%= f.input :year, :as => :string, :input_html => {:size => 5, :maxlength => 4} %>
 		<%= f.input :source, :input_html => {:size => 75} %>
 		<%= f.input :add_watermark, :as => :radio %>
+
+    <hr />
 
     <% @image_file.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
 		  <%= f.fields_for :image_file_translations, trans do |translation| %>
@@ -27,19 +30,26 @@
 		  <% end %>
 	  <% end %>
 
+    <hr />
+
 		<div class="control-group">
 			<div class="controls">
         <div id="map_get_latlon"></div>    
 			</div>
 		</div>
     
-		<%= f.input :lat, :as => :string, :input_html => {:size => 20, :maxlength => 15} %>
-		<%= f.input :lon, :as => :string, :input_html => {:size => 20, :maxlength => 15} %>
+		<%= f.hidden_field :lat  %>
+		<%= f.hidden_field :lon %>
+
+    <hr />
+
 		<%= f.input :district_id, :as => :select, :collection => @districts.map{|x| [x.name, x.id]} %>
 		<%= f.input :place_id, :as => :select, :collection => @places.map{|x| [x.name, x.id]} %>
 
     <div class="check_boxes control-group optional" id="image_file_events_input">
-      <label class=" control-label"><%= t('activerecords.attributes.image_file.events') %></label>
+      <label class=" control-label">
+        <%= model_class_if.human_attribute_name(:events) %>
+      </label>
       <input id="image_file_events_none" name="image_file[event_ids][]" type="hidden" value="">
       <div class="choices controls">
         <% @events.each do |event| %>

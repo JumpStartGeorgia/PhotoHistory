@@ -13,12 +13,10 @@ class Pairing < ActiveRecord::Base
   belongs_to :image_file2, :class_name => 'ImageFile', :foreign_key => 'image_file2_id'
 
   accepts_nested_attributes_for :pairing_translations
-  accepts_nested_attributes_for :image_file1
-  accepts_nested_attributes_for :image_file2
-  attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, :image_file1_attributes, :image_file2_attributes,
+  attr_accessible :image_file1_id, :image_file2_id, :pairing_translations_attributes, 
     :thumbnail, :thumbnail_content_type, :thumbnail_file_size, :thumbnail_updated_at, :thumbnail_file_name,
     :stacked_img, :stacked_img_content_type, :stacked_img_file_size, :stacked_img_updated_at, :stacked_img_file_name,
-    :published, :published_date
+    :published, :published_date, :impressions_count
 
 	attr_accessor :orig_file1_id, :orig_file2_id, :send_notification, :was_published
 
@@ -40,7 +38,6 @@ class Pairing < ActiveRecord::Base
     joins(:image_file1, :pairing_translations).where(:pairing_translations => {:locale => I18n.locale})
     .order("if(isnull(image_files.year), 1,0) asc, image_files.year asc, pairing_translations.title asc")
   end
-
 
   # recreate the images for all pairings
   def self.recreate_images

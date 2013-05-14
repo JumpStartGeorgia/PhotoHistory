@@ -13,6 +13,8 @@ BootstrapStarter::Application.routes.draw do
       resources :pairings do
         collection do 
           put :publish
+          get :upload
+          put :upload
         end
       end
       resources :image_files

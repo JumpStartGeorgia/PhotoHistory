@@ -49,9 +49,9 @@ protected
 
   def build_pairing_query(ids_only=false)
     if ids_only
-      pairings = Pairing.select("pairings.id").sorted
+      pairings = Pairing.published.select("pairings.id").sorted
     else
-      pairings = Pairing.with_images.sorted
+      pairings = Pairing.published.with_images.sorted
     end
 
     # add district
@@ -96,7 +96,7 @@ protected
     pairings = build_pairing_query(true)
     
     # get the pairing that was showing
-    pairing = Pairing.find_by_id(params[:id])
+    pairing = Pairing.published.find_by_id(params[:id])
 		record_id = nil
 
 		if pairings.present? && pairing.present?

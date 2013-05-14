@@ -71,6 +71,7 @@ en:
       existing_file: View Existing File
       next: Next
       previous: Previous
+      upload_pairing: Upload New Pairing
     titles:
       new: "New %{model}"
       edit: "Edit %{model}"
@@ -120,6 +121,7 @@ en:
       published_on: "Published on: %{date}"
       not_published: "Not Published"
       added_on: "Added on: %{date}" 
+      publish: Publish
     msgs:
       does_not_exist: You tried to access a page that does not exist.
       not_authorized: You are not authorized to view that page.
@@ -168,6 +170,8 @@ en:
         btn_all_records: View All Records
         btn_select_all: Select All
         btn_publish_selected: Publish Selected Records
+      upload:
+        title: Upload New Pairing
   root:
     index:
     about:
