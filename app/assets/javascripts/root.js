@@ -3,7 +3,7 @@ $(function()
 
   window.draggable_ratio = .5;
 
-  function recreate_draggable ()
+  window.recreate_draggable = function ()
   {
     if (gon.load_image_pairing){
       var el = $('.draggable');
@@ -44,7 +44,8 @@ $(function()
         //console.log('left');
           if ($('.controls.left a').length)
           {
-            $('.controls.left a').get(0).click();
+          //$('.controls.left a').get(0).click();
+            $('.controls.left a').click();
           }
           break;
         case 38:
@@ -54,7 +55,8 @@ $(function()
         //console.log('right');
           if ($('.controls.right a').length)
           {
-            $('.controls.right a').get(0).click();
+          //$('.controls.right a').get(0).click();
+            $('.controls.right a').click();
           }
           break;
         case 40:

@@ -21,7 +21,14 @@ class RootController < ApplicationController
 
 		  respond_to do |format|
 		    format.html # index.html.erb
-		    format.json { render json: @pairing }
+		   #format.json { render json: @pairing }
+		    format.json {
+		      render json: {
+		        :pairing => @pairing,
+		        :url => "#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?'),
+		        :image_urls => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)]
+	        }
+        }
 		  end
 
       # update the view count
@@ -94,7 +101,7 @@ protected
   def next_previous(type)
 		# get a list of pairings ids in correct order
     pairings = build_pairing_query(true)
-    
+
     # get the pairing that was showing
     pairing = Pairing.published.find_by_id(params[:id])
 		record_id = nil
@@ -126,6 +133,7 @@ protected
 			if record_id 
 			  # found next record, go to it
         @param_options[:pairing] = record_id
+        @param_options[:format] = params[:format]
         redirect_to root_path(@param_options)
         return
       end

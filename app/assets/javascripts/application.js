@@ -14,6 +14,7 @@
 //= require dataTables/jquery.dataTables.bootstrap
 //= require jquery.ui.touch-punch.min
 //= require jquery.galleriffic
+//= require jquery.history
 //= require fancybox
 //= require fancybox2
 //= require vendor
