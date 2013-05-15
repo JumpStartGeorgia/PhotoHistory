@@ -44,6 +44,7 @@
           {
             $('img.layer1 ').attr('src', resp.image_urls[0]);
             $('.layer2 img').attr('src', resp.image_urls[1]);
+            window.draggable_ratio = 0.5;
             recreate_draggable();
             content_status.loaded();
           }
