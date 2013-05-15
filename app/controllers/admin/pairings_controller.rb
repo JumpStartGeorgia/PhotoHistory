@@ -41,7 +41,7 @@ class Admin::PairingsController < ApplicationController
 			@pairing.pairing_translations.build(:locale => locale.to_s)
 		end
 
-    @imagefiles = ImageFile.sorted
+    @imagefiles = ImageFile.recent
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,7 +53,7 @@ class Admin::PairingsController < ApplicationController
   def edit
     @pairing = Pairing.find(params[:id])
 
-    imagefiles_except_selected = ImageFile.where('image_files.id != ?', @pairing.image_file1_id)
+    imagefiles_except_selected = ImageFile.recent.where('image_files.id != ?', @pairing.image_file1_id)
     @imagefiles  = [@pairing.image_file1] + imagefiles_except_selected
     @imagefiles2 = [@pairing.image_file2] + imagefiles_except_selected.where('image_files.id != ?', @pairing.image_file2_id).near([@pairing.image_file1.lat, @pairing.image_file1.lon], 0.05, :units => :km)
   end
@@ -103,7 +103,7 @@ class Admin::PairingsController < ApplicationController
   end
 
   def near
-    @imagefiles = ImageFile.where('id != ?', params[:id]).near([params[:lat], params[:lon]], 0.05, :units => :km)
+    @imagefiles = ImageFile.where('image_files.id != ?', params[:id]).near([params[:lat], params[:lon]], 0.05, :units => :km)
     respond_to do |format|
       format.html { render :partial => 'near' }
      #format.json { render json: ImageFile.near([imagefile.lat, imagefile.lon], 0.25, :units => :km).map {|x| x.id } }

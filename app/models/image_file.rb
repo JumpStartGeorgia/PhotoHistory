@@ -50,6 +50,10 @@ class ImageFile < ActiveRecord::Base
 		with_translations(I18n.locale).order("image_file_translations.name asc, image_files.year asc")
 	end
 
+  def self.recent
+    with_translations(I18n.locale).order("image_files.created_at desc, image_file_translations.name asc, image_files.year asc")
+  end
+
   def self.distinct_district_ids
     joins(:pairing1s).select("distinct image_files.district_id").where("image_files.district_id is not null and pairings.published = 1").map{|x| x.district_id}
   end
