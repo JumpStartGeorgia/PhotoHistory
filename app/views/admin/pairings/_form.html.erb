@@ -1,3 +1,5 @@
+<%- model_class = Pairing -%>
+
 <%= semantic_form_for([:admin,@pairing], :html => { :class => 'form-horizontal' }) do |f| %>
 	<%= f.error_messages %>
 
@@ -5,6 +7,7 @@
   <div class="row-fluid">
 
     <div class="span6">
+      <h2><%= model_class.human_attribute_name(:image_file1_id) %></h2>
       <div class="row-fluid">
         <div id="galleriffic1" class="span5">
           <div class="controls"></div>
@@ -30,6 +33,7 @@
     </div>
 
     <div class="span6">
+      <h2><%= model_class.human_attribute_name(:image_file2_id) %></h2>
       <div class="row-fluid">
         <div id="galleriffic2" class="span5">
           <div class="controls"></div>
