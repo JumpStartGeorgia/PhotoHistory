@@ -53,8 +53,8 @@ class Admin::PairingsController < ApplicationController
   def edit
     @pairing = Pairing.find(params[:id])
 
-    imagefiles_except_selected = ImageFile.recent.where('image_files.id != ?', @pairing.image_file1_id)
-    @imagefiles  = [@pairing.image_file1] + imagefiles_except_selected
+    imagefiles_except_selected = ImageFile.where('image_files.id != ?', @pairing.image_file1_id)
+    @imagefiles  = [@pairing.image_file1] + imagefiles_except_selected.recent
     @imagefiles2 = [@pairing.image_file2] + imagefiles_except_selected.where('image_files.id != ?', @pairing.image_file2_id).near([@pairing.image_file1.lat, @pairing.image_file1.lon], 0.05, :units => :km)
   end
 
