@@ -18,6 +18,10 @@ class RootController < ApplicationController
       @pairing_index = pairings.index{|x| x.id == @pairing.id} + 1
 
       gon.load_image_pairing = true
+      gon.pairing_id = @pairing.id
+
+      current_url_json = "#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?')
+      gon.pairing_url = current_url_json.gsub(/(en|ka)(\??)/, '\1.json\2')
 
 		  respond_to do |format|
 		    format.html # index.html.erb
@@ -25,7 +29,7 @@ class RootController < ApplicationController
 		    format.json {
 		      render json: {
 		        :pairing => @pairing,
-		        :url => "#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?'),
+		        :url => current_url_json,
 		        :image_urls => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)]
 	        }
         }
