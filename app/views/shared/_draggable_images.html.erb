@@ -40,7 +40,7 @@
     <div class="row-fluid">
       <div class="span4" id="image_left_year">
         <%= @pairing.image_file1.year_formatted %>
-        <% if user_signed_in? && current_user.role?(User::ROLES[:user]) && params[:controller] == "root" && params[:action] == "index"%>
+        <% if user_signed_in? && current_user.role?(User::ROLES[:user])%>
           <%= link_to t("helpers.links.edit"),
                       edit_admin_image_file_path(@pairing.image_file1_id), :class => 'btn btn-mini' %>
         <% end %>
@@ -54,7 +54,7 @@
       </div>
       <div class="span4" id="image_right_year">
         <%= @pairing.image_file2.year_formatted %>
-        <% if user_signed_in? && current_user.role?(User::ROLES[:user]) && params[:controller] == "root" && params[:action] == "index"%>
+        <% if user_signed_in? && current_user.role?(User::ROLES[:user])%>
           <%= link_to t("helpers.links.edit"),
                       edit_admin_image_file_path(@pairing.image_file2_id), :class => 'btn btn-mini' %>
         <% end %>
