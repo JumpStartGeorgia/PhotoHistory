@@ -223,4 +223,61 @@ Rails.logger.debug "***** request is put"
     end
   end
 
+
+  def edit_combined
+    @pairing = Pairing.find(params[:id])
+    @image_file1 = @pairing.image_file1
+    @image_file2 = @pairing.image_file2
+
+
+    if request.put?
+      respond_to do |format|
+        # add name/title from pairing to image 1/2
+  Rails.logger.debug "***** add trans data"
+		    I18n.available_locales.each do |locale|
+          pairing_trans = params[:pairing][:pairing_translations_attributes].values.select{|x| x[:locale] == locale.to_s}.first
+          img1_trans = params[:image_file1][:image_file_translations_attributes].values.select{|x| x[:locale] == locale.to_s}.first
+          img2_trans = params[:image_file2][:image_file_translations_attributes].values.select{|x| x[:locale] == locale.to_s}.first
+Rails.logger.debug "*************** p trans = #{pairing_trans.inspect}"
+Rails.logger.debug "*************** 1 trans = #{img1_trans.inspect}"
+Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
+
+          img1_trans[:name] = pairing_trans[:title]
+          img1_trans[:description] = pairing_trans[:description]
+          img2_trans[:name] = pairing_trans[:title]
+        end
+
+        # add categories from image 1 to image 2
+        # - event only applies to image 1 so ignore
+  Rails.logger.debug "***** adding img 1 data to img 2"
+        params[:image_file2][:lat] = params[:image_file1][:lat]
+        params[:image_file2][:lon] = params[:image_file1][:lon]
+        params[:image_file2][:district_id] = params[:image_file1][:district_id]
+        params[:image_file2][:place_id] = params[:image_file1][:place_id]
+
+
+        if @pairing.update_attributes(params[:pairing]) && @image_file1.update_attributes(params[:image_file1]) && @image_file2.update_attributes(params[:image_file2])
+          format.html { redirect_to admin_pairing_path(@pairing), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.pairing')) }
+          format.json { head :ok }
+        else
+          gon.edit_image_file = true
+          gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
+          gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
+          gon.edit_zoom = gon.zoom if @image_file1.lat.present? && @image_file1.lon.present?
+          format.html { render action: "edit2" }
+          format.json { render json: @pairing.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      gon.edit_image_file = true
+      gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
+      gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
+      gon.edit_zoom = gon.zoom if @image_file1.lat.present? && @image_file1.lon.present?
+
+      respond_to do |format|
+        format.html # edit2.html.erb
+        format.json { render json: @pairing }
+      end
+    end
+  end  
 end

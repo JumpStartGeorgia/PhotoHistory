@@ -173,6 +173,8 @@ ka:
         btn_publish_selected: არჩეული ჩანაწერების გამოქვეყნება
       upload:
         title: ახალი წყვილის ატვირთვა
+      edit_combined:
+        title: Edit Pairing
   root:
     index:
     about:

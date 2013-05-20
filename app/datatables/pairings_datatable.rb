@@ -72,7 +72,7 @@ private
   def action_links(pairing)
     x = ""
     x << link_to(I18n.t("helpers.links.edit"),
-                    edit_admin_pairing_path(:id => pairing.id, :locale => I18n.locale), :class => 'btn btn-mini')
+                    edit_combined_admin_pairing_path(:id => pairing.id, :locale => I18n.locale), :class => 'btn btn-mini')
     x << " "
     x << link_to(I18n.t("helpers.links.destroy"),
                     admin_pairing_path(:id => pairing.id, :locale => I18n.locale),

@@ -11,6 +11,10 @@ BootstrapStarter::Application.routes.draw do
 		namespace :admin do
 			resources :users
       resources :pairings do
+        member do
+          get :edit_combined
+          put :edit_combined
+        end
         collection do 
           put :publish
           get :upload

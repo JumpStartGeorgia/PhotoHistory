@@ -172,6 +172,8 @@ en:
         btn_publish_selected: Publish Selected Records
       upload:
         title: Upload New Pairing
+      edit_combined:
+        title: Edit Pairing
   root:
     index:
     about:
