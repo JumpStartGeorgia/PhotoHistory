@@ -6,7 +6,7 @@
   <%= link_to t('.back', :default => t("helpers.links.back")),
               admin_pairings_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_admin_pairing_path(@pairing), :class => 'btn' %>
+              edit_combined_admin_pairing_path(@pairing), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               admin_pairing_path(@pairing),
               :method => 'delete',

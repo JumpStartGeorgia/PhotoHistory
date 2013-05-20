@@ -53,9 +53,7 @@ class Admin::PairingsController < ApplicationController
   def edit
     @pairing = Pairing.find(params[:id])
 
-    imagefiles_except_selected = ImageFile.where('image_files.id != ?', @pairing.image_file1_id)
-    @imagefiles  = [@pairing.image_file1] + imagefiles_except_selected.recent
-    @imagefiles2 = [@pairing.image_file2] + imagefiles_except_selected.where('image_files.id != ?', @pairing.image_file2_id).near([@pairing.image_file1.lat, @pairing.image_file1.lon], 0.05, :units => :km)
+    get_images_for_gallery
   end
 
   # POST /pairings
@@ -260,6 +258,7 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
           format.html { redirect_to admin_pairing_path(@pairing), notice: t('app.msgs.success_updated', :obj => t('activerecord.models.pairing')) }
           format.json { head :ok }
         else
+          get_images_for_gallery
           gon.edit_image_file = true
           gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
           gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
@@ -269,6 +268,7 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
         end
       end
     else
+      get_images_for_gallery
       gon.edit_image_file = true
       gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
       gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
@@ -280,4 +280,12 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
       end
     end
   end  
+
+  protected
+
+  def get_images_for_gallery
+    imagefiles_except_selected = ImageFile.where('image_files.id != ?', @pairing.image_file1_id)
+    @imagefiles  = [@pairing.image_file1] + imagefiles_except_selected.recent
+    @imagefiles2 = [@pairing.image_file2] + imagefiles_except_selected.where('image_files.id != ?', @pairing.image_file2_id).near([@pairing.image_file1.lat, @pairing.image_file1.lon], 0.05, :units => :km)
+  end
 end
