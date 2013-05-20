@@ -1,0 +1,77 @@
+<%- model_class = ImageFile -%>
+<%- model_class_trans = ImageFileTranslation -%>
+
+<% if user_signed_in? && current_user.role?(User::ROLES[:user]) && params[:controller] == "root" && params[:action] == "index"%>
+  <div class="pull-right">
+    <%= link_to t("helpers.links.edit"),
+                edit_admin_pairing_path(@pairing), :class => 'btn btn-mini' %>
+  </div>
+<% end %>
+
+<div class="desc"><%= simple_format @pairing.description %></div>
+
+<div id="image_links">
+  <div id="image_links_location">
+    <h3><%= t('filters.location.header') %></h3>
+    <% if @pairing.image_file1.present? && @pairing.image_file1.district_id.present? %>
+      <span><%= t('activerecord.attributes.image_file.district') %>:</span>
+      <%= link_to(@pairing.image_file1.district_name, root_path(:district => @pairing.image_file1.district_permalink)) %>
+    <% end %>
+    <br />
+    <% if @pairing.image_file1.present? && @pairing.image_file1.place_id.present? %>
+      <span><%= t('activerecord.attributes.image_file.place') %>:</span>
+      <%= link_to(@pairing.image_file1.place_name, root_path(:place => @pairing.image_file1.place_permalink)) %>
+    <% end %>
+  </div>
+  <% if @pairing.image_file1.present? && @pairing.image_file1.events.present? %>
+    <div id="image_links_events">
+      <h3><%= t('filters.time.events.header') %></h3>
+      <% @pairing.image_file1.events.each_with_index do |event, i| %>
+        <%= link_to(event.name, root_path(:event => event.permalink)) %>
+        <%= i < @pairing.image_file1.events.length-1 ? "<br />".html_safe : "" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="image_sources">
+  <h3><%= t('.credit_header') %></h3>
+  <h4><%= t('.left_image') %>:</h4>
+  <ul>
+    <li>
+      <%= model_class.human_attribute_name(:year) %>:
+      <%= @pairing.image_file1.year_formatted %>
+    </li>
+    <li>
+      <%= model_class.human_attribute_name(:source) %>:
+      <%= @pairing.image_file1.source_formatted %>
+    </li>
+    <li>
+      <%= model_class_trans.human_attribute_name(:photographer) %>:
+      <%= @pairing.image_file1.photographer_formatted %>
+    </li>
+  </ul>
+
+  <h4><%= t('.right_image') %>:</h4>
+  <ul>
+    <li>
+      <%= model_class.human_attribute_name(:year) %>:
+      <%= @pairing.image_file2.year_formatted %>
+    </li>
+    <li>
+      <%= model_class.human_attribute_name(:source) %>:
+      <%= @pairing.image_file2.source_formatted %>
+    </li>
+    <li>
+      <%= model_class_trans.human_attribute_name(:photographer) %>:
+      <%= @pairing.image_file2.photographer_formatted %>
+    </li>
+  </ul>
+</div>
+
+<div id="image_comments">
+  <h3><%= t('.comment_header') %></h3>
+  <% if params[:controller] == "root" && params[:action] == "index" %>
+    <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="457"></div>
+  <% end %>
+</div>

@@ -28,9 +28,9 @@
       return true;
     }
 
-    console.log('click function, calling get_content on ' + $(this).attr('href').replace(/\.json$/, '') + '.json');
-    get_content($(this).attr('href').replace(/\.json$/, '') + '.json', true);
-    
+    var content_url = $(this).attr('href').replace(/\.json(\?.*)?$/, '$1').replace(/(\?.*)?$/, '.json$1');
+    console.log('click function, calling get_content on ' + content_url);
+    get_content(content_url, true);
 
 
     return false;
@@ -118,7 +118,8 @@
             $(' img.layer1').attr('src', resp.image_urls[0]);
             $('.layer2 img').attr('src', resp.image_urls[1]);
 
-            $('#image_text .desc').html();
+            replace_description(resp.description);
+            replace_social(resp.social);
 
             window.draggable_ratio = .5;
             recreate_draggable();
@@ -150,12 +151,36 @@
 
   function update_link_parameters (url, id)
   {
-    $('.controls.left  a').attr('href', $('.controls.left  a').attr('href').replace(/[0-9]+\/?$/, id));
-    $('.controls.right a').attr('href', $('.controls.right a').attr('href').replace(/[0-9]+\/?$/, id));
+    console.log('updating links for url: ' + url + ' and id: ' + id);
+    $('.controls.left  a').attr('href', $('.controls.left  a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
+    $('.controls.right a').attr('href', $('.controls.right a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
   }
 
 
+  function replace_description (val)
+  {
+    $('#image_text').html(val);
+  }
 
+
+  function replace_social (val)
+  {
+    $('#photo_title_social .likes').html(val);
+    /**
+     * reinitialise "Share This" script on ajax page refresh. 
+     **/
+    delete stLight;
+    delete stButtons;
+    delete stFastShareObj;
+    delete stIsLoggedIn;
+    delete stWidget;
+    delete stRecentServices;
+    $.getScript('http://w.sharethis.com/button/buttons.js', function ()
+    {
+      var switchTo5x = true;
+      stLight.options(st_options);
+    });
+  }
 
 
 

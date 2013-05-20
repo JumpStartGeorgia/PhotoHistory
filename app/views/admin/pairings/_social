@@ -1,0 +1,40 @@
+<%
+  fb_img_url = full_url(image_path('share_photo.jpg'))
+  if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? 
+    fb_img_url = full_url(@pairing.thumbnail.url)
+  end
+  pin_img_url = fb_img_url
+  if @pairing.present? && @pairing.stacked_img.present? && @pairing.stacked_img_file_name.present? 
+    pin_img_url = full_url(@pairing.stacked_img.url)
+  end
+
+  share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
+%>
+<div>
+  <span class='st_fblike_hcount' displayText='Facebook' 
+    st_url="<%= current_url_no_querystring %>" 
+    st_image="<%= fb_img_url %>"
+    st_summary="<%= share_summary %>"
+  >
+  </span>
+  <span class='st_twitter_hcount' displayText='Tweet' 
+    st_url="<%= current_url_no_querystring %>"
+    st_image="<%= fb_img_url %>"
+    st_summary="<%= share_summary %>"
+  >
+  </span>
+</div>
+<div>
+  <span class='st_pinterest_hcount' displayText='Pinterest' 
+    st_url="<%= current_url_no_querystring %>" 
+    st_image="<%= pin_img_url %>"
+    st_summary="<%= share_summary %>"
+  >
+  </span>
+  <span class='st_sharethis_hcount' displayText='Share' 
+    st_url="<%= current_url_no_querystring %>" 
+    st_image="<%= pin_img_url %>"
+    st_summary="<%= share_summary %>"
+  >
+  </span>
+</div>

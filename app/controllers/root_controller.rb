@@ -25,12 +25,17 @@ class RootController < ApplicationController
 
 		  respond_to do |format|
 		    format.html # index.html.erb
-		   #format.json { render json: @pairing }
 		    format.json {
+
+          social_content = render_to_string(:partial => "admin/pairings/social")
+          description    = render_to_string(:partial => "admin/pairings/description")
+
 		      render json: {
-		        :pairing => @pairing,
-		        :url => current_url_json,
-		        :image_urls => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)]
+		        :pairing     => @pairing,
+		        :url         => current_url_json,
+		        :image_urls  => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)],
+		        :social      => social_content,
+		        :description => description
 	        }
         }
 		  end
