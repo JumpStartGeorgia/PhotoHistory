@@ -7,7 +7,7 @@
     },
     loaded: function ()
     {
-    $('#photo_container').css('opacity', 1);
+      $('#photo_container').css('opacity', 1);
     }
   };
 
@@ -117,6 +117,8 @@
           {
             $(' img.layer1').attr('src', resp.image_urls[0]);
             $('.layer2 img').attr('src', resp.image_urls[1]);
+
+            $('#image_text .desc').html();
 
             window.draggable_ratio = .5;
             recreate_draggable();
