@@ -193,6 +193,9 @@ Rails.logger.debug "***** request is put"
   Rails.logger.debug "***** pairing errors: #{@pairing.errors.full_messages}"
             @error_count = @image_file1.errors.count + @image_file2.errors.count + @pairing.errors.count
             gon.edit_image_file = true
+            gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
+            gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
+            gon.edit_zoom = gon.zoom if @image_file1.lat.present? && @image_file1.lon.present?
             format.html { render }
             format.json { render json: @pairing.errors, status: :unprocessable_entity }
             raise ActiveRecord::Rollback

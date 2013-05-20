@@ -42,21 +42,23 @@
           <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
         <div class="controls">  
-          <input id="image_file1_file" name="image_file1[file]" type="file" />
+          <%= file_field_tag "image_file1[file]", :id => "image_file1_file" %>
         </div>
       </div>
       <div class="string control-group optional stringish" id="image_file1_year_input">
         <label class=" control-label" for="image_file1_year">
           <%= model_class_if.human_attribute_name(:year) %>
         </label>
-        <div class="controls"><input id="image_file1_year" maxlength="4" name="image_file1[year]" size="5" type="text" />
+        <div class="controls">
+          <%= text_field_tag "image_file1[year]", @image_file1.year, :id => "image_file1_year", :size => 5, :maxlength => 4 %>
         </div>
       </div>
       <div class="string control-group optional stringish" id="image_file1_source_input">
         <label class=" control-label" for="image_file1_source">
           <%= model_class_if.human_attribute_name(:source) %>
         </label>
-        <div class="controls"><input id="image_file1_source" maxlength="255" name="image_file1[source]" size="75" type="text" />
+        <div class="controls">
+          <%= text_field_tag "image_file1[source]", @image_file1.source, :id => "image_file1_source", :size => 75, :maxlength => 255 %>
         </div>
       </div>
       <div class="radio control-group optional" id="image_file1_add_watermark_input">
@@ -65,13 +67,11 @@
         </label>
         <div class="choices controls">
           <label class="choice radio" for="image_file1_add_watermark_true">
-            <input id="image_file1_add_watermark_true" name="image_file1[add_watermark]" type="radio" value="true"
-              <%= @image_file1.add_watermark == true ? "checked=checked" : '' %> />
+            <%= radio_button_tag "image_file1[add_watermark]", "true", @image_file1.add_watermark == true, :id => "image_file1_add_watermark_true" %>
             <%= t('formtastic.yes') %>
           </label>
           <label class="choice radio" for="image_file1_add_watermark_false">
-            <input id="image_file1_add_watermark_false" name="image_file1[add_watermark]" type="radio" value="false"
-              <%= @image_file1.add_watermark != true ? "checked=checked" : '' %> />
+            <%= radio_button_tag "image_file1[add_watermark]", "false", @image_file1.add_watermark != true, :id => "image_file1_add_watermark_false" %>
             <%= t('formtastic.no') %>
           </label>
         </div>
@@ -86,8 +86,12 @@
               <%= model_class_ift.human_attribute_name(:photographer) %>
             </label>
             <div class="controls">
-              <input id="image_file1_image_file_translations_attributes_<%=locale_index%>_photographer" maxlength="255" name="image_file1[image_file_translations_attributes][<%=locale_index%>][photographer]" size="75" type="text" value="">
-              <input id="pairing_pairing_translations_attributes_<%=locale_index%>_locale" name="image_file1[image_file_translations_attributes][<%=locale_index%>][locale]" type="hidden" value="<%=trans.locale%>">
+              <%= text_field_tag "image_file1[image_file_translations_attributes][#{locale_index}][photographer]", trans.photographer, 
+                  :id => "image_file1_image_file_translations_attributes_#{locale_index}_photographer", :size => 75, :maxlength => 255 %>
+
+              <%= hidden_field_tag "image_file1[image_file_translations_attributes][#{locale_index}][locale]", trans.locale, 
+                  :id => "image_file2_image_file_translations_attributes_#{locale_index}_locale" %>
+   
             </div>
           </div>
 		    </div>
@@ -106,22 +110,24 @@
           <%= model_class_if.human_attribute_name(:file) %>
           <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
-        <div class="controls">
-          <input id="image_file2_file" name="image_file2[file]" type="file" />
+        <div class="controls">  
+          <%= file_field_tag "image_file2[file]", :id => "image_file2_file" %>
         </div>
       </div>
       <div class="string control-group optional stringish" id="image_file2_year_input">
         <label class=" control-label" for="image_file2_year">
           <%= model_class_if.human_attribute_name(:year) %>
         </label>
-        <div class="controls"><input id="image_file2_year" maxlength="4" name="image_file2[year]" size="5" type="text" />
+        <div class="controls">
+          <%= text_field_tag "image_file2[year]", @image_file2.year, :id => "image_file2_year", :size => 5, :maxlength => 4 %>
         </div>
       </div>
       <div class="string control-group optional stringish" id="image_file2_source_input">
         <label class=" control-label" for="image_file2_source">
           <%= model_class_if.human_attribute_name(:source) %>
         </label>
-        <div class="controls"><input id="image_file2_source" maxlength="255" name="image_file2[source]" size="75" type="text" />
+        <div class="controls">
+          <%= text_field_tag "image_file2[source]", @image_file2.source, :id => "image_file2_source", :size => 75, :maxlength => 255 %>
         </div>
       </div>
       <div class="radio control-group optional" id="image_file2_add_watermark_input">
@@ -130,13 +136,11 @@
         </label>
         <div class="choices controls">
           <label class="choice radio" for="image_file2_add_watermark_true">
-            <input id="image_file2_add_watermark_true" name="image_file2[add_watermark]" type="radio" value="true"
-              <%= @image_file2.add_watermark == true ? "checked=checked" : '' %> />
+            <%= radio_button_tag "image_file2[add_watermark]", "true", @image_file2.add_watermark == true, :id => "image_file2_add_watermark_true" %>
             <%= t('formtastic.yes') %>
           </label>
           <label class="choice radio" for="image_file2_add_watermark_false">
-            <input id="image_file2_add_watermark_false" name="image_file2[add_watermark]" type="radio" value="false"
-              <%= @image_file2.add_watermark != true ? "checked=checked" : '' %> />
+            <%= radio_button_tag "image_file2[add_watermark]", "false", @image_file2.add_watermark != true, :id => "image_file2_add_watermark_false" %>
             <%= t('formtastic.no') %>
           </label>
         </div>
@@ -151,8 +155,12 @@
               <%= model_class_ift.human_attribute_name(:photographer) %>
             </label>
             <div class="controls">
-              <input id="image_file2_image_file_translations_attributes_<%=locale_index%>_photographer" maxlength="255" name="image_file2[image_file_translations_attributes][<%=locale_index%>][photographer]" size="75" type="text" value="">
-              <input id="pairing_pairing_translations_attributes_<%=locale_index%>_locale" name="image_file2[image_file_translations_attributes][<%=locale_index%>][locale]" type="hidden" value="<%=trans.locale%>">
+              <%= text_field_tag "image_file2[image_file_translations_attributes][#{locale_index}][photographer]", trans.photographer, 
+                  :id => "image_file2_image_file_translations_attributes_#{locale_index}_photographer", :size => 75, :maxlength => 255 %>
+
+              <%= hidden_field_tag "image_file2[image_file_translations_attributes][#{locale_index}][locale]", trans.locale, 
+                  :id => "image_file2_image_file_translations_attributes_#{locale_index}_locale" %>
+   
             </div>
           </div>
 		    </div>
@@ -173,7 +181,8 @@
           <abbr title="<%= t('formtastic.required') %>">*</abbr>
         </label>
         <div class="controls">
-          <input id="pairing_pairing_translations_attributes_<%=locale_index%>_title" maxlength="255" name="pairing[pairing_translations_attributes][<%=locale_index%>][title]" size="75" type="text">
+          <%= text_field_tag "pairing[pairing_translations_attributes][#{locale_index}][title]", trans.title, 
+              :id => "pairing_pairing_translations_attributes_#{locale_index}_title", :size => 75, :maxlength => 255 %>
         </div>
       </div>
       <div class="text control-group optional" id="pairing_pairing_translations_attributes_<%=locale_index%>_description_input">
@@ -181,7 +190,8 @@
           <%= model_class_pt.human_attribute_name(:description) %>
         </label>
         <div class="controls">
-          <textarea id="pairing_pairing_translations_attributes_<%=locale_index%>_description" name="pairing[pairing_translations_attributes][<%=locale_index%>][description]" rows="4"></textarea>
+          <%= text_area_tag "pairing[pairing_translations_attributes][#{locale_index}][description]", trans.description, 
+              :id => "pairing_pairing_translations_attributes_#{locale_index}_description", :rows => 4 %>
         </div>
       </div>
       <div class="text control-group optional" id="pairing_pairing_translations_attributes_<%=locale_index%>_long_description_input">
@@ -189,10 +199,13 @@
           <%= model_class_pt.human_attribute_name(:long_description) %>
         </label>
         <div class="controls">
-          <textarea id="pairing_pairing_translations_attributes_<%=locale_index%>_long_description" name="pairing[pairing_translations_attributes][<%=locale_index%>][long_description]" rows="4"></textarea>
+          <%= text_area_tag "pairing[pairing_translations_attributes][#{locale_index}][long_description]", trans.long_description, 
+              :id => "pairing_pairing_translations_attributes_#{locale_index}_long_description", :rows => 4 %>
         </div>
       </div>
-      <input id="pairing_pairing_translations_attributes_<%=locale_index%>_locale" name="pairing[pairing_translations_attributes][<%=locale_index%>][locale]" type="hidden" value="<%=trans.locale%>">
+
+      <%= hidden_field_tag "pairing[pairing_translations_attributes][#{locale_index}][locale]", trans.locale, 
+          :id => "pairing_pairing_translations_attributes_#{locale_index}_locale" %>
     </div>
 	<% end %>
 
@@ -204,8 +217,8 @@
 			</div>
 		</div>
     
-    <input id="image_file1_lat" name="image_file1[lat]" type="hidden" value="<%= @image_file1.lat%>" />
-		<input id="image_file1_lon" name="image_file1[lon]" type="hidden" value="<%= @image_file1.lon %>" />
+    <%= hidden_field_tag "image_file1[lat]", @image_file1.lat, :id => "image_file1_lat" %>
+    <%= hidden_field_tag "image_file1[lon]", @image_file1.lon, :id => "image_file1_lon" %>
 
     <hr />
 
@@ -215,12 +228,8 @@
         <%= model_class_if.human_attribute_name(:district_id) %>
       </label>
       <div class="controls">
-        <select id="image_file1_district_id" name="image_file1[district_id]">
-          <option value=""></option>
-          <% @districts.each do |district| %>
-            <option value="<%= district.id%>"><%= district.name %></option>
-          <% end %>
-        </select>
+        <%= select_tag "image_file1[district_id]", options_from_collection_for_select(@districts, "id", "name", @image_file1.district_id), 
+              :include_blank => true, :id => "image_file1_district_id" %>
       </div>
     </div>
     <div class="select control-group optional" id="image_file1_place_id_input">
@@ -228,12 +237,8 @@
         <%= model_class_if.human_attribute_name(:place_id) %>
       </label>
       <div class="controls">
-        <select id="image_file1_place_id" name="image_file1[place_id]">
-          <option value=""></option>
-          <% @places.each do |place| %>
-            <option value="<%= place.id%>"><%= place.name %></option>
-          <% end %>
-        </select>
+        <%= select_tag "image_file1[place_id]", options_from_collection_for_select(@places, "id", "name", @image_file1.place_id), 
+              :include_blank => true, :id => "image_file1_place_id" %>
       </div>
     </div>
 
@@ -245,8 +250,9 @@
       <div class="choices controls">
         <% @events.each do |event| %>
           <label class="choice checkbox" for="<%= "image_file1_event_ids_#{event.id}"%>">
-            <input id="<%= "image_file1_event_ids_#{event.id}"%>" name="image_file1[event_ids][]" type="checkbox" 
-              value="<%= event.id%>" <%= @image_file1.events.index{|x| x.event_id == event.id}.nil? ? '' : "checked=checked" %>>
+            <%= check_box_tag "image_file1[event_ids][]", event.id, 
+              @image_file1.events.present? && @image_file1.events.index{|x| x.id == event.id}.present?, 
+              :id => "image_file1_event_ids_#{event.id}" %>
             <%= event.name %>
           </label>
         <% end %>
@@ -261,13 +267,11 @@
     </label>
     <div class="choices controls">
       <label class="choice radio" for="pairing_published_true">
-        <input id="pairing_published_true" name="pairing[published]" type="radio" value="true"
-          <%= @pairing.published == true ? "checked=checked" : '' %> />
+        <%= radio_button_tag "pairing[published]", "true", @pairing.published == true, :id => "pairing_published_true" %>
         <%= t('formtastic.yes') %>
       </label>
       <label class="choice radio" for="pairing_published_false">
-        <input id="pairing_published_false" name="pairing[published]" type="radio" value="false"
-          <%= @pairing.published != true ? "checked=checked" : '' %> />
+        <%= radio_button_tag "pairing[published]", "false", @pairing.published != true, :id => "pairing_published_false" %>
         <%= t('formtastic.no') %>
       </label>
     </div>
