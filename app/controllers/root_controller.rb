@@ -31,11 +31,13 @@ class RootController < ApplicationController
           description    = render_to_string(:partial => "admin/pairings/description")
 
 		      render json: {
-		        :pairing     => @pairing,
-		        :url         => current_url_json,
-		        :image_urls  => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)],
-		        :social      => social_content,
-		        :description => description
+		        :pairing       => @pairing,
+		        :pairing_index => render_to_string(:partial => "admin/pairings/image_count"),
+		        :url           => current_url_json,
+		        :image_urls    => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)],
+		        :years         => [@pairing.image_file1.year_formatted, @pairing.image_file2.year_formatted],
+		        :social        => social_content,
+		        :description   => description
 	        }
         }
 		  end

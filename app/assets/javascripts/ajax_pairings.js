@@ -120,6 +120,7 @@
 
             replace_description(resp.description);
             replace_social(resp.social);
+            replace_headers(resp.pairing.title, resp.years, resp.pairing_index);
 
             window.draggable_ratio = .5;
             recreate_draggable();
@@ -143,7 +144,7 @@
 
   function load_state (url, id)
   {
-    $('html,body').animate({scrollTop: 0}, 500);
+  //$('html,body').animate({scrollTop: 0}, 500);
     console.log('load_state() called for url ' + url + '; calling get_content()');
     get_content(url, false);
   }
@@ -154,6 +155,12 @@
     console.log('updating links for url: ' + url + ' and id: ' + id);
     $('.controls.left  a').attr('href', $('.controls.left  a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
     $('.controls.right a').attr('href', $('.controls.right a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
+
+    $('.locale a').attr('href', function (index, attr)
+    {
+      var s = (attr.indexOf('?') > -1) ? '&' : '?';
+      return attr.replace(/(\?|&)pairing=[0-9]+/, '') + s + 'pairing=' + id;
+    });
   }
 
 
@@ -162,6 +169,13 @@
     $('#image_text').html(val);
   }
 
+  function replace_headers (title, years, index)
+  {
+    $('#photo_title_social .title').html(title);
+    $('#image_left_year  span:first').html(years[0]);
+    $('#image_right_year span:first').html(years[1]);
+    $('#image_count').html(index);
+  }
 
   function replace_social (val)
   {

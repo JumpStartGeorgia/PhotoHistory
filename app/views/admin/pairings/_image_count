@@ -1,0 +1,5 @@
+<% if params[:controller] == "root" && params[:action] == "index" %>
+  <%= "#{@pairing_index} / #{@pairing_count}" %>
+<% elsif !@pairing.published %>
+  <div class="not_published"><%= I18n.t('app.common.not_published') %></div>
+<% end %>
