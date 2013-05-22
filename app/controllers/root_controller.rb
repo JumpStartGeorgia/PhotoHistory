@@ -36,6 +36,8 @@ class RootController < ApplicationController
 		        :url           => current_url_json,
 		        :image_urls    => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)],
 		        :years         => [@pairing.image_file1.year_formatted, @pairing.image_file2.year_formatted],
+		        :latlon        => [gon.lat, gon.lon],
+		        :marker_text   => gon.map_marker_text,
 		        :social        => social_content,
 		        :description   => description
 	        }

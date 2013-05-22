@@ -121,6 +121,7 @@
             replace_description(resp.description);
             replace_social(resp.social);
             replace_headers(resp.pairing.title, resp.years, resp.pairing_index);
+            update_map(resp.latlon, resp.marker_text);
 
             window.draggable_ratio = .5;
             recreate_draggable();
@@ -194,6 +195,14 @@
       var switchTo5x = true;
       stLight.options(st_options);
     });
+  }
+
+  function update_map (latlon, popup_content)
+  {
+    var point = new L.LatLng(latlon[0], latlon[1]);
+    window.pairing_marker.setLatLng(point);
+    window.pairing_map.setView(point, gon.zoom);
+    window.pairing_marker._popup.setContent(popup_content);
   }
 
 

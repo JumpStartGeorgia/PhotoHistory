@@ -25,6 +25,8 @@ $(function()
         marker.bindPopup(gon.map_marker_text)
         .openPopup();
     }
+    window.pairing_marker = marker;
+    window.pairing_map = map;
   } else if ('edit_image_file' in gon && 'edit_lat' in gon && 'edit_lon' in gon){
     // continue to use open street maps for editing
 
