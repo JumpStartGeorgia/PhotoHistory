@@ -5,7 +5,8 @@ $(function()
 
   window.recreate_draggable = function ()
   {
-    if (gon.load_image_pairing){
+    if (gon.load_image_pairing)
+    {
       var el = $('.draggable');
       var el_width = el.width();
 

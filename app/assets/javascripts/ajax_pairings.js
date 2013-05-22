@@ -1,5 +1,27 @@
 (function(window,undefined){
 
+  $.ajaxSetup({
+    cache: true
+  });
+
+  var debug = {
+    enabled: false,
+    log: function ()
+    {
+      if (!this.enabled)
+      {
+        return;
+      }
+      var sc = '';
+      for (var i = 0, num = arguments.length; i < num; i ++ )
+      {
+        sc += 'arguments[' + i + '], ';
+      }
+      sc = sc.replace(/,\s$/, '');
+      eval('console.log(' + sc + ')');
+    }
+  };
+
   var content_status = {
     loading: function ()
     {
@@ -29,7 +51,7 @@
     }
 
     var content_url = $(this).attr('href').replace(/\.json(\?.*)?$/, '$1').replace(/(\?.*)?$/, '.json$1');
-    console.log('click function, calling get_content on ' + content_url);
+    debug.log('click function, calling get_content on ' + content_url);
     get_content(content_url, true);
 
 
@@ -43,7 +65,7 @@
     // create new page title
     var separator = '|';
     var new_title = $.trim(title) + ' ' + document.title.slice(document.title.lastIndexOf(separator));
-    console.log('pushstate created for ' + url + '; data_url: ' + data_url);
+    debug.log('pushstate created for ' + url + '; data_url: ' + data_url);
 
     window._load_state = false;
     History.pushState({id: id, url: data_url}, new_title, url);
@@ -71,24 +93,24 @@
   /*
     if ('ignore_statechange' in window && window.ignore_statechange)
     {
-      console.log('statechange; ignoring this one');
+      debug.log('statechange; ignoring this one');
       window.ignore_statechange = false;
-      console.log('ignore_statechange set to ', ignore_statechange);
+      debug.log('ignore_statechange set to ', ignore_statechange);
       return;
     }
   */
 
     var state = History.getState(); // Note: We are using History.getState() instead of event.state
-    console.log('statechange; state: ', state);
-    console.log('checking _load_state ', window._load_state == undefined, '||', window._load_state);
+    debug.log('statechange; state: ', state);
+    debug.log('checking _load_state ', window._load_state == undefined, '||', window._load_state);
     if (window._load_state == undefined || window._load_state)
     {
-      console.log('_load_state is true; calling load_state()');
+      debug.log('_load_state is true; calling load_state()');
       load_state(state.data.url, state.data.id);
     }
     else
     {
-      console.log('_load_state is false; setting it to true');
+      debug.log('_load_state is false; setting it to true');
       window._load_state = true;
     //window.ignore_statechange = true;
     //History.replaceState(state.data, state.title, state.url);
@@ -100,10 +122,10 @@
   function get_content (url, _create_pushstate)
   {
     content_status.loading();
-    console.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
+    debug.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
     $.get(url, function (resp)
     {
-      console.log('get_content() got response from ' + url + '; resp: ', resp);
+      debug.log('get_content() got response from ' + url + '; resp: ', resp);
       var imgs = [];
       var loaded_count = 0;
       for (var i in resp.image_urls)
@@ -123,15 +145,15 @@
             replace_headers(resp.pairing.title, resp.years, resp.pairing_index);
             update_map(resp.latlon, resp.marker_text);
 
-            window.draggable_ratio = .5;
-            recreate_draggable();
-
-            console.log('_create_pushstate is ', _create_pushstate);
+            debug.log('_create_pushstate is ', _create_pushstate);
             if (_create_pushstate)
             {
-              console.log('calling create_pushstate for url ' + resp.url);
+              debug.log('calling create_pushstate for url ' + resp.url);
               create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title);
             }
+
+            window.draggable_ratio = .5;
+            recreate_draggable();
 
             content_status.loaded();
           }
@@ -146,16 +168,18 @@
   function load_state (url, id)
   {
   //$('html,body').animate({scrollTop: 0}, 500);
-    console.log('load_state() called for url ' + url + '; calling get_content()');
+    debug.log('load_state() called for url ' + url + '; calling get_content()');
     get_content(url, false);
   }
 
 
   function update_link_parameters (url, id)
   {
-    console.log('updating links for url: ' + url + ' and id: ' + id);
-    $('.controls.left  a').attr('href', $('.controls.left  a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
-    $('.controls.right a').attr('href', $('.controls.right a').attr('href').replace(/(next|previous)\/[0-9]+/, '$1/' + id));
+    debug.log('updating links for url: ' + url + ' and id: ' + id);
+    $('.controls a').attr('href', function (index, attr)
+    {
+      return attr.replace(/(next|previous)\/[0-9]+/, '$1/' + id);
+    });
 
     $('.locale a').attr('href', function (index, attr)
     {
@@ -200,9 +224,12 @@
   function update_map (latlon, popup_content)
   {
     var point = new L.LatLng(latlon[0], latlon[1]);
-    window.pairing_marker.setLatLng(point);
-    window.pairing_map.setView(point, gon.zoom);
-    window.pairing_marker._popup.setContent(popup_content);
+    (function (map, m)
+    {
+      m.setLatLng(point);
+      m._popup.setContent(popup_content);
+      map.setView(point, gon.zoom);
+    })(window.pairing_map, window.pairing_marker);
   }
 
 
