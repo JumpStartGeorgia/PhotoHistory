@@ -263,7 +263,7 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
           gon.edit_lat = @image_file1.lat if @image_file1.lat.present?
           gon.edit_lon = @image_file1.lon if @image_file1.lon.present?
           gon.edit_zoom = gon.zoom if @image_file1.lat.present? && @image_file1.lon.present?
-          format.html { render action: "edit2" }
+          format.html { render action: "edit_combined" }
           format.json { render json: @pairing.errors, status: :unprocessable_entity }
         end
       end
@@ -275,7 +275,7 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
       gon.edit_zoom = gon.zoom if @image_file1.lat.present? && @image_file1.lon.present?
 
       respond_to do |format|
-        format.html # edit2.html.erb
+        format.html # edit_combined.html.erb
         format.json { render json: @pairing }
       end
     end
