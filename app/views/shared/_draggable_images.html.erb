@@ -121,7 +121,7 @@
         <% if user_signed_in? && current_user.role?(User::ROLES[:user]) && params[:controller] == "root" && params[:action] == "index"%>
           <div class="pull-right">
             <%= link_to t("helpers.links.edit"),
-                        edit_admin_pairing_path(@pairing), :class => 'btn btn-mini' %>
+                        edit_combined_admin_pairing_path(@pairing), :class => 'btn btn-mini' %>
           </div>
         <% end %>
     
