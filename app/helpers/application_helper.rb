@@ -59,6 +59,10 @@ module ApplicationHelper
     return p 
   end
 
+  def current_url
+    "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+	end
+
   def current_url_no_querystring
 		x = nil
     uri = URI("#{request.protocol}#{request.host_with_port}#{request.fullpath}")

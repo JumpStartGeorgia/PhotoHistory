@@ -18,7 +18,7 @@
       <meta name="description" content="<%= t('.og_description') %>">
     <% end %>
 		<meta property="og:type" content="non_profit" />
-		<meta property="og:url" content="<%= current_url_no_querystring %>" />
+		<meta property="og:url" content="<%= current_url %>" />
 		<% if @pairing.present? && @pairing.thumbnail.present? && @pairing.thumbnail_file_name.present? %>
 			<meta property="og:image" content="<%= full_url(@pairing.thumbnail.url(false)) %>" />
     <% else %>

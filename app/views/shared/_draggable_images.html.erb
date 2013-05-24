@@ -84,13 +84,13 @@
           %>
           <div>
             <span class='st_fblike_hcount' displayText='Facebook' 
-              st_url="<%= current_url_no_querystring %>" 
+              st_url="<%= current_url %>" 
               st_image="<%= fb_img_url %>"
               st_summary="<%= share_summary %>"
             >
             </span>
             <span class='st_twitter_hcount' displayText='Tweet' 
-              st_url="<%= current_url_no_querystring %>"
+              st_url="<%= current_url %>"
               st_image="<%= fb_img_url %>"
               st_summary="<%= share_summary %>"
             >
@@ -98,13 +98,13 @@
           </div>
           <div>
             <span class='st_pinterest_hcount' displayText='Pinterest' 
-              st_url="<%= current_url_no_querystring %>" 
+              st_url="<%= current_url %>" 
               st_image="<%= pin_img_url %>"
               st_summary="<%= share_summary %>"
             >
             </span>
             <span class='st_sharethis_hcount' displayText='Share' 
-              st_url="<%= current_url_no_querystring %>" 
+              st_url="<%= current_url %>" 
               st_image="<%= pin_img_url %>"
               st_summary="<%= share_summary %>"
             >
@@ -189,7 +189,7 @@
         <div id="image_comments">
           <h3><%= t('.comment_header') %></h3>
           <% if params[:controller] == "root" && params[:action] == "index" %>
-            <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="457"></div>
+            <div class="fb-comments" data-href="<%= current_url %>" data-num-posts="5" data-width="457"></div>
           <% end %>
         </div>
       </div>
