@@ -5,7 +5,7 @@
   });
 
   var debug = {
-    enabled: false,
+    enabled: true,
     log: function ()
     {
       if (!this.enabled)
@@ -141,7 +141,7 @@
             $('.layer2 img').attr('src', resp.image_urls[1]);
 
             replace_description(resp.description);
-            replace_social(resp.social);
+            replace_social(resp.url, resp.pairing.title, resp.social);
             replace_headers(resp.pairing.title, resp.years, resp.pairing_index);
             update_map(resp.latlon, resp.marker_text);
 
@@ -202,23 +202,51 @@
     $('#image_count').html(index);
   }
 
-  function replace_social (val)
+  function replace_social (url, title, data)
   {
-    $('#photo_title_social .likes').html(val);
-    /**
-     * reinitialise "Share This" script on ajax page refresh. 
-     **/
-    delete stLight;
-    delete stButtons;
-    delete stFastShareObj;
-    delete stIsLoggedIn;
-    delete stWidget;
-    delete stRecentServices;
-    $.getScript('http://w.sharethis.com/button/buttons.js', function ()
-    {
-      var switchTo5x = true;
-      stLight.options(st_options);
+    var spans = new Array(5).join('<span></span>');
+    $('#photo_title_social .likes').html(spans).children().attr('id', function (i){ return 'st_button_' + i; });
+
+    stWidget.addEntry({
+        "service": "fblike",
+        "element": document.getElementById('st_button_0'),
+        "url": url,
+        "title": title,
+        "type": "fblike",
+        "image": data.fb_img,
+        "summary": data.summary
     });
+
+    stWidget.addEntry({
+        "service": "twitter",
+        "element": document.getElementById('st_button_1'),
+        "url": url,
+        "title": title,
+        "type": "hcount",
+        "image": data.fb_img,
+        "summary": data.summary
+    });
+
+    stWidget.addEntry({
+        "service": "pinterest",
+        "element": document.getElementById('st_button_2'),
+        "url": url,
+        "title": title,
+        "type": "hcount",
+        "image": data.pin_img,
+        "summary": data.summary
+    });
+
+    stWidget.addEntry({
+        "service": "sharethis",
+        "element": document.getElementById('st_button_3'),
+        "url": url,
+        "title": title,
+        "type": "hcount",
+        "image": data.pin_img,
+        "summary": data.summary
+    });
+
   }
 
   function update_map (latlon, popup_content)

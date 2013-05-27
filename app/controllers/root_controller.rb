@@ -1,4 +1,5 @@
 class RootController < ApplicationController
+  include ApplicationHelper
 
   def index
     @pairing = build_pairing_query
@@ -20,25 +21,29 @@ class RootController < ApplicationController
       gon.load_image_pairing = true
       gon.pairing_id = @pairing.id
 
-      current_url_json = "#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?')
-      gon.pairing_url = current_url_json.gsub(/(en|ka)(\??)/, '\1.json\2')
+      gon.pairing_url = current_url_no_querystring
 
 		  respond_to do |format|
 		    format.html # index.html.erb
 		    format.json {
 
-          social_content = render_to_string(:partial => "admin/pairings/social")
-          description    = render_to_string(:partial => "admin/pairings/description")
+          sc = render_to_string(:partial => "admin/pairings/social").split('_____SEP_____')
+          social = {:fb_img => sc[0], :pin_img => sc[1], :summary => sc[2]}
+
+          description = render_to_string(:partial => "admin/pairings/description")
+
+          # removing .json from current url
+          current_url = current_url_no_querystring.gsub(/(en|ka)\.json(\??)/, '\1\2')#"#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?')
 
 		      render json: {
 		        :pairing       => @pairing,
 		        :pairing_index => render_to_string(:partial => "admin/pairings/image_count"),
-		        :url           => current_url_json,
+		        :url           => current_url,
 		        :image_urls    => [@pairing.image_file1.file.url(:large), @pairing.image_file2.file.url(:large)],
 		        :years         => [@pairing.image_file1.year_formatted, @pairing.image_file2.year_formatted],
 		        :latlon        => [gon.lat, gon.lon],
 		        :marker_text   => gon.map_marker_text,
-		        :social        => social_content,
+		        :social        => social,
 		        :description   => description
 	        }
         }

@@ -9,32 +9,7 @@
   end
 
   share_summary = truncate(@pairing.description, :length => 500, :separator => ' ', :omission => '...')
-%>
-<div>
-  <span class='st_fblike_hcount' displayText='Facebook' 
-    st_url="<%= current_url_no_querystring %>" 
-    st_image="<%= fb_img_url %>"
-    st_summary="<%= share_summary %>"
-  >
-  </span>
-  <span class='st_twitter_hcount' displayText='Tweet' 
-    st_url="<%= current_url_no_querystring %>"
-    st_image="<%= fb_img_url %>"
-    st_summary="<%= share_summary %>"
-  >
-  </span>
-</div>
-<div>
-  <span class='st_pinterest_hcount' displayText='Pinterest' 
-    st_url="<%= current_url_no_querystring %>" 
-    st_image="<%= pin_img_url %>"
-    st_summary="<%= share_summary %>"
-  >
-  </span>
-  <span class='st_sharethis_hcount' displayText='Share' 
-    st_url="<%= current_url_no_querystring %>" 
-    st_image="<%= pin_img_url %>"
-    st_summary="<%= share_summary %>"
-  >
-  </span>
-</div>
+
+
+  sep = '_____SEP_____'
+%><%= fb_img_url + sep + pin_img_url + sep + share_summary %>
