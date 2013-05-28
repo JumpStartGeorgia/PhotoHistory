@@ -192,6 +192,8 @@
   function replace_description (val)
   {
     $('#image_text').html(val);
+    FB.XFBML.parse();
+    debug.log('parsing facebook comments');
   }
 
   function replace_headers (title, years, index)

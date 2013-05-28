@@ -35,8 +35,8 @@
 </div>
 
 <div id="image_sources">
-  <h3><%= t('.credit_header') %></h3>
-  <h4><%= t('.left_image') %>:</h4>
+  <h3><%= t('shared.draggable_images.credit_header') %></h3>
+  <h4><%= t('shared.draggable_images.left_image') %>:</h4>
   <ul>
     <li>
       <%= model_class.human_attribute_name(:year) %>:
@@ -52,7 +52,7 @@
     </li>
   </ul>
 
-  <h4><%= t('.right_image') %>:</h4>
+  <h4><%= t('shared.draggable_images.right_image') %>:</h4>
   <ul>
     <li>
       <%= model_class.human_attribute_name(:year) %>:
@@ -70,7 +70,7 @@
 </div>
 
 <div id="image_comments">
-  <h3><%= t('.comment_header') %></h3>
+  <h3><%= t('shared.draggable_images.comment_header') %></h3>
   <% if params[:controller] == "root" && params[:action] == "index" %>
     <div class="fb-comments" data-href="<%= current_url_no_querystring %>" data-num-posts="5" data-width="457"></div>
   <% end %>
