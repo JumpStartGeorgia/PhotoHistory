@@ -86,7 +86,7 @@ module ApplicationHelper
     year = nil
     event = nil
 
-    if params[:district].present?
+    if params[:district].present? && @districts.present?
       index = @districts.map{|x| x.permalink}.index(params[:district])
       if index
         x = CategoryTranslation.where(:locale => locale, :category_id => @districts[index].id)
@@ -96,7 +96,7 @@ module ApplicationHelper
       end
     end
 
-    if params[:place].present?
+    if params[:place].present? && @places.present?
       index = @places.map{|x| x.permalink}.index(params[:place])
       if index
         x = CategoryTranslation.where(:locale => locale, :category_id => @places[index].id)
@@ -106,7 +106,7 @@ module ApplicationHelper
       end
     end
 
-    if params[:year].present? && params[:year] != I18n.t('filters.time.unknown', :locale => :en)
+    if params[:year].present? && params[:year] != I18n.t('filters.time.unknown', :locale => :en) && @years.present?
       index = @years.map{|x| x.permalink}.index(params[:year])
       if index
         x = YearRangeTranslation.where(:locale => locale, :year_range_id => @years[index].id)
@@ -116,7 +116,7 @@ module ApplicationHelper
       end
     end
 
-    if params[:event].present?
+    if params[:event].present? && @events.present?
       index = @events.map{|x| x.permalink}.index(params[:event])
       if index
         x = CategoryTranslation.where(:locale => locale, :category_id => @events[index].id)
