@@ -5,20 +5,19 @@
   });
 
   var debug = {
-    enabled: true,
+    enabled: false,
     log: function ()
     {
       if (!this.enabled)
       {
         return;
       }
-      var sc = '';
-      for (var i = 0, num = arguments.length; i < num; i ++ )
+      var sc = [];
+      for (var i = 0, num = Array.prototype.slice.call(arguments).length; i < num; i ++)
       {
-        sc += 'arguments[' + i + '], ';
+        sc.push('arguments[' + i + ']');
       }
-      sc = sc.replace(/,\s$/, '');
-      eval('console.log(' + sc + ')');
+      eval('console.log(' + sc.join(', ') + ')');
     }
   };
 
@@ -137,8 +136,14 @@
           loaded_count ++;
           if (loaded_count == resp.image_urls.length)
           {
+          
             $(' img.layer1').attr('src', resp.image_urls[0]);
             $('.layer2 img').attr('src', resp.image_urls[1]);
+
+            window.draggable_ratio = .5;
+            recreate_draggable();
+          /*
+            $('.layer2').parent().clone().appendTo($('.photo'));*/
 
             replace_description(resp.description);
             replace_social(resp.url, resp.pairing.title, resp.social);
@@ -151,9 +156,6 @@
               debug.log('calling create_pushstate for url ' + resp.url);
               create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title);
             }
-
-            window.draggable_ratio = .5;
-            recreate_draggable();
 
             content_status.loaded();
           }

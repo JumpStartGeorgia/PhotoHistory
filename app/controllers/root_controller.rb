@@ -21,7 +21,11 @@ class RootController < ApplicationController
       gon.load_image_pairing = true
       gon.pairing_id = @pairing.id
 
-      gon.pairing_url = current_url_no_querystring
+
+      # removing .json from current url if it's there
+      current_url = current_url_no_querystring.gsub(/(en|ka)\.json(\??)/, '\1\2')#"#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?')
+      # adding .json to url for state data
+      gon.pairing_url = current_url_no_querystring.gsub(/(en|ka)(\??)/, '\1.json\2')
 
 		  respond_to do |format|
 		    format.html # index.html.erb
@@ -31,9 +35,6 @@ class RootController < ApplicationController
           social = {:fb_img => sc[0], :pin_img => sc[1], :summary => sc[2]}
 
           description = render_to_string(:partial => "admin/pairings/description")
-
-          # removing .json from current url
-          current_url = current_url_no_querystring.gsub(/(en|ka)\.json(\??)/, '\1\2')#"#{request.protocol}#{request.host_with_port}#{request.fullpath}".gsub(/(en|ka)\.json\?/, '\1?')
 
 		      render json: {
 		        :pairing       => @pairing,

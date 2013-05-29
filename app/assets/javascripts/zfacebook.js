@@ -11,6 +11,7 @@ $(document).ready(function(){
     // Additional initialization code such as adding Event Listeners goes here
 
     var PAGE_ID  = '404372876323164';
+    //FB.XFBML.parse();
 /*
      FB.Event.subscribe('auth.sessionChange', function(response) {
 console.log(response);
