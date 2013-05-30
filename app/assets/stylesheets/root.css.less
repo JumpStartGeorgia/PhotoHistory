@@ -59,14 +59,27 @@
     width: 980px;
     margin: 0px auto -4px auto;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    .item-container {
+      position: relative;
+      text-align: center;
+      top: 0px;
+      z-index: 100;
+      &.moving {
+        position: absolute;
+        left: 100%;
+        z-index: 50;
+      }
+    }
     .item {
       display: inline-block;
       position: relative;
-      & > img.layer1 {
+      img.layer1 {
         width: 100%;
         display: block;
       }
-      & > .layer2 {
+      .layer2 {
         width: 50%;
         overflow: hidden;
         position: absolute;
