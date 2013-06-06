@@ -45,7 +45,8 @@ class RootController < ApplicationController
 		        :latlon        => [gon.lat, gon.lon],
 		        :marker_text   => gon.map_marker_text,
 		        :social        => social,
-		        :description   => description
+		        :description   => description,
+		        :dimensions    => {:width => @pairing.image_file1.file.width(:large), :height => @pairing.image_file1.file.height(:large)},
 	        }
         }
 		  end

@@ -122,7 +122,7 @@
 
   function get_content (url, _create_pushstate)
   {
-    content_status.loading();
+  //content_status.loading();
     debug.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
     $.get(url, function (resp)
     {
@@ -146,14 +146,18 @@
             recreate_draggable();
           */
             var clone = $('.layer2').closest('.item-container').clone();
+            $('#photo_container').animate({height: resp.dimensions.height}, function (){
+
             clone
             .find(' img.layer1').attr('src', resp.image_urls[0]).end()
-            .find('.layer2 img').attr('src', resp.image_urls[1]).end()
+            .find('.layer2 img').attr('src', resp.image_urls[1]).css('width', resp.dimensions.width).end()
             .addClass('moving')
             .appendTo($('.photo'))
-            .animate({left: '0%'}, {duration: 1000, queue: false, complete: function (){ $(this).removeClass('moving'); }});
+            .animate({left: '0%'}, {duration: 1000, queue: false, complete: function (){ $(this).removeClass('moving').css('left', ''); }});
 
             $('.item-container:eq(0)').animate({left: '-100%'}, {duration: 1000, queue: false, complete: function (){ console.log(this); $(this).remove(); }});
+
+            });
 
             replace_description(resp.description);
             replace_social(resp.url, resp.pairing.title, resp.social);
@@ -167,7 +171,7 @@
               create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title);
             }
 
-            content_status.loaded();
+          //content_status.loaded();
           }
         }
         imgs[i].src = src;
