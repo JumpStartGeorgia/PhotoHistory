@@ -41,27 +41,28 @@
     var parent = $(this).parent();
     if (parent.hasClass('left'))
     {
-      var type = 'left';
+      var direction = 'left';
     }
     else if (parent.hasClass('right'))
     {
-      var type = 'right';
+      var direction = 'right';
     }
     else
     {
       return true;
     }
 
-    var content_url = $(this).attr('href').replace(/\.json(\?.*)?$/, '$1').replace(/(\?.*)?$/, '.json$1');
+    var content_url = $(this).attr('href')/*.replace(/\.json(\?.*)?$/, '$1')*/.replace(/(\?.*)?$/, '.json$1');
     debug.log('click function, calling get_content on ' + content_url);
-    get_content(content_url, true);
+    debug.log('direction is ' + direction);
+    get_content(content_url, true, direction);
 
     return false;
   });
 
 
 
-  function create_pushstate (url, data_url, id, title)
+  function create_pushstate (url, data_url, id, title, direction)
   {
     // create new page title
     var separator = '|';
@@ -69,7 +70,7 @@
     debug.log('pushstate created for ' + url + '; data_url: ' + data_url);
 
     window._load_state = false;
-    History.pushState({id: id, url: data_url}, new_title, url);
+    History.pushState({id: id, url: data_url, direction: 'left'}, new_title, url);
   }
 
 
@@ -85,7 +86,7 @@
   }
 
 //window._load_state = false;
-  History.replaceState({id: gon.pairing_id, url: gon.pairing_url}, $(document).attr('title'), $(location).attr('href'));
+  History.replaceState({id: gon.pairing_id, url: gon.pairing_url, direction: 'left'}, $(document).attr('title'), $(location).attr('href'));
 
 
   // Bind to StateChange Event
@@ -120,10 +121,11 @@
 
 
 
-  function get_content (url, _create_pushstate)
+  function get_content (url, _create_pushstate, direction)
   {
   //content_status.loading();
     debug.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
+    var direction = direction || false;
     $.get(url, function (resp)
     {
       debug.log('get_content() got response from ' + url + '; resp: ', resp);
@@ -146,29 +148,54 @@
             recreate_draggable();
           */
             var clone = $('.layer2').closest('.item-container').clone();
-            $('#photo_container').animate({height: resp.dimensions.height}, function (){
-
             clone
             .find(' img.layer1').attr('src', resp.image_urls[0]).end()
-            .find('.layer2 img').attr('src', resp.image_urls[1]).css('width', resp.dimensions.width).end()
-            .addClass('moving')
-            .appendTo($('.photo'))
-            .animate({left: '0%'}, {duration: 1000, queue: false, complete: function (){ $(this).removeClass('moving').css('left', ''); }});
+            .find('.layer2 img').attr('src', resp.image_urls[1]).css('width', resp.dimensions.width).end();
+          /*
+            if (direction == 'left')
+            {
+              var opposite = 'right';
+              clone.prependTo($('.photo'));
+            }
+            else
+            {
+              var opposite = 'left';
+              clone.appendTo($('.photo'));
+            }
 
-            $('.item-container:eq(0)').animate({left: '-100%'}, {duration: 1000, queue: false, complete: function (){ console.log(this); $(this).remove(); }});
+            $('#photo_container').animate({height: resp.dimensions.height}, function ()
+            {
+
+              var animateprop = {};
+              animateprop[opposite] = '0%';
+
+              clone
+              .addClass('moving')
+              .animate(animateprop, {duration: 1000, queue: false, complete: function (){ $(this).removeClass('moving').css(opposite, ''); }});
+
+              animateprop[opposite] = '-100%';
+
+              $('.item-container:not(.moving)').animate(animateprop, {duration: 1000, queue: false, complete: function (){ $(this).remove(); }});
 
             });
+          */
+
+            $('.photo').css({width: resp.dimensions.width, height: resp.dimensions.height});
+            clone.appendTo($('.photo'));
+            $('.item-container').css('position', 'absolute');
+            $('.item-container').eq(0).animate({opacity: 0}, {complete: function (){ $(this).remove(); draggable_ratio = .5; recreate_draggable(); }, queue: false}).end().eq(1).css('opacity', 0).animate({opacity: 1}, {queue: false});
 
             replace_description(resp.description);
             replace_social(resp.url, resp.pairing.title, resp.social);
             replace_headers(resp.pairing.title, resp.years, resp.pairing_index);
             update_map(resp.latlon, resp.marker_text);
+            update_link_parameters(resp.url, resp.pairing.id);
 
             debug.log('_create_pushstate is ', _create_pushstate);
             if (_create_pushstate)
             {
               debug.log('calling create_pushstate for url ' + resp.url);
-              create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title);
+              create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title, direction);
             }
 
           //content_status.loaded();
@@ -176,7 +203,6 @@
         }
         imgs[i].src = src;
       }
-      update_link_parameters(resp.url, resp.pairing.id);
     });
   }
 
