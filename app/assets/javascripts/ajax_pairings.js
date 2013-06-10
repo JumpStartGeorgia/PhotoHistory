@@ -24,11 +24,13 @@
   var content_status = {
     loading: function ()
     {
-      $('#photo_container').css('opacity', 0.5);
+      //$('#photo_container').css('opacity', 0.5);
+      $('.photo > .overlay').fadeIn('fast');
     },
     loaded: function ()
     {
-      $('#photo_container').css('opacity', 1);
+      //$('#photo_container').css('opacity', 1);
+      $('.photo > .overlay').fadeOut('fast');
     }
   };
 
@@ -123,7 +125,7 @@
 
   function get_content (url, _create_pushstate, direction)
   {
-  //content_status.loading();
+    content_status.loading();
     debug.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
     var direction = direction || false;
     $.get(url, function (resp)
@@ -180,10 +182,21 @@
             });
           */
 
-            $('.photo').css({width: resp.dimensions.width, height: resp.dimensions.height});
-            clone.appendTo($('.photo'));
-            $('.item-container').css('position', 'absolute');
-            $('.item-container').eq(0).animate({opacity: 0}, {complete: function (){ $(this).remove(); draggable_ratio = .5; recreate_draggable(); }, queue: false}).end().eq(1).css('opacity', 0).animate({opacity: 1}, {queue: false});
+            //$('.photo').css({width: resp.dimensions.width, height: resp.dimensions.height});
+            var clone_height = clone.hide().appendTo($('.photo')).addClass('hidden_clone').children('.item').outerHeight();
+            $('.photo').animate({height: clone_height}, {queue: false});
+            clone.removeClass('hidden_clone').addClass('after_first').fadeIn();
+            $('.item-container')
+            .eq(0)
+            .animate({opacity: 0}, {complete: function ()
+             {
+               $(this).remove();
+               recreate_draggable(true);
+             }, queue: false})
+            .end()
+            .eq(1)
+            .css('opacity', 0)
+            .animate({opacity: 1}, {queue: false});
 
             replace_description(resp.description);
             replace_social(resp.url, resp.pairing.title, resp.social);
@@ -198,7 +211,7 @@
               create_pushstate(resp.url, url, resp.pairing.id, resp.pairing.title, direction);
             }
 
-          //content_status.loaded();
+            content_status.loaded();
           }
         }
         imgs[i].src = src;

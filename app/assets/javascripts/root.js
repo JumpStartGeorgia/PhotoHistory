@@ -3,14 +3,19 @@ $(function()
 
   window.draggable_ratio = .5;
 
-  window.recreate_draggable = function ()
+  window.recreate_draggable = function (reset_ratio)
   {
+    if (typeof reset_ratio == 'boolean' && reset_ratio)
+    {
+      draggable_ratio = .5;
+    }
+
     if (gon.load_image_pairing)
     {
       var el = $('.draggable');
       var el_width = el.width();
 
-      var overlay = $('.overlay');
+      var overlay = $('.item .overlay');
       var ow = overlay.width();
     //var offset = overlay.offset();
       var w = overlay.offset().left - el_width / 2;
@@ -22,7 +27,9 @@ $(function()
         create: function (e, ui)
         {
           var pwr = ow * draggable_ratio;
-          $(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
+          //$(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
+          noqueue = {queue: false, duration: 300};
+          $(this).animate({left: pwr - el_width / 2}, noqueue).show().parent().siblings('.layer2').animate({width: ow - pwr}, noqueue).children('img').animate({width: $(this).parent().siblings('img.layer1').width()}, noqueue);
         },
         drag: function (e, ui)
         {

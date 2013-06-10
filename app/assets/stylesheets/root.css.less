@@ -10,6 +10,7 @@
   & > .inner {
     display: table;
     margin: 0 auto;
+    position: relative;
   }
 
   .controls, .photo {
@@ -62,11 +63,25 @@
     text-align: center;
     position: relative;
     overflow: hidden;
+    & > .overlay {
+      position: absolute;
+      z-index: 999999;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background: rgba(0, 0, 0, .7) url('/assets/throbber.svg') center center no-repeat;
+      display: none;
+    }
     .item-container {
       position: relative;
+      width: 100%;
       text-align: center;
       top: 0px;
       z-index: 100;
+      &.after_first {
+        position: absolute;
+      }
       &.moving {
         position: absolute;
         left: 100%;
@@ -279,6 +294,12 @@
   }
 
 
+}
+
+.hidden_clone {
+  position: absolute !important;
+  visibility: hidden !important;
+  display: block !important;
 }
 
 .visible\! {
