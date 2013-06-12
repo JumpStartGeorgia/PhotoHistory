@@ -31,7 +31,16 @@
     {
       //$('#photo_container').css('opacity', 1);
       $('.photo > .overlay').fadeOut('fast');
+    }/*,
+    hide_draggable: function ()
+    {
+      $('.draggable').hide();
+    },
+    show_draggable: function ()
+    {
+      setTimeout(function (){$('.draggable').show();}, 200);
     }
+    */
   };
 
 
@@ -126,6 +135,7 @@
   function get_content (url, _create_pushstate, direction)
   {
     content_status.loading();
+  //content_status.hide_draggable();
     debug.log('get_content() called for url ' + url + '; _create_pushstate is', _create_pushstate);
     var direction = direction || false;
     $.get(url, function (resp)
@@ -191,7 +201,7 @@
             .animate({opacity: 0}, {complete: function ()
              {
                $(this).remove();
-               recreate_draggable(true);
+               recreate_draggable(true, content_status.show_draggable);
              }, queue: false})
             .end()
             .eq(1)

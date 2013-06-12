@@ -3,7 +3,7 @@ $(function()
 
   window.draggable_ratio = .5;
 
-  window.recreate_draggable = function (reset_ratio)
+  window.recreate_draggable = function (reset_ratio, create_callback)
   {
     if (typeof reset_ratio == 'boolean' && reset_ratio)
     {
@@ -13,6 +13,7 @@ $(function()
     if (gon.load_image_pairing)
     {
       var el = $('.draggable');
+      el.hide();
       var el_width = el.width();
 
       var overlay = $('.item .overlay');
@@ -27,9 +28,15 @@ $(function()
         create: function (e, ui)
         {
           var pwr = ow * draggable_ratio;
-          //$(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
-          noqueue = {queue: false, duration: 300};
-          $(this).animate({left: pwr - el_width / 2}, noqueue).show().parent().siblings('.layer2').animate({width: ow - pwr}, noqueue).children('img').animate({width: $(this).parent().siblings('img.layer1').width()}, noqueue);
+        //$(this).css('left', pwr - el_width / 2).show().parent().siblings('.layer2').width(ow - pwr).children('img').width($(this).parent().siblings('img.layer1').width());
+        /*
+          if (typeof create_callback == 'function')
+          {
+            create_callback();
+          }
+        */
+          animop = {queue: false, duration: 300};
+          $(this).animate({left: pwr - el_width / 2}, animop).show().parent().siblings('.layer2').animate({width: ow - pwr}, animop).children('img').animate({width: $(this).parent().siblings('img.layer1').width()}, animop);
         },
         drag: function (e, ui)
         {
