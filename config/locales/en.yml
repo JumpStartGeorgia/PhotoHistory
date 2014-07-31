@@ -44,6 +44,7 @@ en:
         long_description: Long Description
       category:
         type_id: Type
+        ancestry: City
       category_translation:
         name: Name
       year_range:
@@ -79,6 +80,7 @@ en:
     district: District
     place: Place
     event: Event
+    city: City
   filters:
     time:
       header: Time Period

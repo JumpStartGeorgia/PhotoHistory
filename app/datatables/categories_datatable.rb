@@ -20,8 +20,9 @@ private
   def data
     categories.map do |category|
       [
-        link_to(category.name, admin_category_path(:id => category.id, :locale => I18n.locale)),
+        category.name,
         category.type_name,
+        category.parent_id.present? ? category.parent.name : nil,
         action_links(category)
       ]
     end
@@ -65,7 +66,7 @@ private
   end
 
   def sort_column
-    columns = %w[category_translations.name categories.type_id categories.created_at]
+    columns = %w[category_translations.name categories.type_id categories.ancestry categories.created_at]
     columns[params[:iSortCol_0].to_i]
   end
 

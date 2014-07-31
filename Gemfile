@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '~> 1.2.0'
+gem 'bundler', '~> 1.6.0'
 gem "rails", "3.1.10"
 gem "mysql2", "~> 0.3.11" # this gem works better with utf-8
 
@@ -34,6 +34,7 @@ gem "subexec", "~> 0.2.2" # run imagemagick from command line
 gem "unidecoder", "~> 1.1.1" # convert utf8 to ascii
 gem "impressionist", "~> 1.1.1" # keep track of views
 gem "geocoder" # select images that are taken near other image
+gem 'ancestry', '~> 2.1.0' # to nest categories (parent/child relationships)
 
 # Gems used only for assets and not required
 # in production environments by default.

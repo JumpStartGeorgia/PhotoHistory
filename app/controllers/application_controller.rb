@@ -78,6 +78,8 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 		gon.fb_app_id = ENV['PHOTO_HISTORY_FACEBOOK_APP_ID']
 		gon.fb_app_secret = ENV['PHOTO_HISTORY_FACEBOOK_APP_SECRET']
 
+    gon.category_district = Category::TYPES[:district]
+
 		if I18n.locale == :ka
 		  gon.datatable_i18n_url = "/datatable_ka.txt"
 		else
@@ -87,6 +89,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
 	end
 
   def preload_global_variables
+    @cities = Category.by_type(Category::TYPES[:city])
     @districts = Category.by_type(Category::TYPES[:district])
     @places = Category.by_type(Category::TYPES[:place])
     @events = Category.by_type(Category::TYPES[:event])

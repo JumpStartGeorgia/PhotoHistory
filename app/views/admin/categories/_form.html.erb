@@ -3,6 +3,8 @@
 
 	<%= f.input :type_id, :as => :select, :collection => Category.collection %>
 
+	<%= f.input :ancestry, :as => :select, :collection => @cities.map{|x| [x.name, x.id]}, :include_blank => false %>
+
   <% @category.category_translations.sort{|x,y| x.locale <=> y.locale}.each do |trans| %>
 	  <%= f.fields_for :category_translations, trans do |translation| %>
 

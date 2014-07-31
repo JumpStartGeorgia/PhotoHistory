@@ -44,6 +44,7 @@ ka:
         long_description: გრძელი აღწერა
       category:
         type_id: ტიპი
+        ancestry: City
       category_translation:
         name: სახელი
       year_range:
@@ -79,6 +80,7 @@ ka:
     district: რაიონი
     place: ადგილი
     event: მოვლენა
+    city: City
   filters:
     time:
       header: პერიოდი
