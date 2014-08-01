@@ -20,6 +20,7 @@ class ImageFile < ActiveRecord::Base
   has_many :events, :through => :image_file_events
   belongs_to :category_district, :class_name => 'Category', :foreign_key => 'district_id'
   belongs_to :category_place, :class_name => 'Category', :foreign_key => 'place_id'
+  belongs_to :category_city, :class_name => 'Category', :foreign_key => 'city_id'
 
   has_many :pairing1s, :class_name => 'Pairing', :foreign_key => 'image_file1_id'
   has_many :pairing2s, :class_name => 'Pairing', :foreign_key => 'image_file1_id'
@@ -28,7 +29,7 @@ class ImageFile < ActiveRecord::Base
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
     :year, :lat, :lon, 
     #:district, :place, - old
-    :file_meta, :source, :district_id, :place_id,
+    :file_meta, :source, :district_id, :place_id, :city_id,
     :add_watermark, :event_ids, :photographer_old
 
 	attr_accessor :images_processed, :orig_source, :orig_add_watermark
@@ -42,7 +43,7 @@ class ImageFile < ActiveRecord::Base
   after_commit :update_images
 
   def self.for_datatable
-    includes(:category_district => :category_translations, :category_place => :category_translations)
+    includes(:category_district => :category_translations, :category_place => :category_translations, :category_city => :category_translations)
     .with_translations(I18n.locale)
   end
 
@@ -54,8 +55,12 @@ class ImageFile < ActiveRecord::Base
     with_translations(I18n.locale).order("image_files.created_at desc, image_file_translations.name asc, image_files.year asc")
   end
 
+  def self.distinct_city_ids
+    joins(:pairing1s).select("distinct image_files.city_id").where("image_files.city_id is not null and pairings.published = 1").map{|x| x.city_id}
+  end
+  
   def self.distinct_district_ids
-    joins(:pairing1s).select("distinct image_files.district_id").where("image_files.district_id is not null and pairings.published = 1").map{|x| x.district_id}
+    joins(:pairing1s).select("distinct image_files.city_id, image_files.district_id").where("image_files.district_id is not null and pairings.published = 1").map{|x| [x.city_id, x.district_id]}
   end
   
   def self.distinct_place_ids
@@ -72,6 +77,14 @@ class ImageFile < ActiveRecord::Base
 
   def photographer_formatted
     self.photographer.present? ? self.photographer : I18n.t('app.common.unknown_source')
+  end
+
+  def city_name
+    category_city.name if self.city_id.present?
+  end
+
+  def city_permalink
+    category_city.permalink if self.city_id.present?
   end
 
   def district_name

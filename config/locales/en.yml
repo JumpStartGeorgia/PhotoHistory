@@ -22,6 +22,8 @@ en:
         district: District
         place_id: Place
         place: Place
+        city_id: City
+        city: City
         source: Source
         add_watermark: Use Source as Watermark on Image
         events: Events

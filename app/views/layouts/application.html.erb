@@ -70,22 +70,35 @@
 			                <b class="caret"></b>
 			          </a>
 			          <ul class="dropdown-menu">
-		              <li <%= !params[:district].present? && !params[:place].present? ? "class=active" : '' %>>
-	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :place => nil, :pairing => nil})) %>
+		              <li <%= !params[:city].present? && !params[:district].present? && !params[:place].present? ? "class=active" : '' %>>
+	     		         <%= link_to t('filters.location.all'), root_path(update_params({:district => nil, :place => nil, :pairing => nil, :city => nil})) %>
 							    </li>
-                  <% if @districts.present? && @image_districts.present? %>
-                    <li class="dropdown-submenu">
-                      <a tabindex="-1" href="#"><%= t('filters.location.districts.header') %></a>
-                      <ul class="dropdown-menu">
-                        <% @districts.each do |item| %>
-                          <% if @image_districts.index(item.id).present? %>
-					                  <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
-			           		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil})) %>
-									          </li>
-                          <% end %>                  
-                        <% end %>                  
-                      </ul>
-                    </li>
+                  <% if @cities.present? && @image_cities.present? %>
+                    <% @cities.each do |city| %>
+                      <% if @image_cities.index(city.id).present? %>
+                        <% if @districts.present? && @image_districts.present? && @image_districts.select{|x| x[0] == city.id}.present? %>
+                          <li class="dropdown-submenu <%= params[:city] == city.permalink ? 'active' : '' %>">
+        	     		         <%= link_to city.name, root_path(update_params({:city => city.permalink, :district => nil, :place => nil, :pairing => nil})), :tabindex => '-1' %>
+                            <ul class="dropdown-menu">
+                              <% img_districts = @image_districts.select{|x| x[0] == city.id}.map{|x| x[1]} %>
+                              <% if img_districts %>
+                                <% @districts.each do |item| %>
+                                  <% if img_districts.index(item.id).present? %>
+					                          <li <%= params[:district] == item.permalink ? "class=active" : '' %>>
+			                   		         <%= link_to item.name, root_path(update_params({:district => item.permalink, :pairing => nil, :place => nil, :city => nil})) %>
+									                  </li>
+                                  <% end %>                  
+                                <% end %>                  
+                              <% end %>
+                            </ul>
+                          </li>
+                        <% else %>
+				                  <li <%= params[:city] == city.permalink ? "class=active" : '' %>>
+        	     		         <%= link_to city.name, root_path(update_params({:city => city.permalink, :district => nil, :place => nil, :pairing => nil})) %>
+      	     		          </li>
+                        <% end %>
+                      <% end %>
+                    <% end %>
                   <% end %>
                   <% if @places.present? && @image_places.present? %>
                     <li class="dropdown-submenu">
@@ -94,7 +107,7 @@
                         <% @places.each do |item| %>
                           <% if @image_places.index(item.id).present? %>
 					                  <li <%= params[:place] == item.permalink ? "class=active" : '' %>>
-			           		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil})) %>
+			           		         <%= link_to item.name, root_path(update_params({:place => item.permalink, :pairing => nil, :district => nil, :city => nil})) %>
 									          </li>
                           <% end %>                  
                         <% end %>                  

@@ -23,9 +23,9 @@ $(document).ready(function(){
       "sUrl": gon.datatable_i18n_url
     },
     "aoColumnDefs": [
-      { 'bSortable': false, 'aTargets': [ 6,7 ] }
+      { 'bSortable': false, 'aTargets': [ 7,8 ] }
     ],
-    "aaSorting": [[8, 'desc']]
+    "aaSorting": [[9, 'desc']]
   });
 
   pairing_dt = $('#pairings-datatable').dataTable({

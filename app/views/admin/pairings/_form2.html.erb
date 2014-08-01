@@ -3,7 +3,7 @@
 <%- model_class_if = ImageFile -%>
 <%- model_class_ift = ImageFileTranslation -%>
 
-<%= form_tag(url_path_form, :method => :put, :class => 'form-horizontal formtastic', :multipart => true) do %>
+<%= form_tag(url_path_form, :method => :put, :class => 'form-horizontal formtastic pairing-upload', :multipart => true) do %>
 
     <% if @error_count && @error_count > 0 %>
 
@@ -292,12 +292,21 @@
     <hr />
 
 
+    <div class="select control-group optional" id="image_file1_city_id_input">
+      <label class=" control-label" for="image_file1_city_id">
+        <%= model_class_if.human_attribute_name(:city_id) %>
+      </label>
+      <div class="controls">
+        <%= select_tag "image_file1[city_id]", options_from_collection_for_select(@cities, "id", "name", @image_file1.city_id), 
+              :include_blank => true, :id => "image_file1_city_id" %>
+      </div>
+    </div>
     <div class="select control-group optional" id="image_file1_district_id_input">
       <label class=" control-label" for="image_file1_district_id">
         <%= model_class_if.human_attribute_name(:district_id) %>
       </label>
       <div class="controls">
-        <%= select_tag "image_file1[district_id]", options_from_collection_for_select(@districts, "id", "name", @image_file1.district_id), 
+        <%= select_tag "image_file1[district_id]", options_for_select(@districts.map{|x| [x.name, x.id, {'data-parent-id'=>x.parent_id}]}, @image_file1.district_id),
               :include_blank => true, :id => "image_file1_district_id" %>
       </div>
     </div>

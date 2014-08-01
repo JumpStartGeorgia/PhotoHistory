@@ -54,6 +54,13 @@ protected
       pairings = Pairing.published.with_images.sorted
     end
 
+    # add city
+    if params[:city].present? && params[:city] != I18n.t('filters.location.all', :locale => :en)
+
+      index = @cities.map{|x| x.permalink}.index(params[:city])
+      pairings = pairings.where("image_files.city_id = ?", @cities[index].id) if index
+    end
+
     # add district
     if params[:district].present? && params[:district] != I18n.t('filters.location.all', :locale => :en)
 

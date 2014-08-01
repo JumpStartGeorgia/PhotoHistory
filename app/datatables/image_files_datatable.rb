@@ -24,6 +24,7 @@ private
         image_file.year,
         image_file.source,
         image_file.photographer,
+        image_file.city_name,
         image_file.district_name,
         image_file.place_name,
         image_file.events.present? ? image_file.events.map{|x| x.name}.join(', ') : nil,
@@ -76,7 +77,7 @@ private
   end
 
   def sort_column
-    columns = %w[image_file_translations.name image_files.year image_files.source image_file_translations.photographer category_translations.name category_translations_categories.name image_files.year image_files.year image_files.created_at]
+    columns = %w[image_file_translations.name image_files.year image_files.source image_file_translations.photographer category_translations.name category_translations_categories.name category_translations_categories_2.name image_files.year image_files.year image_files.created_at]
     columns[params[:iSortCol_0].to_i]
   end
 

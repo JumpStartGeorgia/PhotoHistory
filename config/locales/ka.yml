@@ -22,6 +22,8 @@ ka:
         district: რაიონი
         place_id: ადგილი
         place: ადგილი
+        city_id: City
+        city: City
         source: წყარო
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
         events: მოვლენები

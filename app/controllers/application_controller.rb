@@ -95,6 +95,7 @@ logger.debug "////////////////////////// BROWSER NOT SUPPORTED"
     @events = Category.by_type(Category::TYPES[:event])
     @years = YearRange.sorted
 
+    @image_cities = ImageFile.distinct_city_ids
     @image_districts = ImageFile.distinct_district_ids
     @image_places = ImageFile.distinct_place_ids
     @image_events = ImageFileEvent.distinct_event_ids

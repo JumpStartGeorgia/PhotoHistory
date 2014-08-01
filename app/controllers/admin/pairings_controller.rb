@@ -164,6 +164,7 @@ Rails.logger.debug "***** request is put"
   Rails.logger.debug "***** adding img 1 data to img 2"
         @image_file2.lat = @image_file1.lat
         @image_file2.lon = @image_file1.lon
+        @image_file2.city_id = @image_file1.city_id
         @image_file2.district_id = @image_file1.district_id
         @image_file2.place_id = @image_file1.place_id
 

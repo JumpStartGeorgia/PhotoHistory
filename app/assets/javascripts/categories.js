@@ -4,6 +4,7 @@ $(document).ready(function(){
       $('form.category div#category_ancestry_input').show();
     }else{
       $('form.category div#category_ancestry_input').hide();
+      $('form.category select#ancestry').val('');
     }
   }
   

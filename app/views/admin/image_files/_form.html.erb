@@ -43,7 +43,8 @@
 
     <hr />
 
-		<%= f.input :district_id, :as => :select, :collection => @districts.map{|x| [x.name, x.id]} %>
+		<%= f.input :city_id, :as => :select, :collection => @cities.map{|x| [x.name, x.id]} %>
+		<%= f.input :district_id, :as => :select, :collection => options_for_select(@districts.map{|x| [x.name, x.id, {'data-parent-id'=>x.parent_id}]}), :include_blank => true %>
 		<%= f.input :place_id, :as => :select, :collection => @places.map{|x| [x.name, x.id]} %>
 
     <div class="check_boxes control-group optional" id="image_file_events_input">
