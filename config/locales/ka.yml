@@ -22,8 +22,8 @@ ka:
         district: რაიონი
         place_id: ადგილი
         place: ადგილი
-        city_id: City
-        city: City
+        city_id: ქალაქი
+        city: ქალაქი
         source: წყარო
         add_watermark: გამოიყენეთ წყარო ფოტოს შტამპად
         events: მოვლენები
@@ -46,7 +46,7 @@ ka:
         long_description: გრძელი აღწერა
       category:
         type_id: ტიპი
-        ancestry: City
+        ancestry: ქალაქი
       category_translation:
         name: სახელი
       year_range:
@@ -82,7 +82,7 @@ ka:
     district: რაიონი
     place: ადგილი
     event: მოვლენა
-    city: City
+    city: ქალაქი
   filters:
     time:
       header: პერიოდი
@@ -177,7 +177,7 @@ ka:
       upload:
         title: ახალი წყვილის ატვირთვა
       edit_combined:
-        title: Edit Pairing
+        title: წყვილის რედაქტირება
   root:
     index:
     about:
