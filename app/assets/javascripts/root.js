@@ -33,8 +33,13 @@ $(function()
   }
 
   if (gon.load_image_pairing){
-    $(window).bind('load resize', recreate_draggable);
+    $('a#read-more').click(function(e){
+      $(this).parent().find('+ #long-desc').fadeIn();
+      $(this).parent().hide();
+      e.preventDefault();
+    });
 
+    $(window).bind('load resize', recreate_draggable);
 
     $(window).keydown(function (event)
     {

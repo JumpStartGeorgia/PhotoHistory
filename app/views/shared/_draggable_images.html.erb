@@ -16,7 +16,8 @@
       <div class="photo">
         <div class="item">
           <%= image_tag @pairing.image_file1.file.url(:large), :class => "layer1", 
-              :'data-original-width' => @pairing.image_file1.image_width(:large) %>
+              :'data-original-width' => @pairing.image_file1.image_width(:large), 
+              :alt => @pairing.description %>
           <div class="layer2">
             <%= image_tag @pairing.image_file2.file.url(:large) %>
           </div>
@@ -125,7 +126,16 @@
           </div>
         <% end %>
     
-        <div class="desc"><%= simple_format @pairing.description %></div>
+        <div class="desc">
+          <%= simple_format @pairing.description %>
+          
+          <% if @pairing.long_description.present? %>
+            <p><%= link_to t('.read_more'), '#', :id => 'read-more' %></p>
+            <div id="long-desc">
+              <%= simple_format @pairing.long_description %>
+            </div>
+          <% end %>
+        </div>
 
         <% if @pairing.image_file1.present? %>
           <div id="image_links">
