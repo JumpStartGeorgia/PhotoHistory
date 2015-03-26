@@ -176,10 +176,12 @@
               <%= model_class.human_attribute_name(:year) %>:
               <%= @pairing.image_file1.year_formatted %>
             </li>
-            <li>
-              <%= model_class.human_attribute_name(:source) %>:
-              <%= @pairing.image_file1.source_formatted %>
-            </li>
+            <% if @pairing.image_file1.source != @pairing.image_file1.photographer %>
+              <li>
+                <%= model_class.human_attribute_name(:source) %>:
+                <%= @pairing.image_file1.source_formatted %>
+              </li>
+            <% end %>
             <li>
               <%= model_class_trans.human_attribute_name(:photographer) %>:
               <%= @pairing.image_file1.photographer_formatted %>
@@ -192,10 +194,12 @@
               <%= model_class.human_attribute_name(:year) %>:
               <%= @pairing.image_file2.year_formatted %>
             </li>
-            <li>
-              <%= model_class.human_attribute_name(:source) %>:
-              <%= @pairing.image_file2.source_formatted %>
-            </li>
+            <% if @pairing.image_file2.source != @pairing.image_file2.photographer %>
+              <li>
+                <%= model_class.human_attribute_name(:source) %>:
+                <%= @pairing.image_file2.source_formatted %>
+              </li>
+            <% end %>
             <li>
               <%= model_class_trans.human_attribute_name(:photographer) %>:
               <%= @pairing.image_file2.photographer_formatted %>

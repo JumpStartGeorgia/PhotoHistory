@@ -1,5 +1,5 @@
 class ImageFile < ActiveRecord::Base
-	translates :name, :description, :photographer
+	translates :name, :description, :photographer, :source
 
   geocoded_by :address, :latitude  => :lat, :longitude => :lon
   reverse_geocoded_by :lat, :lon
@@ -28,11 +28,11 @@ class ImageFile < ActiveRecord::Base
   accepts_nested_attributes_for :image_file_translations
   attr_accessible :file, :image_file_translations_attributes, :file_content_type, :file_file_size, :file_updated_at, :file_file_name, 
     :year, :lat, :lon, 
-    #:district, :place, - old
-    :file_meta, :source, :district_id, :place_id, :city_id,
+    #:district, :place, :source, - old
+    :file_meta, :district_id, :place_id, :city_id,
     :add_watermark, :event_ids, :photographer_old
 
-	attr_accessor :images_processed, :orig_source, :orig_add_watermark
+	attr_accessor :images_processed, :new_source, :orig_add_watermark
 
   validates :file_file_name, :presence => true
   validates :file_file_name, :length => {:maximum => 120}
@@ -141,7 +141,7 @@ class ImageFile < ActiveRecord::Base
 
   # save the original value of the source and add watermark
   def save_orig_values
-    self.orig_source = self.source if self.has_attribute?(:source)
+    #self.orig_source = self.source # if self.has_attribute?(:source)
     self.orig_add_watermark = self.add_watermark if self.has_attribute?(:add_watermark)
   end
 
@@ -153,8 +153,11 @@ class ImageFile < ActiveRecord::Base
   # if source changed, reprocess the image
   # if watermark value chagned, reprocess image
   def update_watermarks
-    if self.orig_source != self.source || self.orig_add_watermark != self.add_watermark
-      self.orig_source = self.source
+    logger.debug "$$$$$$$$$$$$$$$$$ update watermarks"
+    logger.debug "@@@@@@@@@@@ new source = #{self.new_source}; orig add = #{self.orig_add_watermark}; add = #{self.add_watermark}"
+    if self.new_source || self.orig_add_watermark != self.add_watermark
+      logger.debug "@@@@@@@@@@@@@@@@@@@@@@ REPROCESS!"
+      self.new_source = false
       self.orig_add_watermark = self.add_watermark
       self.file.reprocess!
     end
@@ -162,9 +165,13 @@ class ImageFile < ActiveRecord::Base
 
 
   def update_images
+    logger.debug "!!!!!!!!!!!1 update images"
     if images_processed
+      logger.debug "!!!!!!!!!!!1 image processed!"
+      logger.debug "!!!!!!!!!!!1 add = #{self.add_watermark}; source = #{self.translation_for(:en).source}"
       # add watermark to the 3 sizes if wanted
-      if self.add_watermark && self.source.present?
+      if self.add_watermark && self.translation_for(:en).source.present?
+        logger.debug "!!!!!!!!!!!1 making watermarks!"
         generate_watermarks
       end
 
@@ -180,8 +187,9 @@ class ImageFile < ActiveRecord::Base
 
   # add watermark to the 3 sizes 
   # - do not modify original
+  # always do watermarks in english
   def generate_watermarks
-    text = "#{self.source} | #{I18n.t('app.common.app_name', :locale => :en)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'')
+    text = "#{self.translation_for(:en).source} | #{I18n.t('app.common.app_name', :locale => :en)}".to_ascii.gsub(/[^0-9A-Za-z|_\- ]/,'')
     # large
     path = "#{Rails.root}/public#{self.file.url(:large, false)}"
     Subexec.run "convert \"#{path}\" -pointsize 13 -font Sylfaen-Regular -fill \"rgba(255,255,255,0.5)\" -gravity southeast -annotate +10+10 \"#{text}\" #{path}"

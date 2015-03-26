@@ -61,6 +61,10 @@ class Admin::ImageFilesController < ApplicationController
   def create
     @image_file = ImageFile.new(params[:image_file])
 
+    # see if en source exists so have to recreate watermark
+    img_trans = params[:image_file][:image_file_translations_attributes].values.select{|x| x[:locale] == 'en'}.first
+    @image_file.new_source = img_trans[:source].present? if img_trans.present?
+
     respond_to do |format|
       if @image_file.save
         format.html { redirect_to admin_image_file_path(@image_file), notice: t('app.msgs.success_created', :obj => t('activerecord.models.image_file')) }
@@ -80,6 +84,10 @@ class Admin::ImageFilesController < ApplicationController
   # PUT /image_files/1.json
   def update
     @image_file = ImageFile.find(params[:id])
+
+    # see if en source exists so have to recreate watermark
+    img_trans = params[:image_file][:image_file_translations_attributes].values.select{|x| x[:locale] == 'en'}.first
+    @image_file.new_source = img_trans[:source] != @image_file.translation_for(locale).source if img_trans.present?
 
     respond_to do |format|
       if @image_file.update_attributes(params[:image_file])

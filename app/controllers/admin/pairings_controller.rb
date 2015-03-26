@@ -244,6 +244,12 @@ Rails.logger.debug "*************** 2 trans = #{img2_trans.inspect}"
           img1_trans[:name] = pairing_trans[:title]
           img1_trans[:description] = pairing_trans[:description]
           img2_trans[:name] = pairing_trans[:title]
+
+          # see if en source changed so have to recreate watermark
+          if locale == :en
+            @image_file1.new_source = @image_file1.translation_for(locale).source != img1_trans[:source]
+            @image_file2.new_source = @image_file2.translation_for(locale).source != img2_trans[:source]
+          end
         end
 
         # add categories from image 1 to image 2

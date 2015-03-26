@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140731133854) do
+ActiveRecord::Schema.define(:version => 20150326121014) do
 
   create_table "categories", :force => true do |t|
     t.integer  "type_id"
@@ -55,10 +55,12 @@ ActiveRecord::Schema.define(:version => 20140731133854) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photographer"
+    t.string   "source"
   end
 
   add_index "image_file_translations", ["image_file_id"], :name => "index_image_file_translations_on_image_file_id"
   add_index "image_file_translations", ["locale"], :name => "index_image_file_translations_on_locale"
+  add_index "image_file_translations", ["source"], :name => "index_image_file_translations_on_source"
 
   create_table "image_files", :force => true do |t|
     t.integer  "year"
@@ -73,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20140731133854) do
     t.string   "district"
     t.string   "place"
     t.text     "file_meta"
-    t.string   "source"
+    t.string   "old_source"
     t.integer  "district_id"
     t.integer  "place_id"
     t.boolean  "add_watermark",                                     :default => false
@@ -84,9 +86,9 @@ ActiveRecord::Schema.define(:version => 20140731133854) do
   add_index "image_files", ["city_id"], :name => "index_image_files_on_city_id"
   add_index "image_files", ["district"], :name => "index_image_files_on_district"
   add_index "image_files", ["district_id"], :name => "index_image_files_on_district_id"
+  add_index "image_files", ["old_source"], :name => "index_image_files_on_source"
   add_index "image_files", ["place"], :name => "index_image_files_on_place"
   add_index "image_files", ["place_id"], :name => "index_image_files_on_place_id"
-  add_index "image_files", ["source"], :name => "index_image_files_on_source"
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"

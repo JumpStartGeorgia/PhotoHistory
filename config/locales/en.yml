@@ -32,6 +32,7 @@ en:
         name: Name
         description: Description
         photographer: Photographer
+        source: Source
       pairing:
         image_file1: 1st Image File
         image_file1_id: 1st Image File

@@ -2,7 +2,7 @@
 <%= semantic_form_for([:admin,@image_file], :html => { :class => 'form-horizontal' }) do |f| %>
 	<%= f.error_messages %>
 
-		<%= f.input :file, :as => :file %>
+		<%= f.input :file, :as => :file, input_html: {accept:".jpg,.jpeg,.png"} %>
 		<div class="control-group">
 			<div class="controls">
 				<%= image_tag @image_file.file.url(:thumb) if @image_file.file_file_name %>
@@ -10,7 +10,6 @@
 		</div>
 
 		<%= f.input :year, :as => :string, :input_html => {:size => 5, :maxlength => 4} %>
-		<%= f.input :source, :input_html => {:size => 75} %>
 		<%= f.input :add_watermark, :as => :radio %>
 
     <hr />
@@ -22,6 +21,7 @@
 				  <h3><%= t("app.language.#{trans.locale}") %></h3>
 
 				  <%= translation.input :name, :input_html => {:size => 75} %>
+          <%= translation.input :source, :input_html => {:size => 75} %>
       		<%= translation.input :photographer, :input_html => {:size => 75} %>
 				  <%= translation.input :description, :input_html => {:rows => 4} %>
 				  <%= translation.hidden_field :locale , :value => trans.locale %>

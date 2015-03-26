@@ -71,7 +71,7 @@
               <abbr title="<%= t('formtastic.required') %>">*</abbr>
             </label>
             <div class="controls">  
-              <%= file_field_tag "image_file1[file]", :id => "image_file1_file" %>
+              <%= file_field_tag "image_file1[file]", :id => "image_file1_file", accept:".jpg,.jpeg,.png" %>
             </div>
           </div>
         <% end %>
@@ -114,7 +114,7 @@
               <abbr title="<%= t('formtastic.required') %>">*</abbr>
             </label>
             <div class="controls">  
-              <%= file_field_tag "image_file2[file]", :id => "image_file2_file" %>
+              <%= file_field_tag "image_file2[file]", :id => "image_file2_file", accept:".jpg,.jpeg,.png" %>
             </div>
           </div>
         <% end %>
@@ -131,14 +131,6 @@
           </label>
           <div class="controls">
             <%= text_field_tag "image_file1[year]", @image_file1.year, :id => "image_file1_year", :size => 5, :maxlength => 4 %>
-          </div>
-        </div>
-        <div class="string control-group optional stringish" id="image_file1_source_input">
-          <label class=" control-label" for="image_file1_source">
-            <%= model_class_if.human_attribute_name(:source) %>
-          </label>
-          <div class="controls">
-            <%= text_field_tag "image_file1[source]", @image_file1.source, :id => "image_file1_source", :size => 75, :maxlength => 255 %>
           </div>
         </div>
         <div class="radio control-group optional" id="image_file1_add_watermark_input">
@@ -160,6 +152,17 @@
         <% @image_file1.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
 	        <div id="form-<%= trans.locale %>" class="multilanguage">
 		        <h3><%= t("app.language.#{trans.locale}") %></h3>
+
+            <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_source_input">
+              <label class=" control-label" for="image_file1_image_file_translations_attributes_<%=locale_index%>_source">
+                <%= model_class_ift.human_attribute_name(:source) %>
+              </label>
+              <div class="controls">
+                <%= text_field_tag "image_file1[image_file_translations_attributes][#{locale_index}][source]", trans.source, 
+                    :id => "image_file1_image_file_translations_attributes_#{locale_index}_source", :size => 75, :maxlength => 255 %>
+
+              </div>
+            </div>
 
             <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_photographer_input">
               <label class=" control-label" for="image_file1_image_file_translations_attributes_<%=locale_index%>_photographer">
@@ -188,14 +191,6 @@
             <%= text_field_tag "image_file2[year]", @image_file2.year, :id => "image_file2_year", :size => 5, :maxlength => 4 %>
           </div>
         </div>
-        <div class="string control-group optional stringish" id="image_file2_source_input">
-          <label class=" control-label" for="image_file2_source">
-            <%= model_class_if.human_attribute_name(:source) %>
-          </label>
-          <div class="controls">
-            <%= text_field_tag "image_file2[source]", @image_file2.source, :id => "image_file2_source", :size => 75, :maxlength => 255 %>
-          </div>
-        </div>
         <div class="radio control-group optional" id="image_file2_add_watermark_input">
           <label class=" control-label">
             <%= model_class_if.human_attribute_name(:add_watermark) %>
@@ -215,6 +210,17 @@
         <% @image_file2.image_file_translations.sort{|x,y| x.locale <=> y.locale}.each_with_index do |trans, locale_index| %>
 		      <div id="form-<%= trans.locale %>" class="multilanguage">
 			      <h3><%= t("app.language.#{trans.locale}") %></h3>
+
+            <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_source_input">
+              <label class=" control-label" for="image_file2_image_file_translations_attributes_<%=locale_index%>_source">
+                <%= model_class_ift.human_attribute_name(:source) %>
+              </label>
+              <div class="controls">
+                <%= text_field_tag "image_file2[image_file_translations_attributes][#{locale_index}][source]", trans.source, 
+                    :id => "image_file2_image_file_translations_attributes_#{locale_index}_source", :size => 75, :maxlength => 255 %>
+
+              </div>
+            </div>
 
             <div class="string control-group optional stringish" id="image_file_image_file_translations_attributes_<%=locale_index%>_photographer_input">
               <label class=" control-label" for="image_file2_image_file_translations_attributes_<%=locale_index%>_photographer">

@@ -32,6 +32,7 @@ ka:
         name: სახელი
         description: აღწერა
         photographer: ფოტოგრაფი
+        source: წყარო
       pairing:
         image_file1: პირველი გამოსახულების ფაილი
         image_file1_id: პირველი გამოსახულების ფაილი
