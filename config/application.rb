@@ -56,5 +56,10 @@ module BootstrapStarter
 
     # tell the assest pipeline to include the fancybox.js and font styles
     config.assets.precompile += ['fancybox/layout.js', 'fonts_en.css', 'fonts_ka.css']
+
+    # from: https://robots.thoughtbot.com/content-compression-with-rack-deflater
+    # compress all html/json responses
+    config.middleware.use Rack::Deflater
+
   end
 end
